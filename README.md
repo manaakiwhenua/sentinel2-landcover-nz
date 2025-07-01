@@ -36,8 +36,7 @@ We implemented an automated method to generate a basic land cover map over New Z
 
 Land cover map for the 2023-24 summer.
 
-![Classified land cover map]
-(figs/NZ_BLC_2324.png)
+![Classified land cover map](figs/NZ_BLC_2324.png)
 
 ## Validation
 
@@ -45,8 +44,7 @@ The overall accuracy of this classification is **96.03%**. All but two of the cl
 
 In the figure below, the white error bar is the 95% margin of error; "likely" results are assumed valid, and "unlikely" results are assumed invalid, rather than excluding indeterminate results.
 
-![Validation results by class]
-(figs/proportional_class_status_breakdown_with_moe.png)
+![Validation results by class](figs/proportional_class_status_breakdown_with_moe.png)
 
 ## Reports
 
