@@ -1,6 +1,6 @@
 # New Zealand land cover mapping methodlogy using Sentinel-2 imagery
 
-[![manaakiwhenua-standards](https://github.com/manaakiwhenua/<NAME OF YOUR REPOSITORY>/workflows/manaakiwhenua-standards/badge.svg)](https://github.com/manaakiwhenua/manaakiwhenua-standards)
+[![manaakiwhenua-standards](https://github.com/manaakiwhenua/sentinel2-landcover-nz/workflows/manaakiwhenua-standards/badge.svg)](https://github.com/manaakiwhenua/manaakiwhenua-standards)
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 National land cover mapping is a core component of New Zealand‘s environment monitoring system.  Since 1996, national land cover maps have been produced approximately every five years and are collectively known as the Land Cover Database (LCDB).   
@@ -67,3 +67,7 @@ This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
 
 [![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
