@@ -1,4 +1,4 @@
-# New Zealand land cover mapping methodlogy using Sentinel-2 imagery
+# New Zealand land cover mapping methodology using Sentinel-2 imagery
 
 [![manaakiwhenua-standards](https://github.com/manaakiwhenua/sentinel2-landcover-nz/workflows/manaakiwhenua-standards/badge.svg)](https://github.com/manaakiwhenua/manaakiwhenua-standards)
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
