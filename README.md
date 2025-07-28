@@ -52,7 +52,7 @@ In the figure below, the white error bar is the 95% margin of error; "likely" re
 
 Two associated reports are in preparation and will be included here when they are finalised:
 
-- Global land cover comparisons
+- [Evaluation of Global Land Cover Datasets](./docs/Evaluation%20of%20Global%20Land%20Cover%20Datasets.pdf)
 - Cost-effective land cover mapping
 
 ## Acknowledgements
