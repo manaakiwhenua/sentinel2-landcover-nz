@@ -36,7 +36,9 @@ We implemented an automated method to generate a basic land cover map over New Z
 
 Land cover map for the 2023-24 summer.
 
-![Classified land cover map](figs/NZ_BLC_2324.png)
+![Classified land cover map](figs/NZ_BLC_2324_v2-bare.png)
+
+<!-- TODO - link to data published somewhere - LRIS? -->
 
 ## Validation
 
@@ -44,16 +46,16 @@ The overall accuracy of this classification is **96.03%**. All but two of the cl
 
 In the figure below, the white error bar is the 95% margin of error; "likely" results are assumed valid, and "unlikely" results are assumed invalid, rather than excluding indeterminate results.
 
-![Validation results by class](figs/proportional_class_status_breakdown_with_moe.png)
+![Validation results by class](figs/proportional_class_status_breakdown_with_moe_v2.png)
 
 ## Reports
 
-<!-- TODO -->
-
-Two associated reports are in preparation and will be included here when they are finalised:
+Two associated reports:
 
 - [Evaluation of Global Land Cover Datasets](./docs/Evaluation%20of%20Global%20Land%20Cover%20Datasets.pdf)
-- Cost-effective land cover mapping
+    - This report considers existing, freely available global land cover maps, and their potential applications for New Zealand.
+- [Cost-effective land cover mapping](./docs/Land%20cover%20mapping%20methods.pdf)
+    - This report describes the method used to produce the new land cover map from Sentinel-2 imagery, its limitations and potential applications for New Zealand.
 
 ## Acknowledgements
 
