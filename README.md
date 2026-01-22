@@ -48,7 +48,7 @@ In the figure below, the white error bar is the 95% margin of error; "likely" re
 
 ![Validation results by class](figs/proportional_class_status_breakdown_with_moe_v2.png)
 
-## Reports
+## Publications
 
 Two associated reports:
 
@@ -56,6 +56,10 @@ Two associated reports:
     - This report considers existing, freely available global land cover maps, and their potential applications for New Zealand.
 - [Cost-effective land cover mapping](./docs/Land%20cover%20mapping%20methods.pdf)
     - This report describes the method used to produce the new land cover map from Sentinel-2 imagery, its limitations and potential applications for New Zealand.
+
+One published paper:
+
+- Dymond, J. R., Shepherd, J. D., Law, R., Martin, B., Schindler, J., & Belliss, S. (2026). A cost-effective method for mapping land cover at national scale. _Science of Remote Sensing_, _13_, 100376. [https://doi.org/10.1016/j.srs.2026.100376](https://doi.org/10.1016/j.srs.2026.100376)
 
 ## Acknowledgements
 
