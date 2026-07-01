@@ -10,13 +10,14 @@
 # be removed. This avoids land-cover bleed in the intermediate steps while
 # still cleaning up fragmented water at the end.
 #
-# Input:  nz_2324_blc.tif          (classified raster)
-#         nz_2324_blc-mask.tif     (mask: nodata/water areas to protect)
-# Output: nz_2324_blc_st2-st3-st5-st7-water_st5-compressed.tif
+# Input:  $BASE/$NAME.tif          (classified raster)
+#         $BASE/$NAME-mask.tif     (mask: nodata/water areas to protect)
+# Output: $BASE/${NAME}_st2-st3-st5-st7-water_st5-compressed.tif
 
 BASE=/media/lawr/blue-transcend
-INPUT=$BASE/nz_2324_blc.tif
-MASK=$BASE/nz_2324_blc-mask.tif
+NAME=nz_2324_blc
+INPUT=$BASE/${NAME}.tif
+MASK=$BASE/${NAME}-mask.tif
 
 set -euo pipefail
 
@@ -31,36 +32,36 @@ sieve_and_compress() {
 # Pass 1: remove patches < 2px (with mask)
 sieve_and_compress \
     "$INPUT" \
-    "$BASE/nz_2324_blc_st2.tif" \
-    "$BASE/nz_2324_blc_st2-compressed.tif" \
+    "$BASE/${NAME}_st2.tif" \
+    "$BASE/${NAME}_st2-compressed.tif" \
     2 -mask "$MASK"
 
 # Pass 2: remove patches < 3px (with mask)
 sieve_and_compress \
-    "$BASE/nz_2324_blc_st2-compressed.tif" \
-    "$BASE/nz_2324_blc_st2-st3.tif" \
-    "$BASE/nz_2324_blc_st2-st3-compressed.tif" \
+    "$BASE/${NAME}_st2-compressed.tif" \
+    "$BASE/${NAME}_st2-st3.tif" \
+    "$BASE/${NAME}_st2-st3-compressed.tif" \
     3 -mask "$MASK"
 
 # Pass 3: remove patches < 5px (with mask)
 sieve_and_compress \
-    "$BASE/nz_2324_blc_st2-st3-compressed.tif" \
-    "$BASE/nz_2324_blc_st2-st3-st5.tif" \
-    "$BASE/nz_2324_blc_st2-st3-st5-compressed.tif" \
+    "$BASE/${NAME}_st2-st3-compressed.tif" \
+    "$BASE/${NAME}_st2-st3-st5.tif" \
+    "$BASE/${NAME}_st2-st3-st5-compressed.tif" \
     5 -mask "$MASK"
 
 # Pass 4: remove patches < 7px (with mask)
 sieve_and_compress \
-    "$BASE/nz_2324_blc_st2-st3-st5.tif" \
-    "$BASE/nz_2324_blc_st2-st3-st5-st7.tif" \
-    "$BASE/nz_2324_blc_st2-st3-st5-st7-compressed.tif" \
+    "$BASE/${NAME}_st2-st3-st5.tif" \
+    "$BASE/${NAME}_st2-st3-st5-st7.tif" \
+    "$BASE/${NAME}_st2-st3-st5-st7-compressed.tif" \
     7 -mask "$MASK"
 
 # Pass 5: remove small water patches < 5px (NO mask — intentional)
 # Water was protected in all prior passes to prevent land-cover bleed.
 # This final unmasked pass cleans up residual fragmented water.
 sieve_and_compress \
-    "$BASE/nz_2324_blc_st2-st3-st5-st7-compressed.tif" \
-    "$BASE/nz_2324_blc_st2-st3-st5-st7-water_st5.tif" \
-    "$BASE/nz_2324_blc_st2-st3-st5-st7-water_st5-compressed.tif" \
+    "$BASE/${NAME}_st2-st3-st5-st7-compressed.tif" \
+    "$BASE/${NAME}_st2-st3-st5-st7-water_st5.tif" \
+    "$BASE/${NAME}_st2-st3-st5-st7-water_st5-compressed.tif" \
     5
