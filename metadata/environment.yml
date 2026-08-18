@@ -1,0 +1,10 @@
+# Conda equivalent of requirements.txt — see README.md.
+#   conda env create -f environment.yml && conda activate landcover-metadata
+name: landcover-metadata
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.9
+  - jinja2>=3.0
+  - lxml>=4.8
+  - pyyaml>=5.4

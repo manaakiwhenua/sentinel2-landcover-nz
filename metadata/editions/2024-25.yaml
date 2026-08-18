@@ -1,0 +1,45 @@
+# NZ Cost-Effective Land Cover, 2024/25 edition — IN PREPARATION, see _TODO.
+# Almost everything lives in ../common.yaml (method facts; this file wins on
+# any key it defines) — this file holds only what is unique to the edition.
+# Prose in common.yaml re-binds to these scalars through Jinja placeholders.
+# Regenerate with: python3 render.py 2024-25.yaml
+
+edition: 2024/25
+title: NZ Cost-Effective Land Cover (2024/25)
+alternate_title: NZ Land Cover (cost-effective method), 2024/25 summer
+scalars:
+  metadata_uuid: 105b4e7b-4042-451d-ace9-dd1f08a98140
+  metadata_date: '2026-08-18T00:00:00+12:00'
+  creation_date: '2026-07-01'
+  publication_date: '2026-08-18'
+  layer_id: NULL #TODO
+  layer_slug: NULL #TODO
+  temporal_begin: '2024-11-01'
+  temporal_end: '2025-02-28'
+  temporal_id: nominal-summer-mosaic-2024-25
+  # five-year Sentinel-2 NDVI window used for cropland detection
+  ndvi_period: January 2021 to December 2025
+  ndvi_years: 2021–2025
+  qml_document_id: 26004
+  qml_document_version: 28292
+  qml_slug: 26004-celcmqml
+associated_editions:
+- title: NZ Cost-Effective Land Cover (2023/24)
+  edition: 2023/24
+  association_type: crossReference
+  url: https://lris.scinfo.org.nz/layer/123984-nz-cost-effective-land-cover-2023-24/
+  metadata_uuid: f2711951-67b2-41ed-8646-19d3c815ae71
+_TODO:
+- Set layer_id and layer_slug once the layer exists on the LRIS Portal, and confirm publication_date
+  (currently a stand-in; it must stay a plain date, YYYY-MM-DD — the element is gco:Date).
+- 'Confirm the LCDB version burned in for wetlands, orchards/vineyards and glacial lakes. If v6.0: copy
+  the affected keys from common.yaml into this file and edit them HERE — classes (values 8, 15, 16),
+  the LCDB lineage source, the burn-in process step, the abstract, and the LCDB use limitation. Editing
+  common.yaml would silently rewrite the published 2023/24 record.'
+- If the U-Net models were retrained, override lineage step 6 and the training-imagery source the same
+  way, and revise the literal 2023/24 model-development references in them.
+- Decide the fate of reserved class value 5 (Cloud).
+- QML document id/version currently pin the 2023/24 style; if a revised style is uploaded for this edition,
+  pin the new version.
+- Add a back-reference to this edition in 2023-24.yaml's associated_editions and re-render it.
+- 'Then: python3 render.py 2024-25.yaml, and delete this _TODO key.'

@@ -1,0 +1,84 @@
+Driver: KEA/KEA Image Format (.kea)
+Files: nz_2526_blc_st2-st3-st5-st7-water_st5-compressed.kea
+Size is 102400, 151200
+Coordinate System is:
+BOUNDCRS[
+    SOURCECRS[
+        PROJCRS["NZGD2000 / New Zealand Transverse Mercator 2000",
+            BASEGEOGCRS["NZGD2000",
+                DATUM["New Zealand Geodetic Datum 2000",
+                    ELLIPSOID["GRS 1980",6378137,298.257222101,
+                        LENGTHUNIT["metre",1]]],
+                PRIMEM["Greenwich",0,
+                    ANGLEUNIT["degree",0.0174532925199433]],
+                ID["EPSG",4167]],
+            CONVERSION["unnamed",
+                METHOD["Transverse Mercator",
+                    ID["EPSG",9807]],
+                PARAMETER["Latitude of natural origin",0,
+                    ANGLEUNIT["degree",0.0174532925199433],
+                    ID["EPSG",8801]],
+                PARAMETER["Longitude of natural origin",173,
+                    ANGLEUNIT["degree",0.0174532925199433],
+                    ID["EPSG",8802]],
+                PARAMETER["Scale factor at natural origin",0.9996,
+                    SCALEUNIT["unity",1],
+                    ID["EPSG",8805]],
+                PARAMETER["False easting",1600000,
+                    LENGTHUNIT["metre",1],
+                    ID["EPSG",8806]],
+                PARAMETER["False northing",10000000,
+                    LENGTHUNIT["metre",1],
+                    ID["EPSG",8807]]],
+            CS[Cartesian,2],
+                AXIS["(E)",east,
+                    ORDER[1],
+                    LENGTHUNIT["metre",1]],
+                AXIS["(N)",north,
+                    ORDER[2],
+                    LENGTHUNIT["metre",1]],
+            ID["EPSG",2193]]],
+    TARGETCRS[
+        GEOGCRS["WGS 84",
+            DATUM["World Geodetic System 1984",
+                ELLIPSOID["WGS 84",6378137,298.257223563,
+                    LENGTHUNIT["metre",1]]],
+            PRIMEM["Greenwich",0,
+                ANGLEUNIT["degree",0.0174532925199433]],
+            CS[ellipsoidal,2],
+                AXIS["latitude",north,
+                    ORDER[1],
+                    ANGLEUNIT["degree",0.0174532925199433]],
+                AXIS["longitude",east,
+                    ORDER[2],
+                    ANGLEUNIT["degree",0.0174532925199433]],
+            ID["EPSG",4326]]],
+    ABRIDGEDTRANSFORMATION["Transformation from NZGD2000 to WGS84",
+        METHOD["Position Vector transformation (geog2D domain)",
+            ID["EPSG",9606]],
+        PARAMETER["X-axis translation",0,
+            ID["EPSG",8605]],
+        PARAMETER["Y-axis translation",0,
+            ID["EPSG",8606]],
+        PARAMETER["Z-axis translation",0,
+            ID["EPSG",8607]],
+        PARAMETER["X-axis rotation",0,
+            ID["EPSG",8608]],
+        PARAMETER["Y-axis rotation",0,
+            ID["EPSG",8609]],
+        PARAMETER["Z-axis rotation",0,
+            ID["EPSG",8610]],
+        PARAMETER["Scale difference",1,
+            ID["EPSG",8611]]]]
+Data axis to CRS axis mapping: 1,2
+Origin = (1084000.000000000000000,6234000.000000000000000)
+Pixel Size = (10.000000000000000,-10.000000000000000)
+Metadata:
+  AREA_OR_POINT=Area
+Corner Coordinates:
+Upper Left  ( 1084000.000, 6234000.000) (167d25'18.43"E, 33d54'28.98"S)
+Lower Left  ( 1084000.000, 4722000.000) (166d 9'13.13"E, 47d27' 2.06"S)
+Upper Right ( 2108000.000, 6234000.000) (178d29'31.49"E, 33d54'42.96"S)
+Lower Right ( 2108000.000, 4722000.000) (179d44'27.49"E, 47d27'24.64"S)
+Center      ( 1596000.000, 5478000.000) (172d57' 9.17"E, 40d50'56.53"S)
+ 

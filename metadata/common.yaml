@@ -1,0 +1,640 @@
+# Method- and series-level facts shared by every edition of the NZ
+# Cost-Effective Land Cover series — which is nearly everything: the method is
+# validated once (on the 2023/24 edition) and re-run on more recent imagery,
+# so the classes, lineage, quality reports and abstract are method facts.
+# Edition-bound values inside the prose ({{ edition }}, season dates, the NDVI
+# window) are Jinja placeholders that re-bind to each edition's scalars at
+# render time; references to 2023/24 written literally (validation, model
+# training) are historical facts that hold for every edition.
+#
+# Deep-merged UNDER each editions/*.yaml by render.py: an edition file that
+# defines the same key overrides the value here (dicts merge key by key; lists
+# and scalars are replaced whole).
+#
+# WARNING: a change here alters EVERY edition on its next re-render, including
+# editions already published. When the method changes for a new edition (say,
+# an LCDB v6 burn-in), do NOT edit the affected keys here — copy them into the
+# new edition's file and edit them there. Only edit here when the change should
+# apply to every edition, or after moving the old wording down into the
+# already-published editions' files.
+
+scalars:
+  epsg: 2193
+  crs_description: NZGD2000 / New Zealand Transverse Mercator 2000 (NZTM)
+  resolution_m: 10
+  maintenance_frequency: annually
+  maintenance_frequency_check: null
+  distribution_format: GeoTIFF (as offered for download on the LRIS Portal, converted on demand from
+    the KEA format in which the dataset is produced and archived; the portal can supply other formats
+    according to platform and user requirements)
+  distribution_format_check: null
+  licence_name: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  licence_url: https://creativecommons.org/licenses/by-sa/4.0/
+  licence_statement: 'Released under the Creative Commons Attribution-ShareAlike 4.0 International licence
+    (CC BY-SA 4.0). Attribution: "Manaaki Whenua – Landcare Research". The ShareAlike condition requires
+    that adapted material be distributed under the same licence or a compatible one. Access via the LRIS
+    Portal may require a (free) user account. Note that the licence on this dataset differs from the CC
+    BY 4.0 licence on the peer-reviewed paper describing the method.'
+  qml_filename: celcmqml.qml
+  qml_format: QGIS 3.40.3 style format (QML)
+  qml_notes: null
+  contact_email: lawr@landcareresearch.co.nz
+  contact_name: Richard Law
+  progress: completed
+  code_repository: https://github.com/manaakiwhenua/sentinel2-landcover-nz
+  topic_categories:
+  - imageryBaseMapsEarthCover
+  - environment
+  - biota
+  parent_metadata_uuid: null
+  parent_metadata_title: null
+  creation_date_check: null
+  publication_date_check: null
+  bbox_check: null
+  # Grid facts from gdalinfo of the 2025/26 production raster (gdalinfo.txt,
+  # nz_2526_blc_st2-st3-st5-st7-water_st5-compressed.kea); the national grid is
+  # identical across editions per the dataset author. bbox is the NZTM grid
+  # extent transformed to decimal degrees with the edges densified at 100 m and
+  # rounded outward at 6 dp. The south bound falls mid-edge where the bottom of
+  # the grid crosses the central meridian (E 1600000), about 0.2 degrees south
+  # of the corner coordinates gdalinfo prints — corners alone are not the bbox.
+  columns: 102400
+  rows: 151200
+  bbox:
+    west: 166.153648
+    east: 179.740969
+    south: -47.655396
+    north: -33.908049
+  bbox_nztm:
+    min_e: 1084000
+    min_n: 4722000
+    max_e: 2108000
+    max_n: 6234000
+purpose: To provide timely, low-cost, national-scale land-cover information at finer spatial resolution
+  (10 m) and smaller minimum mappable feature size than the New Zealand Land Cover Database (1 ha minimum
+  mapping unit, 1:50,000 scale), suitable for annual environmental reporting and monitoring.
+credit: Partially funded by the Ministry for the Environment, New Zealand, and by the Ministry of Business,
+  Innovation and Employment, New Zealand. Produced using New Zealand eScience Infrastructure (NeSI) high-performance
+  computing facilities, consulting support and training services; NeSI is funded jointly by its collaborator
+  institutions and through MBIE's Research Infrastructure programme. Contains modified Copernicus Sentinel-2
+  data.
+extent_description: The full terrestrial extent of mainland New Zealand and its offshore islands, including
+  Stewart Island / Rakiura and Manawatāwhi / Three Kings Islands, and a coastal margin. The Chatham Islands
+  and other outlying islands are excluded.
+theme_keywords:
+- land cover
+- land-cover classification
+- Sentinel-2
+- satellite imagery
+- remote sensing
+- deep learning
+- U-Net
+- NDVI
+- vegetation
+- indigenous forest
+- exotic forest
+- cropland
+place_keywords:
+- New Zealand
+- Aotearoa
+- North Island
+- South Island
+- Stewart Island / Rakiura
+- Manawatāwhi / Three Kings Islands
+documentation:
+- title: A cost-effective method for mapping land cover at national scale
+  date: '2026-01-16'
+  doi: 10.1016/j.srs.2026.100376
+  author_org: Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute
+  series:
+    name: Science of Remote Sensing
+    issue: '13'
+    page: '100376'
+  other_details: Dymond, J.R., Shepherd, J.D., Law, R., Martin, B., Schindler, J., Belliss, S. (2026).
+    Peer-reviewed description of the method, class taxonomy, spectral rules (Appendix A) and full validation
+    contingency table. Open access under CC BY 4.0.
+  url: https://doi.org/10.1016/j.srs.2026.100376
+  url_function: completeMetadata
+- title: An automated method for generalised land cover mapping over New Zealand
+  date: 2025-07
+  code: LC2526-0006
+  codespace: MWLR Contract Report registration
+  other_details: Law, R., Shepherd, J., Dymond, J., Martin, B., Schindler, J., Belliss, S. (2025). Contract
+    report prepared for the Ministry for the Environment. Contains the full class taxonomy with suggested
+    colour palette, the deep-learning model performance matrices for the North and South Island models,
+    the validation confusion matrix, and the recommendations and caveats attaching to the dataset.
+- title: Evaluation of global land-cover data sets
+  date: 2025-07
+  code: 2526-0005
+  codespace: MWLR Contract Report registration
+  other_details: Law, R., Dymond, J. (2025). Companion evaluation of ESA WorldCover, Google Dynamic World
+    and GLC_FCS30D in the New Zealand context, establishing the case for a nationally produced land-cover
+    dataset. Includes approximate class concordances between this taxonomy, LCDB v5 and the three global
+    products (Appendix A).
+  url: https://github.com/manaakiwhenua/global-land-cover-comparison
+  url_name: Analysis code for the global land-cover comparison
+code_repository_description: Openly licensed source code and trained deep-learning models used to produce
+  this dataset, including the sequence of thresholding rules, the conditional application of the exotic
+  forest classification, the LCDB burn-in, and the sieve filtering applied before publication. Note that
+  the summer mosaic of processed Sentinel-2 imagery used as the object of classification is not publicly
+  available.
+lineage_documentation:
+- title: sentinel2-landcover-nz — production code and trained models
+  url: https://github.com/manaakiwhenua/sentinel2-landcover-nz
+  description: The definitive record of the sequence of thresholding rules, the conditional application
+    of the exotic forest classification, the LCDB burn-in, and the sieve filtering applied before publication.
+- title: A cost-effective method for mapping land cover at national scale
+  doi: 10.1016/j.srs.2026.100376
+- title: An automated method for generalised land cover mapping over New Zealand (MWLR Contract Report
+    LC2526-0006)
+environment_description: Categorical (thematic) raster, 10 m cell size, single band of integer class codes,
+  supplied with a raster attribute table.
+maintenance_note: The workflow completes in under 12 hours of computing time on NeSI infrastructure and
+  can be re-run annually on a new summer mosaic; annual production is a standing recommendation of LC2526-0006.
+  Editions are independent snapshots and are not co-registered as a change time series.
+metadata_maintenance_note: Metadata drafted from Dymond et al. (2026), MWLR contract reports LC2526-0006
+  and 2526-0005, and the QGIS style file celcmqml.qml. Fields marked "CHECK" in the XML comments require
+  confirmation against the published LRIS layer or the production code.
+abstract: 'A national land-cover classification of New Zealand at 10 m spatial resolution, derived from
+  a cloud-free summer mosaic of Sentinel-2 imagery for the {{ edition }} season ({{ scalars.temporal_begin
+  | nzdate }} to {{ scalars.temporal_end | nzdate }}, inclusive). Sixteen land-cover classes are mapped (fifteen mapped classes plus an unclassified
+  value), spanning fundamental cover types (water, bare ground, snow, herbaceous vegetation) and woody
+  and production classes of particular relevance to New Zealand land use (exotic forest, indigenous forest,
+  narrow-leaved scrub, broadleaved shrub, deciduous hardwoods, croplands, orchards and vineyards, wetlands).
+
+
+  The classification is produced by an automated workflow that combines three complementary methods: a
+  hierarchy of binary spectral decision rules applied to topographically normalised, standardised surface
+  reflectance; a U-Net convolutional neural network for classes where texture and spatial context are
+  decisive (exotic forest, deciduous hardwoods); and analysis of a five-year Sentinel-2 NDVI time series
+  ({{ scalars.ndvi_years }}) to detect the repeated bare/vegetated cycles characteristic of regular tillage. Two classes
+  that are unreliable to delineate from imagery alone — wetlands, and orchards and vineyards — are burned
+  in unchanged from the New Zealand Land Cover Database (LCDB) version 5, as is the glacial lakes extent.
+  A 10 m national digital elevation model is used both for topographic normalisation and as ancillary
+  evidence at particular decision nodes.
+
+
+  National classification runs in under 12 hours of computing time on New Zealand eScience Infrastructure
+  (NeSI), making annual updates feasible at roughly an order of magnitude lower cost than the manually
+  interpreted LCDB. Validation of the unfiltered 2023/24 classification against 4,500 points (300 per
+  mapped class, stratified by map class, drawn
+  from a population of approximately 2.7 billion valid pixels) gave a weighted overall accuracy of {{
+  quality_reports[0].quantitative_result_percent }} %.
+
+
+  Intended applications include protective cover for soil erosion, national and on-farm carbon accounting,
+  habitat connectivity modelling for predator control, nutrient budgeting for water quality, monitoring
+  of habitat loss in protected wetlands, and fire fuel assessment.
+
+
+  Important limitations. This dataset is a snapshot, not a change product: simple differencing of successive
+  editions will produce spurious change even at high accuracy — of the order of several percent of the
+  national land area per year, which exceeds expected real change. Change should be inferred only with
+  multi-year persistence checks, checks for similar change in adjacent areas, spatial filtering of small
+  clumps, or reference to LCDB, where expert operators check all candidate change. Two classes are markedly
+  less accurate than the rest and should be treated with more caution: Broadleaved Shrub and Unspecified
+  Woody Vegetation (F1 approximately 82 % and 88 % respectively, with precision near 70–79 %). The published
+  dataset has been post-processed with an iterative sieve filter that removes small isolated patches:
+  isolated features smaller than seven pixels (700 m²), or five pixels (500 m²) for water, are merged
+  into their surroundings and do not appear in the published data, whatever their true cover.'
+use_limitations:
+- 'Not suitable for direct pixel-by-pixel change detection between editions: simple differencing will
+  infer spurious change over a substantial area even when both editions are highly accurate. Refer to
+  LCDB for authoritative change information.'
+- The Broadleaved Shrub and Unspecified Woody Vegetation classes have materially poorer validation results
+  than the rest of the taxonomy and should be treated with more caution.
+- Snow reflects conditions at the time of image acquisition within the summer mosaic window, not a long-term
+  snow climatology.
+- Wetlands, orchards and vineyards, and glacial lakes are inherited from LCDB v5 and therefore carry that
+  dataset's nominal date (2018/19) and 1 ha minimum mapping unit rather than those of this dataset.
+- The published raster is sieve-filtered. Isolated patches smaller than seven pixels (700 m²), or five
+  pixels (500 m²) for water, have been merged into their surroundings, so the effective minimum size
+  of an isolated feature is larger than the 100 m² minimum mappable feature of the commissioning brief.
+  The validation figures were assessed on the unfiltered 2023/24 classification, before this filtering.
+- The accuracy figures derive from a single validation exercise performed on the 2023/24 edition. Subsequent
+  editions are produced by the same automated method from more recent imagery and are not individually
+  revalidated.
+attribute_description: Land-cover class code (8-bit unsigned integer; values 0 to 16, where 5 is reserved
+  and unused in this edition)
+band_description: Single band of land-cover class codes. Seventeen values are defined (0 to 16), of which
+  fifteen are mapped land-cover classes; value 0 is unclassified and value 5 is reserved and unused. Each
+  class is listed below with its pixel value, label, definition, derivation method and display colour.
+  Colours are 24-bit RGB in HTML hexadecimal notation and are taken from the authoritative QGIS paletted-raster
+  style file (celcmqml.qml), which is referenced formally under portrayalCatalogueInfo.
+classes:
+- value: 0
+  label: Unclassified
+  colour: '#000000'
+  definition: 'Exterior marine, or remnant from cloud masking and mosaicking; small areas of residual
+    cloud in the {{ edition }} mosaic are also assigned this value. Derivation: not applicable (no class assigned).
+    Colour: #000000. Note that the QGIS style file defines no palette entry for this value and renders
+    it as transparent no-data; the colour given here is the one specified in Table 1 of contract report
+    LC2526-0006.'
+- value: 1
+  label: Water
+  colour: '#359ec9'
+  definition: 'Water bodies, including a coastal margin. Derivation: spectral rules, binary split — identified
+    from the near-infrared and shortwave-infrared bands alongside the visible bands, after the snow split.
+    Colour: #359ec9.'
+- value: 2
+  label: Bare Ground
+  colour: '#d3d3d3'
+  definition: 'Bare ground without vegetation cover. Derivation: spectral rules, binary split. Colour:
+    #d3d3d3.'
+- value: 3
+  label: Indigenous Forest
+  colour: '#006400'
+  definition: 'Mature forest comprising indigenous tree species. Derivation: spectral rules, binary split
+    — the remainder of the forest/trees node after exotic forest has been subtracted by deep learning
+    and small clumps have been separated as unspecified woody vegetation. Colour: #006400. Labelled "Indigenous
+    Vegetation" in Table 1 of the source paper and in the published map legends.'
+- value: 4
+  label: Herbaceous Vegetation
+  colour: '#f6f99e'
+  definition: 'Non-woody vegetation — primarily high-producing (exotic) and low-producing (exotic and
+    indigenous) grasslands, and indigenous tussock grasslands. Derivation: spectral rules, binary split
+    of vegetation into herbaceous or woody vegetation. Colour: #f6f99e.'
+- value: 5
+  label: Cloud
+  colour: '#ffffff'
+  definition: 'Cloud. Reserved code, not used in this edition: residual cloud remaining in the {{ edition }}
+    mosaic was assigned to value 0 (Unclassified) instead. Derivation: not applicable. Colour: #ffffff.'
+- value: 6
+  label: Primarily Bare Ground
+  colour: '#d1b28c'
+  definition: 'A mix of bare ground (greater than 50 % of the cell) and vegetation cover; includes herb
+    fields and rock fields. Derivation: spectral rules, binary split. Colour: #d1b28c.'
+- value: 7
+  label: Snow
+  colour: '#ff00ff'
+  definition: 'Snow cover at the time of image acquisition. Derivation: spectral rules, binary split —
+    the first split in the hierarchy, constrained by a 10 m national digital elevation model to terrain
+    above 150 m in order to avoid confusion between snow and bright coastal water such as whitecaps and
+    turbid estuary water. Colour: #ff00ff.'
+- value: 8
+  label: Glacial Lakes, Wet Rock, Water/Sediment
+  colour: '#5ab2ff'
+  definition: 'Glacial lakes, and rock or sand covered by shallow water. Derivation: spectral rules, binary
+    split; the glacial lakes extent is adopted from LCDB version 5. Colour: #5ab2ff.'
+- value: 9
+  label: Unspecified Woody Vegetation
+  colour: '#666666'
+  definition: 'Small (less than 0.2 ha) clumps of unspecified trees. Derivation: a centre-to-edge ratio
+    computation identifies small clusters of woody vegetation which contain insufficient pixel-level information
+    to be classified further at 10 m resolution; attempts to resolve these stands into conifer and non-conifer
+    types using a model trained on aerial imagery were unsuccessful, so they remain unspecified. Colour:
+    #666666. This class has materially poorer validation results than the rest of the taxonomy.'
+- value: 10
+  label: Narrow-leaved Scrub
+  colour: '#709c63'
+  definition: 'Immature shrublands with narrow leaves — primarily mānuka, kānuka, gorse, broom and matagouri.
+    Derivation: spectral rules, binary split of woody vegetation into narrow-leaved scrub or other woody
+    vegetation, using the index (ρ4 − ρ5)/(ρ4 + ρ5) with a threshold of 0.25, reduced from the 0.33 of
+    Dymond and Shepherd (2004) to give an acceptable spatial distribution per expert judgement (ρ4 is
+    near-infrared, 0.77–0.90 µm; ρ5 is shortwave infrared, 1.55–1.75 µm). Colour: #709c63.'
+- value: 11
+  label: Exotic Forest
+  colour: '#ab291f'
+  definition: 'Planted exotic forest — primarily Pinus radiata; may include wilding pines. Derivation:
+    U-Net deep-learning classification of Sentinel-2 imagery trained on LCDB v5, applied conditionally
+    within the forest branch of the decision hierarchy so that it disambiguates forest already identified
+    by spectral rules rather than over-ruling earlier binary decisions. Colour: #ab291f.'
+- value: 12
+  label: Deciduous Hardwoods
+  colour: '#ffa600'
+  definition: 'Mature exotic deciduous trees — primarily poplars and willows. Derivation: U-Net deep-learning
+    classification, restricted to lowland terrain; unlike exotic forest, the label is not additionally
+    confined to areas the spectral hierarchy had identified as woody. Colour: #ffa600. See supplementalInformation
+    for the resolution of a documented inconsistency about this class''s derivation method.'
+- value: 13
+  label: Broadleaved Shrub
+  colour: '#ff80a1'
+  definition: 'Immature shrublands with broad leaves — primarily indigenous broadleaved species. Derivation:
+    spectral rules, binary split — near-infrared and shortwave-infrared threshold rules distinguishing
+    narrow-leaf from broad-leaf vegetation within the woody layer; the split from forest/trees is on green
+    reflectance (ρ2 greater than 0.0403). Colour: #ff80a1. This class has the poorest validation results
+    in the taxonomy (precision approximately 70 %).'
+- value: 14
+  label: Croplands
+  colour: '#824ab3'
+  definition: 'Cropping land with evidence of regular tillage. Derivation: temporal sequence of NDVI from
+    Sentinel-2 ({{ scalars.ndvi_period }}), using the median NDVI of vegetated pixels, the median
+    NDVI of all observations, and the ratio of time in vegetation to time not in vegetation; conditional
+    on the terrain being sufficiently flat to be plausible cropland, per the digital elevation model.
+    This is the final binary split. Colour: #824ab3. The method detects a repeating bare/vegetated pattern
+    without regard to the time of year at which it occurs, so cropping is the probable but not the only
+    possible explanation of the signal.'
+- value: 15
+  label: Wetlands
+  colour: '#91d491'
+  definition: 'Wetland ecosystems. Derivation: burned in from LCDB version 5 (LCDB class 15), taken as
+    given because the class was judged too difficult to delineate automatically with sufficient accuracy
+    from spectral information. Colour: #91d491. This class carries the nominal date and minimum mapping
+    unit of LCDB v5 rather than of the {{ edition }} mosaic.'
+- value: 16
+  label: Orchards and Vineyards
+  colour: '#f6c2cf'
+  definition: 'Land managed to produce grapes and other perennial crops. Derivation: burned in from LCDB
+    version 5 (LCDB class 16), taken as given for the same reason as wetlands. Colour: #f6c2cf. This class
+    carries the nominal date and minimum mapping unit of LCDB v5.'
+quality_reports:
+- name: Weighted overall classification accuracy
+  description: 'For each mapped class, precision is the percentage of mapped pixels found to be correct
+    and recall is the percentage of the true class correctly mapped; the F1-score is the harmonic mean
+    of the two, giving them equal weight. The overall accuracy is the class F1-score averaged and weighted
+    by mapped area. The source paper rounds this figure to 96 %. The validation was performed on the
+    unfiltered 2023/24 classification, before the sieve filtering described in the lineage: the figures
+    describe the pre-filter map of that edition. The series is validated once — subsequent editions apply
+    the same automated method to more recent imagery and are not individually revalidated.'
+  evaluation:
+    description: 'Stratified random sampling by map class. Pixels were selected at random and iteratively,
+      and were included in the sample if the class had fewer than 300 samples so far and the pixel had
+      not already been sampled, continuing until every mapped class held 300 pixels. The random seed was
+      the sample date, so the sample is reproducible. The total sample was 4,500 pixels (15 classes ×
+      300) drawn from a population of approximately 2.7 billion valid pixels.
+
+
+      Every point was assessed by a single expert validator with experience in remote sensing and the
+      New Zealand environmental context, using MapAccuracy software, which presents sample points individually
+      over the classified map alongside contextual windows displaying Sentinel-2 imagery (including the
+      temporal sequence) and recent aerial photography. The validator could label each point determinately
+      as valid or invalid, or indeterminately as likely or unlikely. In the reported accuracy figures,
+      ''likely'' is counted as valid and ''unlikely'' as invalid, rather than excluding indeterminate
+      results.
+
+
+      Resourcing did not permit redundant expert validators or additional non-expert validators, so some
+      inter-validator disagreement should be expected. For context, Brown et al. (2022) reported 77.8
+      % overall agreement between consensus non-expert and consensus expert land-cover validation for
+      Google Dynamic World, a product also derived from Sentinel-2 but with fewer classes.'
+    sampling_scheme: Stratified random sampling, stratified by map class, with a constant random seed
+    lot_description: 4,500 sample pixels (300 per mapped class, 15 classes) from approximately 2.7 billion
+      valid pixels across the national extent
+    procedure_title: MapAccuracy
+    procedure_url: https://anaconda.org/gillins/mapaccuracy
+  quantitative_result_percent: 96.45
+- name: Per-class F1-score
+  description: 'F1-scores by class from the same 4,500-point stratified sample, as percentages: Bare Ground
+    98.0; Broadleaved Shrub 82.2; Cropland 94.9; Deciduous Hardwoods 96.2; Exotic Forest 96.9; Glacial
+    Lakes, Wet Rock, Water/Sediment 98.0; Herbaceous Vegetation 84.8; Indigenous Forest 90.4; Narrow-leaved
+    Scrub 93.1; Orchards and Vineyards 98.8; Primarily Bare Ground 94.9; Snow 97.9; Unspecified Woody
+    Vegetation 88.2; Water 94.1; Wetlands 99.2. All classes except Broadleaved Shrub and Unspecified Woody
+    Vegetation exceed 90 %. The full contingency table with precision and recall is Table 3 of the source
+    paper and Figure 6 of contract report LC2526-0006.'
+  descriptive_result: 'Per-class F1-scores range from 82.2 % (Broadleaved Shrub) to 99.2 % (Wetlands).
+    The two weakest classes are weak in precision rather than recall: Broadleaved Shrub has 70.0 % precision
+    against 99.5 % recall, and Unspecified Woody Vegetation 79.3 % precision against 99.2 % recall — both
+    are over-mapped, drawing most of their false positives from herbaceous vegetation and indigenous forest.
+    Herbaceous Vegetation shows the converse pattern (98.3 % precision, 74.5 % recall), being under-mapped
+    where it is confused with shrubland and small woody clumps.'
+- name: Deep-learning model accuracy for the exotic forest class (development assessment)
+  description: Assessment of the U-Net models against LCDB v5 during development, reported separately
+    for the two island models and distinct from the validation of the final published map. On the 2018/19
+    mosaic the exotic forest class accuracy was 90.3 % for the North Island model and 83.5 % for the South
+    Island model. Both models separated exotic from indigenous forest with better than 97 % precision
+    and recall, conditional on a pixel containing forest — better than 99 % for the North Island. The
+    main class confusion for both exotic and indigenous forest was with grass, with further significant
+    confusion against scrub, bare ground and indigenous hardwoods.
+  descriptive_result: Overall model accuracies across all modelled classes were 87.0 % (North Island,
+    13 classes) and 86.1 % (South Island, 12 classes). These figures assess the models, not the published
+    dataset, and are recorded here for provenance only.
+lineage_statement: 'This dataset was produced by an automated workflow that classifies a cloud-free national
+  summer mosaic of Sentinel-2 imagery ({{ scalars.temporal_begin | nzdate }} to {{ scalars.temporal_end
+  | nzdate }}) into fifteen land-cover classes
+  at 10 m resolution. Sentinel-2 scenes were standardised to surface reflectance — atmospherically corrected
+  and normalised to a standard sun position and flat topography — so that reflectance is a property of
+  the vegetation alone, independent of sun position, slope and view direction. Cloud and cloud shadow
+  were masked using an improved multi-temporal (Tmask) algorithm with an object-based approach to remove
+  false cloud detections, and the scenes composited into a national mosaic drawing on approximately 100
+  satellite overpasses, with residual cloud typically below 0.1 %. Small areas of residual cloud in the
+  mosaic were assigned to the unclassified value in the output.
+
+
+  Classification proceeds down a hierarchy of binary splits, with the method for each split chosen to
+  maximise accuracy at that node. The hierarchy is used because land covers are naturally organised hierarchically,
+  a different discrimination function can be applied at each node, binary discriminant functions are simple
+  to express and repeat, and covers identified by other methods can be injected at a suitable point in
+  the tree. Most splits are made by expert-defined spectral decision rules applied to the standardised
+  reflectance, with thresholds taken from Dymond and Shepherd (2004) and selected interactively to achieve
+  optimum spatial distribution according to expert judgement. Two classes are not spectrally separable
+  and are handled otherwise: exotic forest (and, in lowland terrain, deciduous hardwoods)
+  is classified by a U-Net convolutional neural network and applied conditionally within the forest branch
+  so that it disambiguates rather than over-rules the earlier splits; and cropland is identified from
+  the temporal dynamics of NDVI over a five-year Sentinel-2 archive ({{ scalars.ndvi_period }}), conditional
+  on the terrain being sufficiently flat. Ancillary data enter the workflow at specific nodes: a 10 m
+  national digital elevation model constrains the snow and cropland decisions, and LCDB is used to relax
+  the near-infrared, shortwave-infrared and red thresholds wherever it has pre-identified forest, mangrove
+  or scrub. Wetlands and orchards and vineyards are then accepted (burned in) unchanged from LCDB version
+  5.
+
+
+  The classification workflow executes in under 12 hours of computing time on New Zealand eScience Infrastructure.
+  The classified raster is then post-processed with an iterative sieve filter that removes small isolated
+  patches, at escalating size thresholds up to seven pixels, with water protected until a final five-pixel
+  pass. The method is described in Dymond
+  et al. (2026) and, in greater operational detail, in contract report LC2526-0006; the production code
+  and trained models are at https://github.com/manaakiwhenua/sentinel2-landcover-nz.'
+lineage_sources:
+- description: Copernicus Sentinel-2 MSI imagery, {{ edition }} summer season ({{ scalars.temporal_begin
+    | nzdate }} to {{ scalars.temporal_end | nzdate }} inclusive). Approximately 100 Sentinel-2 overpasses of New Zealand per summer season contribute
+    to the mosaic. The processed summer mosaic itself is not publicly available.
+  citation:
+    title: Copernicus Sentinel-2 MSI imagery
+    originator: European Space Agency / Copernicus Programme
+  resolution_m: 10
+- description: 'Copernicus Sentinel-2 MSI archive, {{ scalars.ndvi_period }} inclusive: all available
+    cloud-masked, topographically normalised images, used to derive the five-year NDVI time series for
+    cropland detection.'
+  citation:
+    title: Copernicus Sentinel-2 MSI archive {{ scalars.ndvi_years }}
+- description: 'Sentinel-2 summer mosaics used as training imagery for the U-Net models: a stack of the
+    2016/17, 2017/18 and 2018/19 mosaics for the North Island model, and the 2018/19 mosaic alone for
+    the South Island model. Combinations including the 2023/24 mosaic were also trialled but gave less
+    accurate results.'
+  citation:
+    title: Automated mosaicking of Sentinel-2 satellite imagery
+    doi: 10.3390/rs12223680
+    other_details: Shepherd, J.D., Schindler, J., Dymond, J.R. (2020). Remote Sensing 12, 3680.
+- description: 'New Zealand Land Cover Database (LCDB) version 5, nominal date 2018/19, mapped at 1:50,000
+    with a 1 ha minimum mapping unit. Used for three distinct purposes: (a) as U-Net training data — a
+    class polygon layer of 101,396 exotic forest polygons, derived using a class mapping suggested by
+    the Ministry for the Environment, with Broadleaved Indigenous Hardwoods and Deciduous Hardwoods separated
+    out for testing and the LCDB "Forest – Harvested" class treated as bare land and excluded from exotic
+    forest training; (b) as ancillary evidence within the spectral hierarchy, conditionally relaxing the
+    near-infrared, shortwave-infrared and red thresholds wherever LCDB has pre-identified forest, mangrove
+    or scrub; and (c) as the direct source of classes burned into the final map — wetlands (LCDB class
+    15), orchards and vineyards (LCDB class 16), and the glacial lakes extent. LCDB v6.0 was not available
+    at the time of production.'
+  citation:
+    title: LCDB v5.0 — Land Cover Database version 5.0, Mainland New Zealand
+    originator: Manaaki Whenua – Landcare Research
+    url: https://lris.scinfo.org.nz/layer/104400-lcdb-v50-land-cover-database-version-50-mainland-new-zealand/
+- description: 'National 10 m digital elevation model. Used for topographic normalisation of reflectance,
+    to eliminate terrain below 150 m elevation from the snow class, and to constrain cropland to sufficiently
+    flat terrain. CHECK: identify and cite the specific DEM used.'
+  citation:
+    title: National 10 m digital elevation model of New Zealand
+  resolution_m: 10
+lineage_steps:
+- description: Image acquisition. All available Copernicus Sentinel-2 MSI scenes covering New Zealand
+    for the {{ edition }} summer season ({{ scalars.temporal_begin | nzdate }} to {{ scalars.temporal_end
+    | nzdate }} inclusive) were assembled; approximately
+    100 overpasses contribute to a national summer season.
+  rationale: Summer imagery maximises the spectral separability of vegetation classes and the number of
+    cloud-free observations.
+  processor: true
+- description: 'Radiometric standardisation. Each scene was corrected to standardised spectral reflectance:
+    atmospherically corrected and normalised to a standard sun position and flat topography, so that reflectance
+    becomes a property of the vegetation alone, independent of sun position, slope and view direction.
+    Methods follow Dymond and Shepherd (1999), Dymond et al. (2001), Shepherd and Dymond (2003) and Dymond
+    and Shepherd (2004). The national 10 m digital elevation model is used for the topographic normalisation.'
+  rationale: Standardised reflectance is what allows fixed spectral thresholds to be applied consistently
+    over a national extent and to remain stable between years.
+  reference:
+    title: A simple physical model of vegetation reflectance for standardising optical satellite imagery
+    doi: 10.1016/S0034-4257(00)00178-4
+- description: Cloud and cloud-shadow masking. Masks were generated with an improved multi-temporal mask
+    (Tmask) algorithm for cloud detection, refined by the parallax method of Frantz et al. (2018) and
+    by an object-based cloud and shadow classification to remove false cloud detections, with the final
+    masks checked by an object-based morphology test (Shepherd et al., 2020).
+  rationale: New Zealand's frequent cloud cover is the principal obstacle to national optical mapping;
+    aggressive but verified masking is required before compositing.
+- description: Mosaicking. Cloud-free observations were composited into a single national summer mosaic
+    of standardised spectral reflectance at 10 m resolution, following Shepherd et al. (2020). Residual
+    cloud in the resulting mosaic is typically below 0.1 %; the small areas that remain in the {{ edition }}
+    mosaic were assigned class 0 (Unclassified) in the final output. This mosaic is the object of classification.
+  reference:
+    title: Automated mosaicking of Sentinel-2 satellite imagery
+    doi: 10.3390/rs12223680
+- description: 'Hierarchical spectral rule classification. Binary decision rules were applied sequentially
+    down a hierarchy: snow first (constrained by the digital elevation model to terrain above 150 m, to
+    avoid confusion with bright coastal water such as whitecaps and turbid estuary water); then water,
+    from the near-infrared and shortwave-infrared bands alongside the visible bands; then land into bare
+    ground and vegetation; then vegetation into herbaceous and woody; then woody into narrow-leaved scrub
+    and other woody vegetation, and other woody vegetation into broadleaved shrub and forest/trees. Each
+    node applies a simple binary discriminant function on a spectral band or band ratio (ρ1 blue, ρ2 green,
+    ρ3 red, ρ4 near-infrared 0.77–0.90 µm, ρ5 shortwave infrared 1.55–1.75 µm); the full rule set is in
+    Appendix A of the source paper and Table 4 of Dymond and Shepherd (2004). Thresholds were retained
+    from Dymond and Shepherd (2004) except for the narrow-leaved scrub split on (ρ4 − ρ5)/(ρ4 + ρ5), reduced
+    from 0.33 to 0.25. LCDB is used as ancillary evidence at this stage, relaxing the near-infrared, shortwave-infrared
+    and red thresholds wherever it has pre-identified forest, mangrove or scrub.'
+  rationale: Land covers are naturally organised into a hierarchy; a different discrimination function
+    can be used at each node; binary discriminant functions are simple to express and to repeat; and covers
+    identified by other methods can be injected at a suitable point in the tree. Threshold values were
+    selected interactively to achieve optimum spatial distribution according to expert judgement.
+- description: 'Training the U-Net deep-learning models. A U-Net encoder–decoder convolutional network
+    was trained to generate a class raster over 13 classes for the North Island and 12 for the South Island
+    (the initial class set proposed by the Ministry for the Environment, plus a separation of indigenous
+    hardwoods from deciduous hardwoods to test whether small patches of deciduous and evergreen trees
+    could be discriminated; ''mangrove'' does not occur in the South Island). Training data were a class
+    polygon layer derived from LCDB v5. The original U-Net width of 64 filters in the initial layer was
+    selected: greater widths added compute cost for negligible gain. Training ran for 1,000 epochs on
+    512 × 512 pixel patches, each epoch comprising 300 minibatches of two images, using the Adam optimiser
+    with an initial learning rate of 0.0001, with evaluation against a validation set after every epoch
+    and selection of the model with the lowest validation loss. The selected models were trained on 50
+    % of the imagery, validated on 10 %, and tested on the remaining 40 %.
+
+
+    Two different normalisation strategies were adopted to maximise robustness across mosaics from different
+    periods, assessed by the quality of the 2023/24 prediction and specifically by minimising false positives
+    of exotic forestry caused by differences in pixel distributions. North Island: train on the 2016/17,
+    2017/18 and 2018/19 mosaics, normalising all image patches identically on the average mean and standard
+    deviation of all three. South Island: train on the 2018/19 mosaic alone, normalising each individual
+    image patch to zero mean and unit standard deviation. The difference arises because South Island mosaics
+    differ more from year to year due to climate, whereas in the North Island image lighting differences
+    dominate.'
+  rationale: Exotic forest cannot be separated from indigenous forest by spectral signature alone; texture
+    and spatial context are decisive, and encoder–decoder networks exploit contextual patterns in surrounding
+    pixels to disambiguate them.
+- description: Identification of small woody clumps. A centre-to-edge ratio computation was applied to
+    identify small clusters of woody vegetation (less than 0.2 ha), which were labelled Unspecified Woody
+    Vegetation.
+  rationale: Such clumps contain insufficient pixel-level information to be classified further at 10 m
+    resolution. A separate attempt to discriminate conifer from non-conifer trees using a model trained
+    on regional aerial imagery was judged unsuccessful — owing to a lack of ground truth, highly variable
+    image quality, unknown survey dates, and confusion between tree species of different ages — so these
+    stands remain unspecified.
+- description: Conditional application of the deep-learning classification. The trained models were applied
+    to the {{ edition }} mosaic; the resulting exotic forest was accepted only within the forest branch
+    of the decision hierarchy, as a disambiguation of forest already identified by the earlier binary
+    splits, and deciduous hardwoods were accepted from the same prediction wherever the terrain is lowland
+    — a label not additionally confined to the woody branch.
+  rationale: Constraining the deep-learning result prevents it from over-ruling prior binary decisions,
+    gives a more deterministic output, and stops the final exotic forestry from simply reproducing its
+    1:50,000 LCDB training data. In particular, the models learned from LCDB to include areas of bare
+    land within forestry, which is a misidentification at 10 m resolution; conditional application corrects
+    for this.
+- description: Spectral splitting of the remaining woody vegetation. Near-infrared / shortwave-infrared
+    threshold rules separated narrow-leaved scrub, and a green-reflectance rule separated broadleaved
+    shrub, from the remaining forest/trees.
+- description: 'NDVI temporal sequence identification of cropland, the final binary split. All available
+    cloud-masked, topographically normalised Sentinel-2 images from {{ scalars.ndvi_period }} inclusive
+    were used to compute an NDVI time series following Amies et al. (2021), yielding three metrics per
+    pixel: the median NDVI of vegetated pixels, the median NDVI of all observations, and the ratio of
+    time in vegetation to time not in vegetation. Visualised as an RGB stretch, areas of cropland are
+    distinct — alternation between fallow and vegetated periods across the five-year sequence — giving
+    rise to simple threshold rules. Cropland was additionally conditioned on the terrain being sufficiently
+    flat to be plausible cropland, per the digital elevation model.'
+  rationale: Cropland is not separable in a single-date summer image; it is defined by a multi-year pattern
+    of tillage and regrowth. Basing the identification on five years rather than a single date avoids
+    treating a process that is not strictly annual at field scale as a point-in-time observation. The
+    limitation is that the method detects the bare/vegetated cycle without regard to the time of year
+    at which it occurs, so cropping is the probable but not the only possible explanation of the signal.
+  reference:
+    title: National mapping of New Zealand pasture productivity using temporal Sentinel-2 data
+    doi: 10.3390/rs13081481
+- description: 'LCDB burn-in. Wetlands (LCDB class 15) and orchards and vineyards (LCDB class 16) were
+    accepted as given and burned in from LCDB version 5, as was the glacial lakes extent, producing the
+    classified land-cover dataset: a single-band 10 m raster with a raster attribute table in the NZTM
+    projection. To this point the workflow takes under 12 hours of compute time on New Zealand eScience
+    Infrastructure.'
+  rationale: Wetlands and viticulture were judged too difficult to delineate automatically from spectral
+    information with sufficient accuracy, so authoritative existing delineations with a human in the loop
+    were retained instead.
+- description: 'Sieve filtering. The classified raster was post-processed with an iterative sieve filter
+    (gdal_sieve, eight-connectivity) that removes small isolated patches by merging them into their largest
+    neighbour, in successive passes with escalating size thresholds of two, three, five and seven pixels.
+    Water and no-data areas were masked throughout these passes; a final unmasked five-pixel pass then
+    removed the small isolated water patches the mask had protected. The raster attribute table was reattached
+    to the filtered raster, which is the published dataset.'
+  rationale: The mask prevents land-cover classes from bleeding into water and no-data areas during sieving,
+    and the final unmasked pass applies the same cleaning to fragmented water itself. Note that contract
+    report LC2526-0006 recommended publishing unfiltered data, with any filtered product alongside; the
+    published layer is the filtered product.
+qml_description: Authoritative source of class values, labels and display colours for this dataset. Defines
+  a paletted single-band renderer on band 1 at full opacity, with nearest-neighbour resampling and transparent
+  no-data. Palette entries are given for values 1 to 16; value 0 (Unclassified) has no entry and renders
+  as transparent no-data. Where this style file and other documentation of the dataset disagree on a colour,
+  the style file is authoritative.
+supplemental_information: 'Commissioning-brief requirements: the brief required all distinct areas of
+  land cover of at least 100 m² in area and 20 m in width to be mapped, and specified delivery in NZTM
+  at 10 m resolution. Note that the published data are sieve-filtered (see the lineage): isolated patches
+  smaller than seven pixels do not survive to publication, so the effective minimum size of an isolated
+  feature (700 m²) is larger than the 100 m² the brief specifies. Contract report LC2526-0006 recommended
+  that any filtered product be published alongside, rather than instead of, unfiltered data; the published
+  layer is the filtered product.
+
+
+  Class codes: values 0 to 16 are defined. Value 5 (Cloud) is a reserved code that is not used in this
+  edition — small areas of residual cloud in the {{ edition }} mosaic were assigned to value 0 (Unclassified)
+  instead.
+
+
+  Class labelling: Table 1 of the source paper labels class 3 "Indigenous Vegetation" while its Tables
+  2 and 3, the contract report, and the QGIS style file all use "Indigenous Forest"; the latter is used
+  here. Class 13 is "Broadleaved Shrub" (singular) in the style file and contract report, and "Broadleaved
+  Shrubs" in the paper.
+
+
+  Class 12 (Deciduous Hardwoods) derivation: Table 1 of contract report LC2526-0006 records the method
+  as spectral rules, but section 4.1.7 of the same report and Figure 2 of the source paper both describe
+  it as a deep-learning classification restricted to lowland areas. The production code (binary_split/exotic/exotic.py)
+  confirms the deep-learning derivation: the label is applied wherever the model predicts deciduous hardwoods
+  and the terrain is lowland. Note that, unlike exotic forest, the label is not additionally confined
+  to areas the spectral hierarchy had identified as woody.
+
+
+  Mapped areas by island are tabulated in Table 2 of the source paper; the validation confusion matrix
+  is Table 3 of the paper and Figure 6 of LC2526-0006; the spectral rules and their thresholds are in
+  Appendix A of the paper and Table 4 of Dymond and Shepherd (2004). Approximate concordances to LCDB
+  v5, ESA WorldCover, Google Dynamic World and GLC_FCS30D are given in Appendix A of contract report 2526-0005.'

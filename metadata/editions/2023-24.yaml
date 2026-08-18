@@ -1,0 +1,26 @@
+# NZ Cost-Effective Land Cover, 2023/24 edition.
+# Almost everything lives in ../common.yaml (method facts; this file wins on
+# any key it defines) — this file holds only what is unique to the edition.
+# Prose in common.yaml re-binds to these scalars through Jinja placeholders.
+# Regenerate with: python3 render.py 2023-24.yaml
+
+edition: 2023/24
+title: NZ Cost-Effective Land Cover (2023/24)
+alternate_title: NZ Land Cover (cost-effective method), 2023/24 summer
+scalars:
+  metadata_uuid: f2711951-67b2-41ed-8646-19d3c815ae71
+  metadata_date: '2026-08-18T00:00:00+12:00'
+  creation_date: '2025-03-01'
+  publication_date: '2025-03-06'
+  layer_id: 123984
+  layer_slug: 123984-nz-cost-effective-land-cover-2023-24
+  temporal_begin: '2023-11-01'
+  temporal_end: '2024-02-29'
+  temporal_id: nominal-summer-mosaic-2023-24
+  # five-year Sentinel-2 NDVI window used for cropland detection
+  ndvi_period: January 2020 to December 2024
+  ndvi_years: 2020–2024
+  qml_document_id: 26004
+  qml_document_version: 28292
+  qml_slug: 26004-celcmqml
+associated_editions: []

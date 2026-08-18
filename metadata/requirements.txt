@@ -1,0 +1,6 @@
+# Python environment for render.py — see README.md.
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+# Conda users: environment.yml is the equivalent.
+jinja2>=3.0
+lxml>=4.8
+pyyaml>=5.4
