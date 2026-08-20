@@ -304,6 +304,7 @@
               </cit:dateType>
             </cit:CI_Date>
           </cit:date>
+          {%- if s.publication_date %}
           <cit:date>
             <cit:CI_Date>
               {%- if s.publication_date_check %}
@@ -317,9 +318,11 @@
               </cit:dateType>
             </cit:CI_Date>
           </cit:date>
+          {%- endif %}
           <cit:edition>
             <gco:CharacterString>{{ edition }}</gco:CharacterString>
           </cit:edition>
+          {%- if s.layer_id %}
           <cit:identifier>
             <mcc:MD_Identifier>
               <mcc:code>
@@ -333,12 +336,36 @@
               </mcc:description>
             </mcc:MD_Identifier>
           </cit:identifier>
+          {%- endif %}
+          {%- if s.doi %}
+          <cit:identifier>
+            <mcc:MD_Identifier>
+              <mcc:code>
+                <gco:CharacterString>{{ s.doi }}</gco:CharacterString>
+              </mcc:code>
+              <mcc:codeSpace>
+                <gco:CharacterString>doi</gco:CharacterString>
+              </mcc:codeSpace>
+              <mcc:description>
+                <gco:CharacterString>Digital Object Identifier for this edition of the dataset</gco:CharacterString>
+              </mcc:description>
+            </mcc:MD_Identifier>
+          </cit:identifier>
+          {%- endif %}
           <cit:citedResponsibleParty>
           {{- org('Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute', 'originator') }}
           </cit:citedResponsibleParty>
+          {%- if s.doi %}
+          <cit:onlineResource>
+          {{- online('https://doi.org/' ~ s.doi, 'WWW:LINK-1.0-http--link', none,
+                     'DOI resolver link for this edition of the dataset.', 'information') }}
+          </cit:onlineResource>
+          {%- endif %}
+          {%- if layer_url %}
           <cit:onlineResource>
           {{- online(layer_url, 'WWW:LINK-1.0-http--link', none, none, 'information') }}
           </cit:onlineResource>
+          {%- endif %}
         </cit:CI_Citation>
       </mri:citation>
 
@@ -519,7 +546,8 @@
           {%- endif %}
           {%- if d.get('url') %}
           <cit:onlineResource>
-          {{- online(d.get('url'), 'WWW:LINK-1.0-http--link', d.get('url_name'), none, d.get('url_function')|default('information')) }}
+          {#- dict.get returns None (not Undefined), so `default` won't catch it — use `or`. #}
+          {{- online(d.get('url'), 'WWW:LINK-1.0-http--link', d.get('url_name'), none, d.get('url_function') or 'information') }}
           </cit:onlineResource>
           {%- endif %}
         </cit:CI_Citation>
@@ -607,6 +635,18 @@
               <cit:edition>
                 <gco:CharacterString>{{ a.get('edition') }}</gco:CharacterString>
               </cit:edition>
+              {%- endif %}
+              {%- if a.get('doi') %}
+              <cit:identifier>
+                <mcc:MD_Identifier>
+                  <mcc:code>
+                    <gco:CharacterString>{{ a.get('doi') }}</gco:CharacterString>
+                  </mcc:code>
+                  <mcc:codeSpace>
+                    <gco:CharacterString>doi</gco:CharacterString>
+                  </mcc:codeSpace>
+                </mcc:MD_Identifier>
+              </cit:identifier>
               {%- endif %}
               {%- if a.get('url') %}
               <cit:onlineResource>
@@ -709,7 +749,7 @@
   <mdb:distributionInfo>
     <mrd:MD_Distribution>
       <mrd:description>
-        <gco:CharacterString>Single-band categorical raster with a raster attribute table, in the NZTM projection at {{ s.resolution_m }} m resolution.</gco:CharacterString>
+        <gco:CharacterString>{{ distribution_description|xe }}</gco:CharacterString>
       </mrd:description>
       <mrd:distributionFormat>
         <mrd:MD_Format>
@@ -728,18 +768,24 @@
       <mrd:distributor>
         <mrd:MD_Distributor>
           <mrd:distributorContact>
+          {%- if layer_url %}
           {{- org('Manaaki Whenua – Landcare Research Group (LRIS Portal)', 'distributor') }}
+          {%- else %}
+          {{- org('Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute', 'distributor') }}
+          {%- endif %}
           </mrd:distributorContact>
         </mrd:MD_Distributor>
       </mrd:distributor>
       <mrd:transferOptions>
         <mrd:MD_DigitalTransferOptions>
+          {%- if layer_url %}
           <mrd:onLine>
           {{- online(layer_url, 'WWW:LINK-1.0-http--link',
                      title ~ ' on the LRIS Portal',
                      'Layer page for viewing, cropping and downloading the dataset. A free user account may be required.',
                      'download') }}
           </mrd:onLine>
+          {%- endif %}
           <mrd:onLine>
           {{- online(s.code_repository, 'WWW:LINK-1.0-http--link',
                      'Production code and trained models',
@@ -1034,7 +1080,7 @@
                 <gco:CharacterString>{{ s.qml_filename }}</gco:CharacterString>
               </cit:name>
               <cit:description>
-                <gco:CharacterString>The QGIS style file itself (QML), as attached to the layer on the LRIS Portal.</gco:CharacterString>
+                <gco:CharacterString>{{ qml_online_description|xe }}</gco:CharacterString>
               </cit:description>
               <cit:function>
                 {{ codelist('cit', 'CI_OnLineFunctionCode', 'download') }}

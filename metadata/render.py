@@ -46,6 +46,17 @@ MDB_ORDER = [
     'applicationSchemaInfo', 'metadataMaintenance', 'acquisitionInformation',
 ]
 
+# Expected order of MD_Metadata children per ISO 19115:2003, for the companion
+# ISO 19139 (gmd:) rendering consumed by the LRIS Portal / Koordinates.
+GMD_ORDER = [
+    'fileIdentifier', 'language', 'characterSet', 'parentIdentifier', 'hierarchyLevel',
+    'hierarchyLevelName', 'contact', 'dateStamp', 'metadataStandardName', 'metadataStandardVersion',
+    'dataSetURI', 'locale', 'spatialRepresentationInfo', 'referenceSystemInfo',
+    'metadataExtensionInfo', 'identificationInfo', 'contentInfo', 'distributionInfo',
+    'dataQualityInfo', 'portrayalCatalogueInfo', 'metadataConstraints', 'applicationSchemaInfo',
+    'metadataMaintenance',
+]
+
 MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
           'August', 'September', 'October', 'November', 'December']
 
@@ -98,37 +109,31 @@ def load(edition_file: Path, env: Environment) -> dict:
     return interpolate(data, env, data)
 
 
-def render(data: dict, env: Environment) -> str:
+def render(data: dict, env: Environment) -> dict[str, str]:
+    """Render both encodings: the canonical ISO 19115-3 record, and an ISO
+    19139 (gmd:) companion for catalogues that cannot parse 19115-3 — the
+    Koordinates platform behind the LRIS Portal imports title, description
+    and tags from 19139 only."""
     s = data['scalars']
     slug = s['layer_slug']
     derived = {
-        'layer_url': f"https://lris.scinfo.org.nz/layer/{slug}/",
+        # No layer_slug means no LRIS layer (not yet published, or an edition
+        # that will never be): the templates omit every LRIS-layer block.
+        'layer_url': f"https://lris.scinfo.org.nz/layer/{slug}/" if slug else None,
         'qml_download_url': (
             'https://lris.scinfo.org.nz/services/api/v1.x/documents/'
             f"{s['qml_document_id']}/versions/{s['qml_document_version']}/download/"
         ),
         'qml_page_url': f"https://lris.scinfo.org.nz/document/{s['qml_slug']}/",
     }
-    return env.get_template('iso19115-3.xml.j2').render(**data, **derived)
+    return {suffix: env.get_template(template).render(**data, **derived)
+            for suffix, template in [('iso19115-3', 'iso19115-3.xml.j2'),
+                                     ('iso19139', 'iso19139.xml.j2')]}
 
 
-def check(xml_text: str, data: dict) -> list[str]:
-    """Structural self-checks. Not a substitute for schema validation."""
+def check_data(data: dict) -> list[str]:
+    """Data-level checks, independent of encoding. Run once per edition."""
     problems: list[str] = []
-    try:
-        root = etree.fromstring(xml_text.encode())
-    except etree.XMLSyntaxError as e:
-        return [f'not well-formed: {e}']
-
-    ns = {k: v for k, v in root.nsmap.items() if k}
-    children = [etree.QName(c).localname for c in root if isinstance(c.tag, str)]
-    rank = {n: i for i, n in enumerate(MDB_ORDER)}
-    for a, b in zip(children, children[1:]):
-        if a not in rank:
-            problems.append(f'unknown MD_Metadata child: {a}')
-        elif b in rank and rank[b] < rank[a]:
-            problems.append(f'element order: {b} must precede {a}')
-
     # every class must have a value, a label and a colour
     for c in data['classes']:
         if c.get('colour') is None:
@@ -142,17 +147,48 @@ def check(xml_text: str, data: dict) -> list[str]:
         problems.append('duplicate class values')
     if values != sorted(values):
         problems.append('class values are not in ascending order')
+    return problems
+
+
+def check_xml(xml_text: str) -> list[str]:
+    """Structural self-checks on one rendered encoding. Not a substitute for
+    schema validation."""
+    problems: list[str] = []
+    try:
+        root = etree.fromstring(xml_text.encode())
+    except etree.XMLSyntaxError as e:
+        return [f'not well-formed: {e}']
+
+    ns = {k: v for k, v in root.nsmap.items() if k}
+    if etree.QName(root).namespace == 'http://www.isotc211.org/2005/gmd':
+        order = GMD_ORDER
+        step_path = './/gmd:LI_ProcessStep/gmd:description/gco:CharacterString'
+        statement_path = './/gmd:LI_Lineage/gmd:statement'
+        portrayal_path = 'gmd:portrayalCatalogueInfo'
+    else:
+        order = MDB_ORDER
+        step_path = './/mrl:LI_ProcessStep/mrl:description/gco:CharacterString'
+        statement_path = './/mrl:LI_Lineage/mrl:statement'
+        portrayal_path = 'mdb:portrayalCatalogueInfo'
+
+    children = [etree.QName(c).localname for c in root if isinstance(c.tag, str)]
+    rank = {n: i for i, n in enumerate(order)}
+    for a, b in zip(children, children[1:]):
+        if a not in rank:
+            problems.append(f'unknown MD_Metadata child: {a}')
+        elif b in rank and rank[b] < rank[a]:
+            problems.append(f'element order: {b} must precede {a}')
 
     # lineage must be present and ordered
-    steps = root.findall('.//mrl:LI_ProcessStep/mrl:description/gco:CharacterString', ns)
-    if not root.findall('.//mrl:LI_Lineage/mrl:statement', ns):
+    steps = root.findall(step_path, ns)
+    if not root.findall(statement_path, ns):
         problems.append('lineage statement missing')
     for i, st in enumerate(steps, 1):
         if not st.text.startswith(f'Step {i} of {len(steps)} '):
             problems.append(f'process step {i} is misnumbered')
 
     # a record citing no portrayal catalogue has lost the palette provenance
-    if not root.findall('mdb:portrayalCatalogueInfo', ns):
+    if not root.findall(portrayal_path, ns):
         problems.append('no portrayalCatalogueInfo: palette provenance is unrecorded')
     return problems
 
@@ -179,10 +215,14 @@ def main() -> int:
             failed = True
             continue
         data = load(target, env)
-        xml_text = render(data, env)
-        problems = check(xml_text, data)
-        out = BUILD_DIR / f"{data['scalars']['layer_slug']}_iso19115-3.xml"
+        renders = render(data, env)
+        slug = (data['scalars']['layer_slug']
+                or 'nz-cost-effective-land-cover-' + data['edition'].replace('/', '-'))
 
+        problems = check_data(data)
+        problems += [f'[{suffix}] {p}'
+                     for suffix, xml_text in renders.items()
+                     for p in check_xml(xml_text)]
         if problems:
             failed = True
             print(f'\n{target.name}: {len(problems)} problem(s)')
@@ -191,10 +231,14 @@ def main() -> int:
         else:
             print(f'\n{target.name}: checks passed')
 
+        # CHECK markers come from the data, so scanning one encoding suffices;
+        # dedupe in case a marker still renders slightly differently.
+        xml_text = renders['iso19115-3']
         comments = re.findall(r'<!--(.*?)-->', xml_text, re.DOTALL)
         checks = [' '.join(m.split()) for c in comments
                   for m in re.findall(r'CHECK: (.*)', c, re.DOTALL)]
         inline = re.findall(r'CHECK: ([^<]+)', re.sub(r'<!--.*?-->', '', xml_text, flags=re.DOTALL))
+        checks = list(dict.fromkeys(checks))
         if checks or inline:
             print(f'  {len(checks) + len(inline)} unresolved CHECK item(s):')
             for c in checks:
@@ -204,9 +248,11 @@ def main() -> int:
 
         if not args.check:
             BUILD_DIR.mkdir(exist_ok=True)
-            out.write_text(xml_text)
-            print(f'  wrote {out.relative_to(ROOT)} '
-                  f"({len(data['classes'])} classes, {len(data['lineage_steps'])} process steps)")
+            for suffix, xml_text in renders.items():
+                out = BUILD_DIR / f"{slug}_{suffix}.xml"
+                out.write_text(xml_text)
+                print(f'  wrote {out.relative_to(ROOT)} '
+                      f"({len(data['classes'])} classes, {len(data['lineage_steps'])} process steps)")
 
     return 1 if failed else 0
 

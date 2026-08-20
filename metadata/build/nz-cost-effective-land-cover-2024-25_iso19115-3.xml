@@ -24,7 +24,7 @@
   <mdb:metadataIdentifier>
     <mcc:MD_Identifier>
       <mcc:code>
-        <gco:CharacterString>f2711951-67b2-41ed-8646-19d3c815ae71</gco:CharacterString>
+        <gco:CharacterString>105b4e7b-4042-451d-ace9-dd1f08a98140</gco:CharacterString>
       </mcc:code>
       <mcc:codeSpace>
         <gco:CharacterString>urn:uuid</gco:CharacterString>
@@ -220,15 +220,15 @@
       <mri:citation>
         <cit:CI_Citation>
           <cit:title>
-            <gco:CharacterString>NZ Cost-Effective Land Cover (2023/24)</gco:CharacterString>
+            <gco:CharacterString>NZ Cost-Effective Land Cover (2024/25)</gco:CharacterString>
           </cit:title>
           <cit:alternateTitle>
-            <gco:CharacterString>NZ Land Cover (cost-effective method), 2023/24 summer</gco:CharacterString>
+            <gco:CharacterString>NZ Land Cover (cost-effective method), 2024/25 summer</gco:CharacterString>
           </cit:alternateTitle>
           <cit:date>
             <cit:CI_Date>
               <cit:date>
-                <gco:Date>2025-03-01</gco:Date>
+                <gco:Date>2026-07-01</gco:Date>
               </cit:date>
               <cit:dateType>
                 <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode" codeListValue="creation">creation</cit:CI_DateTypeCode>
@@ -238,7 +238,7 @@
           <cit:date>
             <cit:CI_Date>
               <cit:date>
-                <gco:Date>2025-03-06</gco:Date>
+                <gco:Date>2026-08-18</gco:Date>
               </cit:date>
               <cit:dateType>
                 <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode" codeListValue="publication">publication</cit:CI_DateTypeCode>
@@ -246,34 +246,8 @@
             </cit:CI_Date>
           </cit:date>
           <cit:edition>
-            <gco:CharacterString>2023/24</gco:CharacterString>
+            <gco:CharacterString>2024/25</gco:CharacterString>
           </cit:edition>
-          <cit:identifier>
-            <mcc:MD_Identifier>
-              <mcc:code>
-                <gco:CharacterString>123984</gco:CharacterString>
-              </mcc:code>
-              <mcc:codeSpace>
-                <gco:CharacterString>https://lris.scinfo.org.nz/layer/</gco:CharacterString>
-              </mcc:codeSpace>
-              <mcc:description>
-                <gco:CharacterString>LRIS Portal layer identifier</gco:CharacterString>
-              </mcc:description>
-            </mcc:MD_Identifier>
-          </cit:identifier>
-          <cit:identifier>
-            <mcc:MD_Identifier>
-              <mcc:code>
-                <gco:CharacterString>10.26060/J3NV-9W38</gco:CharacterString>
-              </mcc:code>
-              <mcc:codeSpace>
-                <gco:CharacterString>doi</gco:CharacterString>
-              </mcc:codeSpace>
-              <mcc:description>
-                <gco:CharacterString>Digital Object Identifier for this edition of the dataset</gco:CharacterString>
-              </mcc:description>
-            </mcc:MD_Identifier>
-          </cit:identifier>
           <cit:citedResponsibleParty>
     <cit:CI_Responsibility>
       <cit:role>
@@ -288,42 +262,13 @@
       </cit:party>
     </cit:CI_Responsibility>
           </cit:citedResponsibleParty>
-          <cit:onlineResource>
-            <cit:CI_OnlineResource>
-              <cit:linkage>
-                <gco:CharacterString>https://doi.org/10.26060/J3NV-9W38</gco:CharacterString>
-              </cit:linkage>
-              <cit:protocol>
-                <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
-              </cit:protocol>
-              <cit:description>
-                <gco:CharacterString>DOI resolver link for this edition of the dataset.</gco:CharacterString>
-              </cit:description>
-              <cit:function>
-                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="information">information</cit:CI_OnLineFunctionCode>
-              </cit:function>
-            </cit:CI_OnlineResource>
-          </cit:onlineResource>
-          <cit:onlineResource>
-            <cit:CI_OnlineResource>
-              <cit:linkage>
-                <gco:CharacterString>https://lris.scinfo.org.nz/layer/123984-nz-cost-effective-land-cover-2023-24/</gco:CharacterString>
-              </cit:linkage>
-              <cit:protocol>
-                <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
-              </cit:protocol>
-              <cit:function>
-                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="information">information</cit:CI_OnLineFunctionCode>
-              </cit:function>
-            </cit:CI_OnlineResource>
-          </cit:onlineResource>
         </cit:CI_Citation>
       </mri:citation>
 
       <mri:abstract>
-        <gco:CharacterString>A national land-cover classification of New Zealand at 10 m spatial resolution, derived from a cloud-free summer mosaic of Sentinel-2 imagery for the 2023/24 season (1 November 2023 to 29 February 2024, inclusive). Sixteen land-cover classes are mapped (fifteen mapped classes plus an unclassified value), spanning fundamental cover types (water, bare ground, snow, herbaceous vegetation) and woody and production classes of particular relevance to New Zealand land use (exotic forest, indigenous forest, narrow-leaved scrub, broadleaved shrub, deciduous hardwoods, croplands, orchards and vineyards, wetlands).
+        <gco:CharacterString>A national land-cover classification of New Zealand at 10 m spatial resolution, derived from a cloud-free summer mosaic of Sentinel-2 imagery for the 2024/25 season (1 November 2024 to 28 February 2025, inclusive). Sixteen land-cover classes are mapped (fifteen mapped classes plus an unclassified value), spanning fundamental cover types (water, bare ground, snow, herbaceous vegetation) and woody and production classes of particular relevance to New Zealand land use (exotic forest, indigenous forest, narrow-leaved scrub, broadleaved shrub, deciduous hardwoods, croplands, orchards and vineyards, wetlands).
 
-The classification is produced by an automated workflow that combines three complementary methods: a hierarchy of binary spectral decision rules applied to topographically normalised, standardised surface reflectance; a U-Net convolutional neural network for classes where texture and spatial context are decisive (exotic forest, deciduous hardwoods); and analysis of a five-year Sentinel-2 NDVI time series (2019–2024) to detect the repeated bare/vegetated cycles characteristic of regular tillage. Two classes that are unreliable to delineate from imagery alone — wetlands, and orchards and vineyards — are burned in unchanged from the New Zealand Land Cover Database (LCDB) version 5, as is the glacial lakes extent. A national digital elevation model (15 m postings, resampled to the 10 m analysis grid) is used both for topographic normalisation and as ancillary evidence at particular decision nodes.
+The classification is produced by an automated workflow that combines three complementary methods: a hierarchy of binary spectral decision rules applied to topographically normalised, standardised surface reflectance; a U-Net convolutional neural network for classes where texture and spatial context are decisive (exotic forest, deciduous hardwoods); and analysis of a five-year Sentinel-2 NDVI time series (2020–2025) to detect the repeated bare/vegetated cycles characteristic of regular tillage. Two classes that are unreliable to delineate from imagery alone — wetlands, and orchards and vineyards — are burned in unchanged from the New Zealand Land Cover Database (LCDB) version 5, as is the glacial lakes extent. A national digital elevation model (15 m postings, resampled to the 10 m analysis grid) is used both for topographic normalisation and as ancillary evidence at particular decision nodes.
 
 National classification runs in under 12 hours of computing time on New Zealand eScience Infrastructure (NeSI), making annual updates feasible at roughly an order of magnitude lower cost than the manually interpreted LCDB. Validation of the unfiltered 2023/24 classification against 4,500 points (300 per mapped class, stratified by map class, drawn from a population of approximately 2.7 billion valid pixels) gave a weighted overall accuracy of 96.45 %.
 
@@ -423,7 +368,7 @@ Important limitations. This dataset is a snapshot, not a change product: simple 
                  degrees, so the projected extent is carried as a bounding polygon. -->
             <gex:EX_BoundingPolygon>
               <gex:polygon>
-                <gml:Polygon gml:id="nztm-extent-2023-24" srsName="urn:ogc:def:crs:EPSG::2193">
+                <gml:Polygon gml:id="nztm-extent-2024-25" srsName="urn:ogc:def:crs:EPSG::2193">
                   <gml:exterior>
                     <gml:LinearRing>
                       <gml:posList>1084000 4722000 2108000 4722000 2108000 6234000 1084000 6234000 1084000 4722000</gml:posList>
@@ -436,9 +381,9 @@ Important limitations. This dataset is a snapshot, not a change product: simple 
           <gex:temporalElement>
             <gex:EX_TemporalExtent>
               <gex:extent>
-                <gml:TimePeriod gml:id="nominal-summer-mosaic-2023-24">
-                  <gml:beginPosition>2023-11-01</gml:beginPosition>
-                  <gml:endPosition>2024-02-29</gml:endPosition>
+                <gml:TimePeriod gml:id="nominal-summer-mosaic-2024-25">
+                  <gml:beginPosition>2024-11-01</gml:beginPosition>
+                  <gml:endPosition>2025-02-28</gml:endPosition>
                 </gml:TimePeriod>
               </gex:extent>
             </gex:EX_TemporalExtent>
@@ -682,6 +627,47 @@ Important limitations. This dataset is a snapshot, not a change product: simple 
           </mco:otherConstraints>
         </mco:MD_LegalConstraints>
       </mri:resourceConstraints>
+      <mri:associatedResource>
+        <mri:MD_AssociatedResource>
+          <mri:name>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>NZ Cost-Effective Land Cover (2023/24)</gco:CharacterString>
+              </cit:title>
+              <cit:edition>
+                <gco:CharacterString>2023/24</gco:CharacterString>
+              </cit:edition>
+              <cit:identifier>
+                <mcc:MD_Identifier>
+                  <mcc:code>
+                    <gco:CharacterString>10.26060/J3NV-9W38</gco:CharacterString>
+                  </mcc:code>
+                  <mcc:codeSpace>
+                    <gco:CharacterString>doi</gco:CharacterString>
+                  </mcc:codeSpace>
+                </mcc:MD_Identifier>
+              </cit:identifier>
+              <cit:onlineResource>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://lris.scinfo.org.nz/layer/123984-nz-cost-effective-land-cover-2023-24/</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+              </cit:protocol>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="information">information</cit:CI_OnLineFunctionCode>
+              </cit:function>
+            </cit:CI_OnlineResource>
+              </cit:onlineResource>
+            </cit:CI_Citation>
+          </mri:name>
+          <mri:associationType>
+            <mri:DS_AssociationTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#DS_AssociationTypeCode" codeListValue="crossReference">crossReference</mri:DS_AssociationTypeCode>
+          </mri:associationType>
+          <mri:metadataReference xlink:href="urn:uuid:f2711951-67b2-41ed-8646-19d3c815ae71"/>
+        </mri:MD_AssociatedResource>
+      </mri:associatedResource>
 
       <mri:environmentDescription>
         <gco:CharacterString>Categorical (thematic) raster, 10 m cell size, single band of integer class codes, supplied with a raster attribute table.</gco:CharacterString>
@@ -690,7 +676,7 @@ Important limitations. This dataset is a snapshot, not a change product: simple 
       <mri:supplementalInformation>
         <gco:CharacterString>Commissioning-brief requirements: the brief required all distinct areas of land cover of at least 100 m² in area and 20 m in width to be mapped, and specified delivery in NZTM at 10 m resolution. Note that the published data are sieve-filtered (see the lineage): isolated patches smaller than seven pixels do not survive to publication, so the effective minimum size of an isolated feature (700 m²) is larger than the 100 m² the brief specifies. Contract report LC2526-0006 recommended that any filtered product be published alongside, rather than instead of, unfiltered data; the published layer is the filtered product.
 
-Class codes: values 0 to 16 are defined. Value 5 (Cloud) is a reserved code that is not used in this edition — small areas of residual cloud in the 2023/24 mosaic were assigned to value 0 (Unclassified) instead.
+Class codes: values 0 to 16 are defined. Value 5 (Cloud) is a reserved code that is not used in this edition — small areas of residual cloud in the 2024/25 mosaic were assigned to value 0 (Unclassified) instead.
 
 Class labelling: Table 1 of the source paper labels class 3 "Indigenous Vegetation" while its Tables 2 and 3, the contract report, and the QGIS style file all use "Indigenous Forest"; the latter is used here. Class 13 is "Broadleaved Shrub" (singular) in the style file and contract report, and "Broadleaved Shrubs" in the paper.
 
@@ -757,7 +743,7 @@ Mapped areas by island are tabulated in Table 2 of the source paper; the validat
             <gco:CharacterString>Unclassified</gco:CharacterString>
           </mrc:name>
           <mrc:definition>
-            <gco:CharacterString>Exterior marine, or remnant from cloud masking and mosaicking; small areas of residual cloud in the 2023/24 mosaic are also assigned this value. Derivation: not applicable (no class assigned). Colour: #000000. Note that the QGIS style file defines no palette entry for this value and renders it as transparent no-data; the colour given here is the one specified in Table 1 of contract report LC2526-0006.</gco:CharacterString>
+            <gco:CharacterString>Exterior marine, or remnant from cloud masking and mosaicking; small areas of residual cloud in the 2024/25 mosaic are also assigned this value. Derivation: not applicable (no class assigned). Colour: #000000. Note that the QGIS style file defines no palette entry for this value and renders it as transparent no-data; the colour given here is the one specified in Table 1 of contract report LC2526-0006.</gco:CharacterString>
           </mrc:definition>
           <mrc:rangeElement>
             <gco:Record>0</gco:Record>
@@ -832,7 +818,7 @@ Mapped areas by island are tabulated in Table 2 of the source paper; the validat
             <gco:CharacterString>Cloud</gco:CharacterString>
           </mrc:name>
           <mrc:definition>
-            <gco:CharacterString>Cloud. Reserved code, not used in this edition: residual cloud remaining in the 2023/24 mosaic was assigned to value 0 (Unclassified) instead. Derivation: not applicable. Colour: #ffffff.</gco:CharacterString>
+            <gco:CharacterString>Cloud. Reserved code, not used in this edition: residual cloud remaining in the 2024/25 mosaic was assigned to value 0 (Unclassified) instead. Derivation: not applicable. Colour: #ffffff.</gco:CharacterString>
           </mrc:definition>
           <mrc:rangeElement>
             <gco:Record>5</gco:Record>
@@ -967,7 +953,7 @@ Mapped areas by island are tabulated in Table 2 of the source paper; the validat
             <gco:CharacterString>Croplands</gco:CharacterString>
           </mrc:name>
           <mrc:definition>
-            <gco:CharacterString>Cropping land with evidence of regular tillage. Derivation: temporal sequence of NDVI from Sentinel-2 (March 2019 to February 2024), using the median NDVI of vegetated pixels, the median NDVI of all observations, and the ratio of time in vegetation to time not in vegetation; conditional on the terrain being sufficiently flat to be plausible cropland, per the digital elevation model. This is the final binary split. Colour: #824ab3. The method detects a repeating bare/vegetated pattern without regard to the time of year at which it occurs, so cropping is the probable but not the only possible explanation of the signal.</gco:CharacterString>
+            <gco:CharacterString>Cropping land with evidence of regular tillage. Derivation: temporal sequence of NDVI from Sentinel-2 (March 2020 to February 2025), using the median NDVI of vegetated pixels, the median NDVI of all observations, and the ratio of time in vegetation to time not in vegetation; conditional on the terrain being sufficiently flat to be plausible cropland, per the digital elevation model. This is the final binary split. Colour: #824ab3. The method detects a repeating bare/vegetated pattern without regard to the time of year at which it occurs, so cropping is the probable but not the only possible explanation of the signal.</gco:CharacterString>
           </mrc:definition>
           <mrc:rangeElement>
             <gco:Record>14</gco:Record>
@@ -982,7 +968,7 @@ Mapped areas by island are tabulated in Table 2 of the source paper; the validat
             <gco:CharacterString>Wetlands</gco:CharacterString>
           </mrc:name>
           <mrc:definition>
-            <gco:CharacterString>Wetland ecosystems. Derivation: burned in from LCDB version 5 (LCDB class 15), taken as given because the class was judged too difficult to delineate automatically with sufficient accuracy from spectral information. Colour: #91d491. This class carries the nominal date and minimum mapping unit of LCDB v5 rather than of the 2023/24 mosaic.</gco:CharacterString>
+            <gco:CharacterString>Wetland ecosystems. Derivation: burned in from LCDB version 5 (LCDB class 15), taken as given because the class was judged too difficult to delineate automatically with sufficient accuracy from spectral information. Colour: #91d491. This class carries the nominal date and minimum mapping unit of LCDB v5 rather than of the 2024/25 mosaic.</gco:CharacterString>
           </mrc:definition>
           <mrc:rangeElement>
             <gco:Record>15</gco:Record>
@@ -1036,7 +1022,7 @@ Mapped areas by island are tabulated in Table 2 of the source paper; the validat
       <cit:party>
         <cit:CI_Organisation>
           <cit:name>
-            <gco:CharacterString>Manaaki Whenua – Landcare Research Group (LRIS Portal)</gco:CharacterString>
+            <gco:CharacterString>Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute</gco:CharacterString>
           </cit:name>
         </cit:CI_Organisation>
       </cit:party>
@@ -1046,25 +1032,6 @@ Mapped areas by island are tabulated in Table 2 of the source paper; the validat
       </mrd:distributor>
       <mrd:transferOptions>
         <mrd:MD_DigitalTransferOptions>
-          <mrd:onLine>
-            <cit:CI_OnlineResource>
-              <cit:linkage>
-                <gco:CharacterString>https://lris.scinfo.org.nz/layer/123984-nz-cost-effective-land-cover-2023-24/</gco:CharacterString>
-              </cit:linkage>
-              <cit:protocol>
-                <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
-              </cit:protocol>
-              <cit:name>
-                <gco:CharacterString>NZ Cost-Effective Land Cover (2023/24) on the LRIS Portal</gco:CharacterString>
-              </cit:name>
-              <cit:description>
-                <gco:CharacterString>Layer page for viewing, cropping and downloading the dataset. A free user account may be required.</gco:CharacterString>
-              </cit:description>
-              <cit:function>
-                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="download">download</cit:CI_OnLineFunctionCode>
-              </cit:function>
-            </cit:CI_OnlineResource>
-          </mrd:onLine>
           <mrd:onLine>
             <cit:CI_OnlineResource>
               <cit:linkage>
@@ -1215,9 +1182,9 @@ Resourcing did not permit redundant expert validators or additional non-expert v
     <mrl:LI_Lineage>
 
       <mrl:statement>
-        <gco:CharacterString>This dataset was produced by an automated workflow that classifies a cloud-free national summer mosaic of Sentinel-2 imagery (1 November 2023 to 29 February 2024) into fifteen land-cover classes at 10 m resolution. Sentinel-2 scenes were standardised to surface reflectance — atmospherically corrected and normalised to a standard sun position and flat topography — so that reflectance is a property of the vegetation alone, independent of sun position, slope and view direction. Cloud and cloud shadow were masked using an improved multi-temporal (Tmask) algorithm with an object-based approach to remove false cloud detections, and the scenes composited into a national mosaic drawing on approximately 100 satellite overpasses, with residual cloud typically below 0.1 %. Small areas of residual cloud in the mosaic were assigned to the unclassified value in the output.
+        <gco:CharacterString>This dataset was produced by an automated workflow that classifies a cloud-free national summer mosaic of Sentinel-2 imagery (1 November 2024 to 28 February 2025) into fifteen land-cover classes at 10 m resolution. Sentinel-2 scenes were standardised to surface reflectance — atmospherically corrected and normalised to a standard sun position and flat topography — so that reflectance is a property of the vegetation alone, independent of sun position, slope and view direction. Cloud and cloud shadow were masked using an improved multi-temporal (Tmask) algorithm with an object-based approach to remove false cloud detections, and the scenes composited into a national mosaic drawing on approximately 100 satellite overpasses, with residual cloud typically below 0.1 %. Small areas of residual cloud in the mosaic were assigned to the unclassified value in the output.
 
-Classification proceeds down a hierarchy of binary splits, with the method for each split chosen to maximise accuracy at that node. The hierarchy is used because land covers are naturally organised hierarchically, a different discrimination function can be applied at each node, binary discriminant functions are simple to express and repeat, and covers identified by other methods can be injected at a suitable point in the tree. Most splits are made by expert-defined spectral decision rules applied to the standardised reflectance, with thresholds taken from Dymond and Shepherd (2004) and selected interactively to achieve optimum spatial distribution according to expert judgement. Two classes are not spectrally separable and are handled otherwise: exotic forest (and, in lowland terrain, deciduous hardwoods) is classified by a U-Net convolutional neural network and applied conditionally within the forest branch so that it disambiguates rather than over-rules the earlier splits; and cropland is identified from the temporal dynamics of NDVI over a five-year Sentinel-2 archive (March 2019 to February 2024), conditional on the terrain being sufficiently flat. Ancillary data enter the workflow at specific nodes: a national digital elevation model (15 m postings, resampled to the 10 m analysis grid) constrains the snow and cropland decisions, and LCDB is used to relax the near-infrared, shortwave-infrared and red thresholds wherever it has pre-identified forest, mangrove or scrub. Wetlands and orchards and vineyards are then accepted (burned in) unchanged from LCDB version 5.
+Classification proceeds down a hierarchy of binary splits, with the method for each split chosen to maximise accuracy at that node. The hierarchy is used because land covers are naturally organised hierarchically, a different discrimination function can be applied at each node, binary discriminant functions are simple to express and repeat, and covers identified by other methods can be injected at a suitable point in the tree. Most splits are made by expert-defined spectral decision rules applied to the standardised reflectance, with thresholds taken from Dymond and Shepherd (2004) and selected interactively to achieve optimum spatial distribution according to expert judgement. Two classes are not spectrally separable and are handled otherwise: exotic forest (and, in lowland terrain, deciduous hardwoods) is classified by a U-Net convolutional neural network and applied conditionally within the forest branch so that it disambiguates rather than over-rules the earlier splits; and cropland is identified from the temporal dynamics of NDVI over a five-year Sentinel-2 archive (March 2020 to February 2025), conditional on the terrain being sufficiently flat. Ancillary data enter the workflow at specific nodes: a national digital elevation model (15 m postings, resampled to the 10 m analysis grid) constrains the snow and cropland decisions, and LCDB is used to relax the near-infrared, shortwave-infrared and red thresholds wherever it has pre-identified forest, mangrove or scrub. Wetlands and orchards and vineyards are then accepted (burned in) unchanged from LCDB version 5.
 
 The classification workflow executes in under 12 hours of computing time on New Zealand eScience Infrastructure. The classified raster is then post-processed with an iterative sieve filter that removes small isolated patches, at escalating size thresholds up to seven pixels, with water protected until a final five-pixel pass. The method is described in Dymond et al. (2026) and, in greater operational detail, in contract report LC2526-0006; the production code and trained models are at https://github.com/manaakiwhenua/sentinel2-landcover-nz.</gco:CharacterString>
       </mrl:statement>
@@ -1274,7 +1241,7 @@ The classification workflow executes in under 12 hours of computing time on New 
       <mrl:source>
         <mrl:LI_Source>
           <mrl:description>
-            <gco:CharacterString>Copernicus Sentinel-2 MSI imagery, 2023/24 summer season (1 November 2023 to 29 February 2024 inclusive). Approximately 100 Sentinel-2 overpasses of New Zealand per summer season contribute to the mosaic. The processed summer mosaic itself is not publicly available.</gco:CharacterString>
+            <gco:CharacterString>Copernicus Sentinel-2 MSI imagery, 2024/25 summer season (1 November 2024 to 28 February 2025 inclusive). Approximately 100 Sentinel-2 overpasses of New Zealand per summer season contribute to the mosaic. The processed summer mosaic itself is not publicly available.</gco:CharacterString>
           </mrl:description>
           <mrl:sourceSpatialResolution>
             <mri:MD_Resolution>
@@ -1310,12 +1277,12 @@ The classification workflow executes in under 12 hours of computing time on New 
       <mrl:source>
         <mrl:LI_Source>
           <mrl:description>
-            <gco:CharacterString>Copernicus Sentinel-2 MSI archive, March 2019 to February 2024 inclusive: all available cloud-masked, topographically normalised images, used to derive the five-year NDVI time series for cropland detection.</gco:CharacterString>
+            <gco:CharacterString>Copernicus Sentinel-2 MSI archive, March 2020 to February 2025 inclusive: all available cloud-masked, topographically normalised images, used to derive the five-year NDVI time series for cropland detection.</gco:CharacterString>
           </mrl:description>
           <mrl:sourceCitation>
             <cit:CI_Citation>
               <cit:title>
-                <gco:CharacterString>Copernicus Sentinel-2 MSI archive 2019–2024</gco:CharacterString>
+                <gco:CharacterString>Copernicus Sentinel-2 MSI archive 2020–2025</gco:CharacterString>
               </cit:title>
             </cit:CI_Citation>
           </mrl:sourceCitation>
@@ -1440,7 +1407,7 @@ The classification workflow executes in under 12 hours of computing time on New 
       <mrl:processStep>
         <mrl:LI_ProcessStep>
           <mrl:description>
-            <gco:CharacterString>Step 1 of 12 — Image acquisition. All available Copernicus Sentinel-2 MSI scenes covering New Zealand for the 2023/24 summer season (1 November 2023 to 29 February 2024 inclusive) were assembled; approximately 100 overpasses contribute to a national summer season.</gco:CharacterString>
+            <gco:CharacterString>Step 1 of 12 — Image acquisition. All available Copernicus Sentinel-2 MSI scenes covering New Zealand for the 2024/25 summer season (1 November 2024 to 28 February 2025 inclusive) were assembled; approximately 100 overpasses contribute to a national summer season.</gco:CharacterString>
           </mrl:description>
           <mrl:rationale>
             <gco:CharacterString>Summer imagery maximises the spectral separability of vegetation classes and the number of cloud-free observations.</gco:CharacterString>
@@ -1504,7 +1471,7 @@ The classification workflow executes in under 12 hours of computing time on New 
       <mrl:processStep>
         <mrl:LI_ProcessStep>
           <mrl:description>
-            <gco:CharacterString>Step 4 of 12 — Mosaicking. Cloud-free observations were composited into a single national summer mosaic of standardised spectral reflectance at 10 m resolution, following Shepherd et al. (2020). Residual cloud in the resulting mosaic is typically below 0.1 %; the small areas that remain in the 2023/24 mosaic were assigned class 0 (Unclassified) in the final output. This mosaic is the object of classification.</gco:CharacterString>
+            <gco:CharacterString>Step 4 of 12 — Mosaicking. Cloud-free observations were composited into a single national summer mosaic of standardised spectral reflectance at 10 m resolution, following Shepherd et al. (2020). Residual cloud in the resulting mosaic is typically below 0.1 %; the small areas that remain in the 2024/25 mosaic were assigned class 0 (Unclassified) in the final output. This mosaic is the object of classification.</gco:CharacterString>
           </mrl:description>
           <mrl:reference>
             <cit:CI_Citation>
@@ -1564,7 +1531,7 @@ Two different normalisation strategies were adopted to maximise robustness acros
       <mrl:processStep>
         <mrl:LI_ProcessStep>
           <mrl:description>
-            <gco:CharacterString>Step 8 of 12 — Conditional application of the deep-learning classification. The trained models were applied to the 2023/24 mosaic; the resulting exotic forest was accepted only within the forest branch of the decision hierarchy, as a disambiguation of forest already identified by the earlier binary splits, and deciduous hardwoods were accepted from the same prediction wherever the terrain is lowland — a label not additionally confined to the woody branch.</gco:CharacterString>
+            <gco:CharacterString>Step 8 of 12 — Conditional application of the deep-learning classification. The trained models were applied to the 2024/25 mosaic; the resulting exotic forest was accepted only within the forest branch of the decision hierarchy, as a disambiguation of forest already identified by the earlier binary splits, and deciduous hardwoods were accepted from the same prediction wherever the terrain is lowland — a label not additionally confined to the woody branch.</gco:CharacterString>
           </mrl:description>
           <mrl:rationale>
             <gco:CharacterString>Constraining the deep-learning result prevents it from over-ruling prior binary decisions, gives a more deterministic output, and stops the final exotic forestry from simply reproducing its 1:50,000 LCDB training data. In particular, the models learned from LCDB to include areas of bare land within forestry, which is a misidentification at 10 m resolution; conditional application corrects for this.</gco:CharacterString>
@@ -1583,7 +1550,7 @@ Two different normalisation strategies were adopted to maximise robustness acros
       <mrl:processStep>
         <mrl:LI_ProcessStep>
           <mrl:description>
-            <gco:CharacterString>Step 10 of 12 — NDVI temporal sequence identification of cropland, the final binary split. All available cloud-masked, topographically normalised Sentinel-2 images from March 2019 to February 2024 inclusive were used to compute an NDVI time series following Amies et al. (2021), yielding three metrics per pixel: the median NDVI of vegetated pixels, the median NDVI of all observations, and the ratio of time in vegetation to time not in vegetation. Visualised as an RGB stretch, areas of cropland are distinct — alternation between fallow and vegetated periods across the five-year sequence — giving rise to simple threshold rules. Cropland was additionally conditioned on the terrain being sufficiently flat to be plausible cropland, per the digital elevation model.</gco:CharacterString>
+            <gco:CharacterString>Step 10 of 12 — NDVI temporal sequence identification of cropland, the final binary split. All available cloud-masked, topographically normalised Sentinel-2 images from March 2020 to February 2025 inclusive were used to compute an NDVI time series following Amies et al. (2021), yielding three metrics per pixel: the median NDVI of vegetated pixels, the median NDVI of all observations, and the ratio of time in vegetation to time not in vegetation. Visualised as an RGB stretch, areas of cropland are distinct — alternation between fallow and vegetated periods across the five-year sequence — giving rise to simple threshold rules. Cropland was additionally conditioned on the terrain being sufficiently flat to be plausible cropland, per the digital elevation model.</gco:CharacterString>
           </mrl:description>
           <mrl:rationale>
             <gco:CharacterString>Cropland is not separable in a single-date summer image; it is defined by a multi-year pattern of tillage and regrowth. Basing the identification on five years rather than a single date avoids treating a process that is not strictly annual at field scale as a point-in-time observation. The limitation is that the method detects the bare/vegetated cycle without regard to the time of year at which it occurs, so cropping is the probable but not the only possible explanation of the signal.</gco:CharacterString>
@@ -1643,7 +1610,7 @@ Two different normalisation strategies were adopted to maximise robustness acros
       <mpc:portrayalCatalogueCitation>
         <cit:CI_Citation>
           <cit:title>
-            <gco:CharacterString>NZ Cost-Effective Land Cover (2023/24) — QGIS layer style (paletted raster)</gco:CharacterString>
+            <gco:CharacterString>NZ Cost-Effective Land Cover (2024/25) — QGIS layer style (paletted raster)</gco:CharacterString>
           </cit:title>
           <cit:alternateTitle>
             <gco:CharacterString>celcmqml.qml</gco:CharacterString>

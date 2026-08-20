@@ -17,9 +17,11 @@ scalars:
   temporal_begin: '2024-11-01'
   temporal_end: '2025-02-28'
   temporal_id: nominal-summer-mosaic-2024-25
-  # five-year Sentinel-2 NDVI window used for cropland detection
-  ndvi_period: January 2021 to December 2025
-  ndvi_years: 2021–2025
+  # five-year Sentinel-2 NDVI window used for cropland detection: exactly five
+  # years ending with the mapped summer (corrected 2026-08-20; was January 2021
+  # to December 2025)
+  ndvi_period: March 2020 to February 2025
+  ndvi_years: 2020–2025
   qml_document_id: 26004
   qml_document_version: 28292
   qml_slug: 26004-celcmqml
@@ -27,15 +29,13 @@ associated_editions:
 - title: NZ Cost-Effective Land Cover (2023/24)
   edition: 2023/24
   association_type: crossReference
+  doi: 10.26060/J3NV-9W38
   url: https://lris.scinfo.org.nz/layer/123984-nz-cost-effective-land-cover-2023-24/
   metadata_uuid: f2711951-67b2-41ed-8646-19d3c815ae71
 _TODO:
 - Set layer_id and layer_slug once the layer exists on the LRIS Portal, and confirm publication_date
-  (currently a stand-in; it must stay a plain date, YYYY-MM-DD — the element is gco:Date).
-- 'Confirm the LCDB version burned in for wetlands, orchards/vineyards and glacial lakes. If v6.0: copy
-  the affected keys from common.yaml into this file and edit them HERE — classes (values 8, 15, 16),
-  the LCDB lineage source, the burn-in process step, the abstract, and the LCDB use limitation. Editing
-  common.yaml would silently rewrite the published 2023/24 record.'
+  (currently a stand-in; it must stay a plain date, YYYY-MM-DD — the element is gco:Date). Set scalars.doi
+  if a DOI is minted for the layer, as it was for 2023/24.
 - If the U-Net models were retrained, override lineage step 6 and the training-imagery source the same
   way, and revise the literal 2023/24 model-development references in them.
 - Decide the fate of reserved class value 5 (Cloud).

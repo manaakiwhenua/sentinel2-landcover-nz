@@ -19,6 +19,10 @@
 # already-published editions' files.
 
 scalars:
+  # Dataset DOI for the edition (e.g. 10.26060/…, minted for the LRIS layer);
+  # null when the edition has none. Emitted as a citation identifier and a
+  # doi.org online resource.
+  doi: null
   epsg: 2193
   crs_description: NZGD2000 / New Zealand Transverse Mercator 2000 (NZTM)
   resolution_m: 10
@@ -170,8 +174,8 @@ abstract: 'A national land-cover classification of New Zealand at 10 m spatial r
   ({{ scalars.ndvi_years }}) to detect the repeated bare/vegetated cycles characteristic of regular tillage. Two classes
   that are unreliable to delineate from imagery alone — wetlands, and orchards and vineyards — are burned
   in unchanged from the New Zealand Land Cover Database (LCDB) version 5, as is the glacial lakes extent.
-  A 10 m national digital elevation model is used both for topographic normalisation and as ancillary
-  evidence at particular decision nodes.
+  A national digital elevation model (15 m postings, resampled to the 10 m analysis grid) is used both
+  for topographic normalisation and as ancillary evidence at particular decision nodes.
 
 
   National classification runs in under 12 hours of computing time on New Zealand eScience Infrastructure
@@ -268,7 +272,7 @@ classes:
   label: Snow
   colour: '#ff00ff'
   definition: 'Snow cover at the time of image acquisition. Derivation: spectral rules, binary split —
-    the first split in the hierarchy, constrained by a 10 m national digital elevation model to terrain
+    the first split in the hierarchy, constrained by the national digital elevation model to terrain
     above 150 m in order to avoid confusion between snow and bright coastal water such as whitecaps and
     turbid estuary water. Colour: #ff00ff.'
 - value: 8
@@ -421,8 +425,9 @@ lineage_statement: 'This dataset was produced by an automated workflow that clas
   is classified by a U-Net convolutional neural network and applied conditionally within the forest branch
   so that it disambiguates rather than over-rules the earlier splits; and cropland is identified from
   the temporal dynamics of NDVI over a five-year Sentinel-2 archive ({{ scalars.ndvi_period }}), conditional
-  on the terrain being sufficiently flat. Ancillary data enter the workflow at specific nodes: a 10 m
-  national digital elevation model constrains the snow and cropland decisions, and LCDB is used to relax
+  on the terrain being sufficiently flat. Ancillary data enter the workflow at specific nodes: a national
+  digital elevation model (15 m postings, resampled to the 10 m analysis grid) constrains the snow and
+  cropland decisions, and LCDB is used to relax
   the near-infrared, shortwave-infrared and red thresholds wherever it has pre-identified forest, mangrove
   or scrub. Wetlands and orchards and vineyards are then accepted (burned in) unchanged from LCDB version
   5.
@@ -464,17 +469,25 @@ lineage_sources:
     near-infrared, shortwave-infrared and red thresholds wherever LCDB has pre-identified forest, mangrove
     or scrub; and (c) as the direct source of classes burned into the final map — wetlands (LCDB class
     15), orchards and vineyards (LCDB class 16), and the glacial lakes extent. LCDB v6.0 was not available
-    at the time of production.'
+    when the method was developed and the 2023/24 edition produced; later editions, including those produced
+    after v6.0 became available, continue to use version 5.'
   citation:
     title: LCDB v5.0 — Land Cover Database version 5.0, Mainland New Zealand
     originator: Manaaki Whenua – Landcare Research
     url: https://lris.scinfo.org.nz/layer/104400-lcdb-v50-land-cover-database-version-50-mainland-new-zealand/
-- description: 'National 10 m digital elevation model. Used for topographic normalisation of reflectance,
-    to eliminate terrain below 150 m elevation from the snow class, and to constrain cropland to sufficiently
-    flat terrain. CHECK: identify and cite the specific DEM used.'
+- description: 'National digital elevation model. Manaaki Whenua''s national DEM, generated at 15 m
+    postings from LINZ 1:50,000 topographic data — 20 m contours, spot heights, lake shorelines and
+    coastline — using the TOPOGRID function of ArcGIS (ESRI), optimised for slope accuracy for standardised-reflectance
+    terrain correction and hydrologically consistent with the NIWA digital stream network. Used in this
+    workflow resampled to the 10 m analysis grid: for topographic normalisation of reflectance, to eliminate
+    terrain below 150 m elevation from the snow class, and to constrain cropland to sufficiently flat
+    terrain. The DEM is not separately published as a dataset; its derivation is described on the Our
+    Environment (Land Atlas of New Zealand) data-provenance page, cited here.'
   citation:
-    title: National 10 m digital elevation model of New Zealand
-  resolution_m: 10
+    title: Manaaki Whenua national 15 m digital elevation model
+    originator: Manaaki Whenua – Landcare Research
+    url: https://ourenvironment.scinfo.org.nz/data-provenance#dem
+  resolution_m: 15
 lineage_steps:
 - description: Image acquisition. All available Copernicus Sentinel-2 MSI scenes covering New Zealand
     for the {{ edition }} summer season ({{ scalars.temporal_begin | nzdate }} to {{ scalars.temporal_end
@@ -487,7 +500,8 @@ lineage_steps:
     atmospherically corrected and normalised to a standard sun position and flat topography, so that reflectance
     becomes a property of the vegetation alone, independent of sun position, slope and view direction.
     Methods follow Dymond and Shepherd (1999), Dymond et al. (2001), Shepherd and Dymond (2003) and Dymond
-    and Shepherd (2004). The national 10 m digital elevation model is used for the topographic normalisation.'
+    and Shepherd (2004). The national digital elevation model (15 m postings, resampled to the 10 m
+    analysis grid) is used for the topographic normalisation.'
   rationale: Standardised reflectance is what allows fixed spectral thresholds to be applied consistently
     over a national extent and to remain stable between years.
   reference:
@@ -601,6 +615,12 @@ lineage_steps:
     and the final unmasked pass applies the same cleaning to fragmented water itself. Note that contract
     report LC2526-0006 recommended publishing unfiltered data, with any filtered product alongside; the
     published layer is the filtered product.
+# 19139 only: MD_LegalConstraints in ISO 19115:2003 has no `reference` slot for
+# the licence citation, so the URL is appended to the statement text instead.
+licence_constraint_19139: '{{ scalars.licence_statement }} Licence text: {{ scalars.licence_url }}'
+distribution_description: Single-band categorical raster with a raster attribute table, in the NZTM
+  projection at {{ scalars.resolution_m }} m resolution.
+qml_online_description: The QGIS style file itself (QML), as attached to the layer on the LRIS Portal.
 qml_description: Authoritative source of class values, labels and display colours for this dataset. Defines
   a paletted single-band renderer on band 1 at full opacity, with nearest-neighbour resampling and transparent
   no-data. Palette entries are given for values 1 to 16; value 0 (Unclassified) has no entry and renders

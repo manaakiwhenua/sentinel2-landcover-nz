@@ -1,0 +1,762 @@
+{#-
+  ISO 19115:2003 / ISO 19139:2007 (gmd:) companion encoding of the record, for
+  catalogues that cannot parse ISO 19115-3 — in particular the Koordinates
+  platform behind the LRIS Portal, which imports title/abstract/tags only from
+  19139 (or Dublin Core / FGDC). Rendered from the SAME YAML as the 19115-3
+  template; the 19115-3 record remains canonical.
+
+  Where 19115:2003 has no slot for something the 19115-1 record carries, the
+  content is re-homed, not dropped:
+  - CI_Citation has no onlineResource: the DOI resolver, layer page and QML
+    URLs live in distribution transferOptions and in otherCitationDetails text.
+  - No additionalDocumentation: the key documents are appended as a paragraph
+    of supplementalInformation.
+  - No DQ_DescriptiveResult: descriptive quality results are folded into
+    measureDescription, with a DQ_ConformanceResult citing the source paper.
+  - LI_Source has no sourceSpatialResolution: resolutions stay in prose.
+-#}
+{%- macro codelist(cls, value, label=none) -%}
+<gmd:{{ cls }} codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#{{ cls }}" codeListValue="{{ value }}">{{ label or value }}</gmd:{{ cls }}>
+{%- endmacro -%}
+{%- macro party(org_name, role, email=none, individual=none, position=none, www=none) %}
+    <gmd:CI_ResponsibleParty>
+      {%- if individual %}
+      <gmd:individualName>
+        <gco:CharacterString>{{ individual|xe }}</gco:CharacterString>
+      </gmd:individualName>
+      {%- endif %}
+      <gmd:organisationName>
+        <gco:CharacterString>{{ org_name|xe }}</gco:CharacterString>
+      </gmd:organisationName>
+      {%- if position %}
+      <gmd:positionName>
+        <gco:CharacterString>{{ position|xe }}</gco:CharacterString>
+      </gmd:positionName>
+      {%- endif %}
+      {%- if email or www %}
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          {%- if email %}
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString>{{ email }}</gco:CharacterString>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+          {%- endif %}
+          {%- if www %}
+          <gmd:onlineResource>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage>
+                <gmd:URL>{{ www }}</gmd:URL>
+              </gmd:linkage>
+            </gmd:CI_OnlineResource>
+          </gmd:onlineResource>
+          {%- endif %}
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      {%- endif %}
+      <gmd:role>
+        {{ codelist('CI_RoleCode', role) }}
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+{%- endmacro -%}
+{%- macro online(url, name=none, description=none, function='information', protocol='WWW:LINK-1.0-http--link') %}
+          <gmd:CI_OnlineResource>
+            <gmd:linkage>
+              <gmd:URL>{{ url|xe }}</gmd:URL>
+            </gmd:linkage>
+            <gmd:protocol>
+              <gco:CharacterString>{{ protocol }}</gco:CharacterString>
+            </gmd:protocol>
+            {%- if name %}
+            <gmd:name>
+              <gco:CharacterString>{{ name|xe }}</gco:CharacterString>
+            </gmd:name>
+            {%- endif %}
+            {%- if description %}
+            <gmd:description>
+              <gco:CharacterString>{{ description|xe }}</gco:CharacterString>
+            </gmd:description>
+            {%- endif %}
+            <gmd:function>
+              {{ codelist('CI_OnLineFunctionCode', function) }}
+            </gmd:function>
+          </gmd:CI_OnlineResource>
+{%- endmacro -%}
+{%- set s = scalars -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<gmd:MD_Metadata
+    xmlns:gmd="http://www.isotc211.org/2005/gmd"
+    xmlns:gco="http://www.isotc211.org/2005/gco"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <gmd:fileIdentifier>
+    <gco:CharacterString>{{ s.metadata_uuid }}</gco:CharacterString>
+  </gmd:fileIdentifier>
+
+  <gmd:language>
+    <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng">English</gmd:LanguageCode>
+  </gmd:language>
+
+  <gmd:characterSet>
+    {{ codelist('MD_CharacterSetCode', 'utf8', 'UTF-8') }}
+  </gmd:characterSet>
+
+  <gmd:hierarchyLevel>
+    {{ codelist('MD_ScopeCode', 'dataset') }}
+  </gmd:hierarchyLevel>
+
+  <gmd:hierarchyLevelName>
+    <gco:CharacterString>National land-cover raster dataset</gco:CharacterString>
+  </gmd:hierarchyLevelName>
+
+  <gmd:contact>
+  {{- party('Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute',
+            'pointOfContact', email=s.contact_email, individual=s.contact_name,
+            position='Researcher / dataset custodian', www='https://www.landcareresearch.co.nz/') }}
+  </gmd:contact>
+
+  <gmd:dateStamp>
+    <gco:DateTime>{{ s.metadata_date }}</gco:DateTime>
+  </gmd:dateStamp>
+
+  <gmd:metadataStandardName>
+    <gco:CharacterString>ISO 19115:2003/Cor.1:2006 Geographic information — Metadata</gco:CharacterString>
+  </gmd:metadataStandardName>
+
+  <gmd:metadataStandardVersion>
+    <gco:CharacterString>ISO/TS 19139:2007</gco:CharacterString>
+  </gmd:metadataStandardVersion>
+  {%- if s.doi %}
+
+  <gmd:dataSetURI>
+    <gco:CharacterString>https://doi.org/{{ s.doi }}</gco:CharacterString>
+  </gmd:dataSetURI>
+  {%- endif %}
+
+  <gmd:spatialRepresentationInfo>
+    <gmd:MD_GridSpatialRepresentation>
+      <gmd:numberOfDimensions>
+        <gco:Integer>2</gco:Integer>
+      </gmd:numberOfDimensions>
+      {%- for axis, size in [('column', s.columns), ('row', s.rows)] %}
+      <gmd:axisDimensionProperties>
+        <gmd:MD_Dimension>
+          <gmd:dimensionName>
+            {{ codelist('MD_DimensionNameTypeCode', axis) }}
+          </gmd:dimensionName>
+          {%- if size %}
+          <gmd:dimensionSize>
+            <gco:Integer>{{ size }}</gco:Integer>
+          </gmd:dimensionSize>
+          {%- else %}
+          <gmd:dimensionSize gco:nilReason="unknown"/>
+          {%- endif %}
+          <gmd:resolution>
+            <gco:Measure uom="m">{{ s.resolution_m }}</gco:Measure>
+          </gmd:resolution>
+        </gmd:MD_Dimension>
+      </gmd:axisDimensionProperties>
+      {%- endfor %}
+      <gmd:cellGeometry>
+        {{ codelist('MD_CellGeometryCode', 'area') }}
+      </gmd:cellGeometry>
+      <gmd:transformationParameterAvailability>
+        <gco:Boolean>false</gco:Boolean>
+      </gmd:transformationParameterAvailability>
+    </gmd:MD_GridSpatialRepresentation>
+  </gmd:spatialRepresentationInfo>
+
+  <gmd:referenceSystemInfo>
+    <gmd:MD_ReferenceSystem>
+      <gmd:referenceSystemIdentifier>
+        <gmd:RS_Identifier>
+          <gmd:code>
+            <gco:CharacterString>{{ s.epsg }}</gco:CharacterString>
+          </gmd:code>
+          <gmd:codeSpace>
+            <gco:CharacterString>EPSG</gco:CharacterString>
+          </gmd:codeSpace>
+        </gmd:RS_Identifier>
+      </gmd:referenceSystemIdentifier>
+    </gmd:MD_ReferenceSystem>
+  </gmd:referenceSystemInfo>
+
+  <gmd:identificationInfo>
+    <gmd:MD_DataIdentification>
+
+      <gmd:citation>
+        <gmd:CI_Citation>
+          <gmd:title>
+            <gco:CharacterString>{{ title|xe }}</gco:CharacterString>
+          </gmd:title>
+          <gmd:alternateTitle>
+            <gco:CharacterString>{{ alternate_title|xe }}</gco:CharacterString>
+          </gmd:alternateTitle>
+          <gmd:date>
+            <gmd:CI_Date>
+              <gmd:date>
+                <gco:Date>{{ s.creation_date }}</gco:Date>
+              </gmd:date>
+              <gmd:dateType>
+                {{ codelist('CI_DateTypeCode', 'creation') }}
+              </gmd:dateType>
+            </gmd:CI_Date>
+          </gmd:date>
+          {%- if s.publication_date %}
+          <gmd:date>
+            <gmd:CI_Date>
+              <gmd:date>
+                <gco:Date>{{ s.publication_date }}</gco:Date>
+              </gmd:date>
+              <gmd:dateType>
+                {{ codelist('CI_DateTypeCode', 'publication') }}
+              </gmd:dateType>
+            </gmd:CI_Date>
+          </gmd:date>
+          {%- endif %}
+          <gmd:edition>
+            <gco:CharacterString>{{ edition }}</gco:CharacterString>
+          </gmd:edition>
+          {%- if s.layer_id %}
+          <gmd:identifier>
+            <gmd:RS_Identifier>
+              <gmd:code>
+                <gco:CharacterString>{{ s.layer_id }}</gco:CharacterString>
+              </gmd:code>
+              <gmd:codeSpace>
+                <gco:CharacterString>https://lris.scinfo.org.nz/layer/</gco:CharacterString>
+              </gmd:codeSpace>
+            </gmd:RS_Identifier>
+          </gmd:identifier>
+          {%- endif %}
+          {%- if s.doi %}
+          <gmd:identifier>
+            <gmd:RS_Identifier>
+              <gmd:code>
+                <gco:CharacterString>{{ s.doi }}</gco:CharacterString>
+              </gmd:code>
+              <gmd:codeSpace>
+                <gco:CharacterString>doi</gco:CharacterString>
+              </gmd:codeSpace>
+            </gmd:RS_Identifier>
+          </gmd:identifier>
+          {%- endif %}
+          <gmd:citedResponsibleParty>
+          {{- party('Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute', 'originator') }}
+          </gmd:citedResponsibleParty>
+          {%- if s.doi or layer_url %}
+          <gmd:otherCitationDetails>
+            <gco:CharacterString>{{ (('DOI: https://doi.org/' ~ s.doi ~ '. ') if s.doi else '') ~ (('Layer page: ' ~ layer_url) if layer_url else '') }}</gco:CharacterString>
+          </gmd:otherCitationDetails>
+          {%- endif %}
+        </gmd:CI_Citation>
+      </gmd:citation>
+
+      <gmd:abstract>
+        <gco:CharacterString>{{ abstract|xe }}</gco:CharacterString>
+      </gmd:abstract>
+
+      <gmd:purpose>
+        <gco:CharacterString>{{ purpose|xe }}</gco:CharacterString>
+      </gmd:purpose>
+
+      <gmd:credit>
+        <gco:CharacterString>{{ credit|xe }}</gco:CharacterString>
+      </gmd:credit>
+
+      <gmd:status>
+        {{ codelist('MD_ProgressCode', s.progress|default('completed')) }}
+      </gmd:status>
+
+      <gmd:pointOfContact>
+      {{- party('Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute',
+                'custodian', email=s.contact_email) }}
+      </gmd:pointOfContact>
+
+      <gmd:resourceMaintenance>
+        <gmd:MD_MaintenanceInformation>
+          <gmd:maintenanceAndUpdateFrequency>
+            {{ codelist('MD_MaintenanceFrequencyCode', s.maintenance_frequency) }}
+          </gmd:maintenanceAndUpdateFrequency>
+          <gmd:maintenanceNote>
+            <gco:CharacterString>{{ maintenance_note|xe }}</gco:CharacterString>
+          </gmd:maintenanceNote>
+        </gmd:MD_MaintenanceInformation>
+      </gmd:resourceMaintenance>
+
+      <gmd:descriptiveKeywords>
+        <gmd:MD_Keywords>
+          {%- for k in theme_keywords %}
+          <gmd:keyword><gco:CharacterString>{{ k|xe }}</gco:CharacterString></gmd:keyword>
+          {%- endfor %}
+          <gmd:type>
+            {{ codelist('MD_KeywordTypeCode', 'theme') }}
+          </gmd:type>
+        </gmd:MD_Keywords>
+      </gmd:descriptiveKeywords>
+
+      <gmd:descriptiveKeywords>
+        <gmd:MD_Keywords>
+          {%- for k in place_keywords %}
+          <gmd:keyword><gco:CharacterString>{{ k|xe }}</gco:CharacterString></gmd:keyword>
+          {%- endfor %}
+          <gmd:type>
+            {{ codelist('MD_KeywordTypeCode', 'place') }}
+          </gmd:type>
+        </gmd:MD_Keywords>
+      </gmd:descriptiveKeywords>
+
+      <gmd:resourceConstraints>
+        <gmd:MD_LegalConstraints>
+          {%- for u in use_limitations %}
+          <gmd:useLimitation>
+            <gco:CharacterString>{{ u|xe }}</gco:CharacterString>
+          </gmd:useLimitation>
+          {%- endfor %}
+          <gmd:accessConstraints>
+            {{ codelist('MD_RestrictionCode', 'otherRestrictions') }}
+          </gmd:accessConstraints>
+          <gmd:useConstraints>
+            {{ codelist('MD_RestrictionCode', 'license') }}
+          </gmd:useConstraints>
+          <gmd:otherConstraints>
+            <gco:CharacterString>{{ licence_constraint_19139|xe }}</gco:CharacterString>
+          </gmd:otherConstraints>
+        </gmd:MD_LegalConstraints>
+      </gmd:resourceConstraints>
+
+      {%- for a in associated_editions %}
+      <gmd:aggregationInfo>
+        <gmd:MD_AggregateInformation>
+          <gmd:aggregateDataSetName>
+            <gmd:CI_Citation>
+              <gmd:title>
+                <gco:CharacterString>{{ a.title|xe }}</gco:CharacterString>
+              </gmd:title>
+              <gmd:date gco:nilReason="unknown"/>
+              {%- if a.get('edition') %}
+              <gmd:edition>
+                <gco:CharacterString>{{ a.get('edition') }}</gco:CharacterString>
+              </gmd:edition>
+              {%- endif %}
+              {%- if a.get('doi') %}
+              <gmd:identifier>
+                <gmd:RS_Identifier>
+                  <gmd:code>
+                    <gco:CharacterString>{{ a.get('doi') }}</gco:CharacterString>
+                  </gmd:code>
+                  <gmd:codeSpace>
+                    <gco:CharacterString>doi</gco:CharacterString>
+                  </gmd:codeSpace>
+                </gmd:RS_Identifier>
+              </gmd:identifier>
+              {%- endif %}
+              {%- if a.get('url') or a.get('metadata_uuid') %}
+              <gmd:otherCitationDetails>
+                <gco:CharacterString>{{ ((('Layer page: ' ~ a.get('url') ~ '. ') if a.get('url') else '') ~ (('Metadata identifier: urn:uuid:' ~ a.get('metadata_uuid')) if a.get('metadata_uuid') else ''))|xe }}</gco:CharacterString>
+              </gmd:otherCitationDetails>
+              {%- endif %}
+            </gmd:CI_Citation>
+          </gmd:aggregateDataSetName>
+          <gmd:associationType>
+            {{ codelist('DS_AssociationTypeCode', a.association_type) }}
+          </gmd:associationType>
+        </gmd:MD_AggregateInformation>
+      </gmd:aggregationInfo>
+      {%- endfor %}
+
+      <gmd:spatialRepresentationType>
+        {{ codelist('MD_SpatialRepresentationTypeCode', 'grid') }}
+      </gmd:spatialRepresentationType>
+
+      <gmd:spatialResolution>
+        <gmd:MD_Resolution>
+          <gmd:distance>
+            <gco:Distance uom="m">{{ s.resolution_m }}</gco:Distance>
+          </gmd:distance>
+        </gmd:MD_Resolution>
+      </gmd:spatialResolution>
+
+      <gmd:language>
+        <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng">English</gmd:LanguageCode>
+      </gmd:language>
+
+      <gmd:characterSet>
+        {{ codelist('MD_CharacterSetCode', 'utf8', 'UTF-8') }}
+      </gmd:characterSet>
+
+      {%- for tc in s.topic_categories %}
+      <gmd:topicCategory>
+        <gmd:MD_TopicCategoryCode>{{ tc }}</gmd:MD_TopicCategoryCode>
+      </gmd:topicCategory>
+      {%- endfor %}
+
+      <gmd:environmentDescription>
+        <gco:CharacterString>{{ environment_description|xe }}</gco:CharacterString>
+      </gmd:environmentDescription>
+
+      <gmd:extent>
+        <gmd:EX_Extent>
+          <gmd:description>
+            <gco:CharacterString>{{ extent_description|xe }}</gco:CharacterString>
+          </gmd:description>
+          <gmd:geographicElement>
+            <gmd:EX_GeographicBoundingBox>
+              <gmd:westBoundLongitude>
+                <gco:Decimal>{{ s.bbox.west }}</gco:Decimal>
+              </gmd:westBoundLongitude>
+              <gmd:eastBoundLongitude>
+                <gco:Decimal>{{ s.bbox.east }}</gco:Decimal>
+              </gmd:eastBoundLongitude>
+              <gmd:southBoundLatitude>
+                <gco:Decimal>{{ s.bbox.south }}</gco:Decimal>
+              </gmd:southBoundLatitude>
+              <gmd:northBoundLatitude>
+                <gco:Decimal>{{ s.bbox.north }}</gco:Decimal>
+              </gmd:northBoundLatitude>
+            </gmd:EX_GeographicBoundingBox>
+          </gmd:geographicElement>
+          {%- if s.bbox_nztm %}
+          <gmd:geographicElement>
+            <gmd:EX_BoundingPolygon>
+              <gmd:polygon>
+                <gml:Polygon gml:id="nztm-extent-19139-{{ edition|replace('/', '-') }}" srsName="urn:ogc:def:crs:EPSG::{{ s.epsg }}">
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>{{ s.bbox_nztm.min_e }} {{ s.bbox_nztm.min_n }} {{ s.bbox_nztm.max_e }} {{ s.bbox_nztm.min_n }} {{ s.bbox_nztm.max_e }} {{ s.bbox_nztm.max_n }} {{ s.bbox_nztm.min_e }} {{ s.bbox_nztm.max_n }} {{ s.bbox_nztm.min_e }} {{ s.bbox_nztm.min_n }}</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Polygon>
+              </gmd:polygon>
+            </gmd:EX_BoundingPolygon>
+          </gmd:geographicElement>
+          {%- endif %}
+          <gmd:temporalElement>
+            <gmd:EX_TemporalExtent>
+              <gmd:extent>
+                <gml:TimePeriod gml:id="{{ s.temporal_id }}-19139">
+                  <gml:beginPosition>{{ s.temporal_begin }}</gml:beginPosition>
+                  <gml:endPosition>{{ s.temporal_end }}</gml:endPosition>
+                </gml:TimePeriod>
+              </gmd:extent>
+            </gmd:EX_TemporalExtent>
+          </gmd:temporalElement>
+        </gmd:EX_Extent>
+      </gmd:extent>
+
+      <gmd:supplementalInformation>
+        {%- set doclines = [] %}
+        {%- for d in documentation %}
+        {%- set _ = doclines.append(d.title
+              ~ ((' — doi:' ~ d.get('doi')) if d.get('doi') else ((' — ' ~ d.get('codespace') ~ ' ' ~ d.get('code')) if d.get('code') else ''))
+              ~ (('. ' ~ d.get('other_details')) if d.get('other_details') else '')
+              ~ ((' Available at: ' ~ d.get('url')) if d.get('url') else '')) %}
+        {%- endfor %}
+        <gco:CharacterString>{{ (supplemental_information
+              ~ '\n\nKey documentation (carried as structured citations in the ISO 19115-3 edition of this record): '
+              ~ doclines|join('\n'))|xe }}</gco:CharacterString>
+      </gmd:supplementalInformation>
+
+    </gmd:MD_DataIdentification>
+  </gmd:identificationInfo>
+
+  <!-- Class labels, values, definitions and colours: one MD_RangeDimension per
+       class, with the full definition in the descriptor. The formal portrayal
+       reference is in portrayalCatalogueInfo below. -->
+
+  <gmd:contentInfo>
+    <gmd:MD_CoverageDescription>
+      <gmd:attributeDescription>
+        <gco:RecordType>{{ attribute_description|xe }}</gco:RecordType>
+      </gmd:attributeDescription>
+      <gmd:contentType>
+        {{ codelist('MD_CoverageContentTypeCode', 'thematicClassification') }}
+      </gmd:contentType>
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>{{ band_description|xe }}</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+      {%- for c in classes %}
+
+      <!-- {{ c.value }} : {{ c.label }}{{ ' [' ~ c.get('colour') ~ ']' if c.get('colour') }} -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_{{ c.value }}</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>{{ (c.label ~ ' (value ' ~ c.value ~ '). ' ~ c.definition)|xe }}</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+      {%- endfor %}
+    </gmd:MD_CoverageDescription>
+  </gmd:contentInfo>
+
+  <gmd:distributionInfo>
+    <gmd:MD_Distribution>
+      <gmd:distributionFormat>
+        <gmd:MD_Format>
+          <gmd:name>
+            <gco:CharacterString>{{ s.distribution_format|xe }}</gco:CharacterString>
+          </gmd:name>
+          <gmd:version gco:nilReason="unknown"/>
+        </gmd:MD_Format>
+      </gmd:distributionFormat>
+      <gmd:distributor>
+        <gmd:MD_Distributor>
+          <gmd:distributorContact>
+          {%- if layer_url %}
+          {{- party('Manaaki Whenua – Landcare Research Group (LRIS Portal)', 'distributor') }}
+          {%- else %}
+          {{- party('Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute', 'distributor') }}
+          {%- endif %}
+          </gmd:distributorContact>
+        </gmd:MD_Distributor>
+      </gmd:distributor>
+      <gmd:transferOptions>
+        <gmd:MD_DigitalTransferOptions>
+          {%- if layer_url %}
+          <gmd:onLine>
+          {{- online(layer_url, title ~ ' on the LRIS Portal',
+                     'Layer page for viewing, cropping and downloading the dataset. A free user account may be required.',
+                     'download') }}
+          </gmd:onLine>
+          {%- endif %}
+          {%- if s.doi %}
+          <gmd:onLine>
+          {{- online('https://doi.org/' ~ s.doi, 'Dataset DOI',
+                     'DOI resolver link for this edition of the dataset.') }}
+          </gmd:onLine>
+          {%- endif %}
+          <gmd:onLine>
+          {{- online(s.code_repository, 'Production code and trained models', code_repository_description) }}
+          </gmd:onLine>
+          <gmd:onLine>
+          {{- online(qml_download_url, s.qml_filename,
+                     'QGIS layer style (paletted raster): the authoritative source of class values, labels and display colours. See portrayalCatalogueInfo.',
+                     'download', 'WWW:DOWNLOAD-1.0-http--download') }}
+          </gmd:onLine>
+          <gmd:onLine>
+          {{- online(qml_page_url, s.qml_filename ~ ' — document page',
+                     'Human-facing landing page for the style file, not pinned to a document version.') }}
+          </gmd:onLine>
+        </gmd:MD_DigitalTransferOptions>
+      </gmd:transferOptions>
+    </gmd:MD_Distribution>
+  </gmd:distributionInfo>
+
+  <gmd:dataQualityInfo>
+    <gmd:DQ_DataQuality>
+      <gmd:scope>
+        <gmd:DQ_Scope>
+          <gmd:level>
+            {{ codelist('MD_ScopeCode', 'dataset') }}
+          </gmd:level>
+        </gmd:DQ_Scope>
+      </gmd:scope>
+      {%- for rep in quality_reports %}
+
+      <gmd:report>
+        <gmd:DQ_ThematicClassificationCorrectness>
+          <gmd:nameOfMeasure>
+            <gco:CharacterString>{{ rep.name|xe }}</gco:CharacterString>
+          </gmd:nameOfMeasure>
+          <gmd:measureDescription>
+            <gco:CharacterString>{{ (rep.description ~ ((' ' ~ rep.get('descriptive_result')) if rep.get('descriptive_result') else ''))|xe }}</gco:CharacterString>
+          </gmd:measureDescription>
+          {%- if rep.get('evaluation') %}
+          <gmd:evaluationMethodDescription>
+            <gco:CharacterString>{{ (rep.evaluation.description
+                  ~ ' Sampling scheme: ' ~ rep.evaluation.sampling_scheme
+                  ~ '. Lot: ' ~ rep.evaluation.lot_description
+                  ~ ((('. Software: ' ~ rep.evaluation.get('procedure_title') ~ ' (' ~ rep.evaluation.get('procedure_url') ~ ').') ) if rep.evaluation.get('procedure_title') else '.'))|xe }}</gco:CharacterString>
+          </gmd:evaluationMethodDescription>
+          {%- endif %}
+          {%- if rep.get('quantitative_result_percent') is not none %}
+          <gmd:result>
+            <gmd:DQ_QuantitativeResult>
+              <gmd:valueUnit xlink:href="http://www.opengis.net/def/uom/UCUM/0/%25"/>
+              <gmd:value>
+                <gco:Record>{{ rep.get('quantitative_result_percent') }}</gco:Record>
+              </gmd:value>
+            </gmd:DQ_QuantitativeResult>
+          </gmd:result>
+          {%- else %}
+          {#- 19115:2003 has no DQ_DescriptiveResult and every report needs a
+              result, so the descriptive substance (already appended to
+              measureDescription above) is anchored by a conformance result
+              citing the source paper the figures come from. #}
+          <gmd:result>
+            <gmd:DQ_ConformanceResult>
+              <gmd:specification>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>{{ documentation[0].title|xe }}</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date>
+                    <gmd:CI_Date>
+                      <gmd:date>
+                        <gco:Date>{{ documentation[0].date }}</gco:Date>
+                      </gmd:date>
+                      <gmd:dateType>
+                        {{ codelist('CI_DateTypeCode', 'publication') }}
+                      </gmd:dateType>
+                    </gmd:CI_Date>
+                  </gmd:date>
+                </gmd:CI_Citation>
+              </gmd:specification>
+              <gmd:explanation>
+                <gco:CharacterString>{{ (rep.get('descriptive_result') or rep.description)|xe }}</gco:CharacterString>
+              </gmd:explanation>
+              <gmd:pass>
+                <gco:Boolean>true</gco:Boolean>
+              </gmd:pass>
+            </gmd:DQ_ConformanceResult>
+          </gmd:result>
+          {%- endif %}
+        </gmd:DQ_ThematicClassificationCorrectness>
+      </gmd:report>
+      {%- endfor %}
+
+      <gmd:lineage>
+        <gmd:LI_Lineage>
+          <gmd:statement>
+            <gco:CharacterString>{{ lineage_statement|xe }}</gco:CharacterString>
+          </gmd:statement>
+          {%- for step in lineage_steps %}
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step {{ loop.index }} of {{ loop.length }} — {{ step.description|xe }}</gco:CharacterString>
+              </gmd:description>
+              {%- if step.get('rationale') %}
+              <gmd:rationale>
+                <gco:CharacterString>{{ step.get('rationale')|xe }}</gco:CharacterString>
+              </gmd:rationale>
+              {%- endif %}
+              {%- if step.get('processor') %}
+              <gmd:processor>
+              {{- party('Manaaki Whenua – Landcare Research', 'processor') }}
+              </gmd:processor>
+              {%- endif %}
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+          {%- endfor %}
+          {%- for src in lineage_sources %}
+
+          <gmd:source>
+            <gmd:LI_Source>
+              <gmd:description>
+                <gco:CharacterString>{{ src.description|xe }}</gco:CharacterString>
+              </gmd:description>
+              <gmd:sourceCitation>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>{{ src.citation.title|xe }}</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date gco:nilReason="unknown"/>
+                  {%- if src.citation.get('doi') %}
+                  <gmd:identifier>
+                    <gmd:RS_Identifier>
+                      <gmd:code>
+                        <gco:CharacterString>{{ src.citation.get('doi') }}</gco:CharacterString>
+                      </gmd:code>
+                      <gmd:codeSpace>
+                        <gco:CharacterString>doi</gco:CharacterString>
+                      </gmd:codeSpace>
+                    </gmd:RS_Identifier>
+                  </gmd:identifier>
+                  {%- endif %}
+                  {%- if src.citation.get('originator') %}
+                  <gmd:citedResponsibleParty>
+                  {{- party(src.citation.get('originator'), 'originator') }}
+                  </gmd:citedResponsibleParty>
+                  {%- endif %}
+                  {%- if src.citation.get('other_details') or src.citation.get('url') %}
+                  <gmd:otherCitationDetails>
+                    <gco:CharacterString>{{ ((src.citation.get('other_details') or '') ~ (' ' if src.citation.get('other_details') and src.citation.get('url') else '') ~ (src.citation.get('url') or ''))|xe }}</gco:CharacterString>
+                  </gmd:otherCitationDetails>
+                  {%- endif %}
+                </gmd:CI_Citation>
+              </gmd:sourceCitation>
+            </gmd:LI_Source>
+          </gmd:source>
+          {%- endfor %}
+        </gmd:LI_Lineage>
+      </gmd:lineage>
+    </gmd:DQ_DataQuality>
+  </gmd:dataQualityInfo>
+
+  <gmd:portrayalCatalogueInfo>
+    <gmd:MD_PortrayalCatalogueReference>
+      <gmd:portrayalCatalogueCitation>
+        <gmd:CI_Citation>
+          <gmd:title>
+            <gco:CharacterString>{{ title|xe }} — QGIS layer style (paletted raster)</gco:CharacterString>
+          </gmd:title>
+          <gmd:alternateTitle>
+            <gco:CharacterString>{{ s.qml_filename }}</gco:CharacterString>
+          </gmd:alternateTitle>
+          <gmd:date gco:nilReason="unknown"/>
+          <gmd:edition>
+            <gco:CharacterString>{{ s.qml_format|default('QGIS style format (QML)') }}</gco:CharacterString>
+          </gmd:edition>
+          <gmd:citedResponsibleParty>
+          {{- party('Manaaki Whenua – Landcare Research', 'originator') }}
+          </gmd:citedResponsibleParty>
+          <gmd:otherCitationDetails>
+            <gco:CharacterString>{{ (qml_description
+                  ~ ' Download (version-pinned): ' ~ qml_download_url
+                  ~ ' Document page: ' ~ qml_page_url)|xe }}</gco:CharacterString>
+          </gmd:otherCitationDetails>
+        </gmd:CI_Citation>
+      </gmd:portrayalCatalogueCitation>
+    </gmd:MD_PortrayalCatalogueReference>
+  </gmd:portrayalCatalogueInfo>
+
+  <gmd:metadataMaintenance>
+    <gmd:MD_MaintenanceInformation>
+      <gmd:maintenanceAndUpdateFrequency>
+        {{ codelist('MD_MaintenanceFrequencyCode', 'asNeeded') }}
+      </gmd:maintenanceAndUpdateFrequency>
+      <gmd:maintenanceNote>
+        <gco:CharacterString>{{ metadata_maintenance_note|xe }}</gco:CharacterString>
+      </gmd:maintenanceNote>
+    </gmd:MD_MaintenanceInformation>
+  </gmd:metadataMaintenance>
+
+</gmd:MD_Metadata>

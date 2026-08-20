@@ -1,0 +1,1381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmd:MD_Metadata
+    xmlns:gmd="http://www.isotc211.org/2005/gmd"
+    xmlns:gco="http://www.isotc211.org/2005/gco"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <gmd:fileIdentifier>
+    <gco:CharacterString>105b4e7b-4042-451d-ace9-dd1f08a98140</gco:CharacterString>
+  </gmd:fileIdentifier>
+
+  <gmd:language>
+    <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng">English</gmd:LanguageCode>
+  </gmd:language>
+
+  <gmd:characterSet>
+    <gmd:MD_CharacterSetCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8">UTF-8</gmd:MD_CharacterSetCode>
+  </gmd:characterSet>
+
+  <gmd:hierarchyLevel>
+    <gmd:MD_ScopeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+  </gmd:hierarchyLevel>
+
+  <gmd:hierarchyLevelName>
+    <gco:CharacterString>National land-cover raster dataset</gco:CharacterString>
+  </gmd:hierarchyLevelName>
+
+  <gmd:contact>
+    <gmd:CI_ResponsibleParty>
+      <gmd:individualName>
+        <gco:CharacterString>Richard Law</gco:CharacterString>
+      </gmd:individualName>
+      <gmd:organisationName>
+        <gco:CharacterString>Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:positionName>
+        <gco:CharacterString>Researcher / dataset custodian</gco:CharacterString>
+      </gmd:positionName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString>lawr@landcareresearch.co.nz</gco:CharacterString>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+          <gmd:onlineResource>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage>
+                <gmd:URL>https://www.landcareresearch.co.nz/</gmd:URL>
+              </gmd:linkage>
+            </gmd:CI_OnlineResource>
+          </gmd:onlineResource>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+  </gmd:contact>
+
+  <gmd:dateStamp>
+    <gco:DateTime>2026-08-18T00:00:00+12:00</gco:DateTime>
+  </gmd:dateStamp>
+
+  <gmd:metadataStandardName>
+    <gco:CharacterString>ISO 19115:2003/Cor.1:2006 Geographic information — Metadata</gco:CharacterString>
+  </gmd:metadataStandardName>
+
+  <gmd:metadataStandardVersion>
+    <gco:CharacterString>ISO/TS 19139:2007</gco:CharacterString>
+  </gmd:metadataStandardVersion>
+
+  <gmd:spatialRepresentationInfo>
+    <gmd:MD_GridSpatialRepresentation>
+      <gmd:numberOfDimensions>
+        <gco:Integer>2</gco:Integer>
+      </gmd:numberOfDimensions>
+      <gmd:axisDimensionProperties>
+        <gmd:MD_Dimension>
+          <gmd:dimensionName>
+            <gmd:MD_DimensionNameTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_DimensionNameTypeCode" codeListValue="column">column</gmd:MD_DimensionNameTypeCode>
+          </gmd:dimensionName>
+          <gmd:dimensionSize>
+            <gco:Integer>102400</gco:Integer>
+          </gmd:dimensionSize>
+          <gmd:resolution>
+            <gco:Measure uom="m">10</gco:Measure>
+          </gmd:resolution>
+        </gmd:MD_Dimension>
+      </gmd:axisDimensionProperties>
+      <gmd:axisDimensionProperties>
+        <gmd:MD_Dimension>
+          <gmd:dimensionName>
+            <gmd:MD_DimensionNameTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_DimensionNameTypeCode" codeListValue="row">row</gmd:MD_DimensionNameTypeCode>
+          </gmd:dimensionName>
+          <gmd:dimensionSize>
+            <gco:Integer>151200</gco:Integer>
+          </gmd:dimensionSize>
+          <gmd:resolution>
+            <gco:Measure uom="m">10</gco:Measure>
+          </gmd:resolution>
+        </gmd:MD_Dimension>
+      </gmd:axisDimensionProperties>
+      <gmd:cellGeometry>
+        <gmd:MD_CellGeometryCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CellGeometryCode" codeListValue="area">area</gmd:MD_CellGeometryCode>
+      </gmd:cellGeometry>
+      <gmd:transformationParameterAvailability>
+        <gco:Boolean>false</gco:Boolean>
+      </gmd:transformationParameterAvailability>
+    </gmd:MD_GridSpatialRepresentation>
+  </gmd:spatialRepresentationInfo>
+
+  <gmd:referenceSystemInfo>
+    <gmd:MD_ReferenceSystem>
+      <gmd:referenceSystemIdentifier>
+        <gmd:RS_Identifier>
+          <gmd:code>
+            <gco:CharacterString>2193</gco:CharacterString>
+          </gmd:code>
+          <gmd:codeSpace>
+            <gco:CharacterString>EPSG</gco:CharacterString>
+          </gmd:codeSpace>
+        </gmd:RS_Identifier>
+      </gmd:referenceSystemIdentifier>
+    </gmd:MD_ReferenceSystem>
+  </gmd:referenceSystemInfo>
+
+  <gmd:identificationInfo>
+    <gmd:MD_DataIdentification>
+
+      <gmd:citation>
+        <gmd:CI_Citation>
+          <gmd:title>
+            <gco:CharacterString>NZ Cost-Effective Land Cover (2024/25)</gco:CharacterString>
+          </gmd:title>
+          <gmd:alternateTitle>
+            <gco:CharacterString>NZ Land Cover (cost-effective method), 2024/25 summer</gco:CharacterString>
+          </gmd:alternateTitle>
+          <gmd:date>
+            <gmd:CI_Date>
+              <gmd:date>
+                <gco:Date>2026-07-01</gco:Date>
+              </gmd:date>
+              <gmd:dateType>
+                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation">creation</gmd:CI_DateTypeCode>
+              </gmd:dateType>
+            </gmd:CI_Date>
+          </gmd:date>
+          <gmd:date>
+            <gmd:CI_Date>
+              <gmd:date>
+                <gco:Date>2026-08-18</gco:Date>
+              </gmd:date>
+              <gmd:dateType>
+                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+              </gmd:dateType>
+            </gmd:CI_Date>
+          </gmd:date>
+          <gmd:edition>
+            <gco:CharacterString>2024/25</gco:CharacterString>
+          </gmd:edition>
+          <gmd:citedResponsibleParty>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
+        <gco:CharacterString>Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+          </gmd:citedResponsibleParty>
+        </gmd:CI_Citation>
+      </gmd:citation>
+
+      <gmd:abstract>
+        <gco:CharacterString>A national land-cover classification of New Zealand at 10 m spatial resolution, derived from a cloud-free summer mosaic of Sentinel-2 imagery for the 2024/25 season (1 November 2024 to 28 February 2025, inclusive). Sixteen land-cover classes are mapped (fifteen mapped classes plus an unclassified value), spanning fundamental cover types (water, bare ground, snow, herbaceous vegetation) and woody and production classes of particular relevance to New Zealand land use (exotic forest, indigenous forest, narrow-leaved scrub, broadleaved shrub, deciduous hardwoods, croplands, orchards and vineyards, wetlands).
+
+The classification is produced by an automated workflow that combines three complementary methods: a hierarchy of binary spectral decision rules applied to topographically normalised, standardised surface reflectance; a U-Net convolutional neural network for classes where texture and spatial context are decisive (exotic forest, deciduous hardwoods); and analysis of a five-year Sentinel-2 NDVI time series (2020–2025) to detect the repeated bare/vegetated cycles characteristic of regular tillage. Two classes that are unreliable to delineate from imagery alone — wetlands, and orchards and vineyards — are burned in unchanged from the New Zealand Land Cover Database (LCDB) version 5, as is the glacial lakes extent. A national digital elevation model (15 m postings, resampled to the 10 m analysis grid) is used both for topographic normalisation and as ancillary evidence at particular decision nodes.
+
+National classification runs in under 12 hours of computing time on New Zealand eScience Infrastructure (NeSI), making annual updates feasible at roughly an order of magnitude lower cost than the manually interpreted LCDB. Validation of the unfiltered 2023/24 classification against 4,500 points (300 per mapped class, stratified by map class, drawn from a population of approximately 2.7 billion valid pixels) gave a weighted overall accuracy of 96.45 %.
+
+Intended applications include protective cover for soil erosion, national and on-farm carbon accounting, habitat connectivity modelling for predator control, nutrient budgeting for water quality, monitoring of habitat loss in protected wetlands, and fire fuel assessment.
+
+Important limitations. This dataset is a snapshot, not a change product: simple differencing of successive editions will produce spurious change even at high accuracy — of the order of several percent of the national land area per year, which exceeds expected real change. Change should be inferred only with multi-year persistence checks, checks for similar change in adjacent areas, spatial filtering of small clumps, or reference to LCDB, where expert operators check all candidate change. Two classes are markedly less accurate than the rest and should be treated with more caution: Broadleaved Shrub and Unspecified Woody Vegetation (F1 approximately 82 % and 88 % respectively, with precision near 70–79 %). The published dataset has been post-processed with an iterative sieve filter that removes small isolated patches: isolated features smaller than seven pixels (700 m²), or five pixels (500 m²) for water, are merged into their surroundings and do not appear in the published data, whatever their true cover.</gco:CharacterString>
+      </gmd:abstract>
+
+      <gmd:purpose>
+        <gco:CharacterString>To provide timely, low-cost, national-scale land-cover information at finer spatial resolution (10 m) and smaller minimum mappable feature size than the New Zealand Land Cover Database (1 ha minimum mapping unit, 1:50,000 scale), suitable for annual environmental reporting and monitoring.</gco:CharacterString>
+      </gmd:purpose>
+
+      <gmd:credit>
+        <gco:CharacterString>Partially funded by the Ministry for the Environment, New Zealand, and by the Ministry of Business, Innovation and Employment, New Zealand. Produced using New Zealand eScience Infrastructure (NeSI) high-performance computing facilities, consulting support and training services; NeSI is funded jointly by its collaborator institutions and through MBIE's Research Infrastructure programme. Contains modified Copernicus Sentinel-2 data.</gco:CharacterString>
+      </gmd:credit>
+
+      <gmd:status>
+        <gmd:MD_ProgressCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ProgressCode" codeListValue="completed">completed</gmd:MD_ProgressCode>
+      </gmd:status>
+
+      <gmd:pointOfContact>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
+        <gco:CharacterString>Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString>lawr@landcareresearch.co.nz</gco:CharacterString>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="custodian">custodian</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+      </gmd:pointOfContact>
+
+      <gmd:resourceMaintenance>
+        <gmd:MD_MaintenanceInformation>
+          <gmd:maintenanceAndUpdateFrequency>
+            <gmd:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeListValue="annually">annually</gmd:MD_MaintenanceFrequencyCode>
+          </gmd:maintenanceAndUpdateFrequency>
+          <gmd:maintenanceNote>
+            <gco:CharacterString>The workflow completes in under 12 hours of computing time on NeSI infrastructure and can be re-run annually on a new summer mosaic; annual production is a standing recommendation of LC2526-0006. Editions are independent snapshots and are not co-registered as a change time series.</gco:CharacterString>
+          </gmd:maintenanceNote>
+        </gmd:MD_MaintenanceInformation>
+      </gmd:resourceMaintenance>
+
+      <gmd:descriptiveKeywords>
+        <gmd:MD_Keywords>
+          <gmd:keyword><gco:CharacterString>land cover</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>land-cover classification</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>Sentinel-2</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>satellite imagery</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>remote sensing</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>deep learning</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>U-Net</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>NDVI</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>vegetation</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>indigenous forest</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>exotic forest</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>cropland</gco:CharacterString></gmd:keyword>
+          <gmd:type>
+            <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+          </gmd:type>
+        </gmd:MD_Keywords>
+      </gmd:descriptiveKeywords>
+
+      <gmd:descriptiveKeywords>
+        <gmd:MD_Keywords>
+          <gmd:keyword><gco:CharacterString>New Zealand</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>Aotearoa</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>North Island</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>South Island</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>Stewart Island / Rakiura</gco:CharacterString></gmd:keyword>
+          <gmd:keyword><gco:CharacterString>Manawatāwhi / Three Kings Islands</gco:CharacterString></gmd:keyword>
+          <gmd:type>
+            <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="place">place</gmd:MD_KeywordTypeCode>
+          </gmd:type>
+        </gmd:MD_Keywords>
+      </gmd:descriptiveKeywords>
+
+      <gmd:resourceConstraints>
+        <gmd:MD_LegalConstraints>
+          <gmd:useLimitation>
+            <gco:CharacterString>Not suitable for direct pixel-by-pixel change detection between editions: simple differencing will infer spurious change over a substantial area even when both editions are highly accurate. Refer to LCDB for authoritative change information.</gco:CharacterString>
+          </gmd:useLimitation>
+          <gmd:useLimitation>
+            <gco:CharacterString>The Broadleaved Shrub and Unspecified Woody Vegetation classes have materially poorer validation results than the rest of the taxonomy and should be treated with more caution.</gco:CharacterString>
+          </gmd:useLimitation>
+          <gmd:useLimitation>
+            <gco:CharacterString>Snow reflects conditions at the time of image acquisition within the summer mosaic window, not a long-term snow climatology.</gco:CharacterString>
+          </gmd:useLimitation>
+          <gmd:useLimitation>
+            <gco:CharacterString>Wetlands, orchards and vineyards, and glacial lakes are inherited from LCDB v5 and therefore carry that dataset's nominal date (2018/19) and 1 ha minimum mapping unit rather than those of this dataset.</gco:CharacterString>
+          </gmd:useLimitation>
+          <gmd:useLimitation>
+            <gco:CharacterString>The published raster is sieve-filtered. Isolated patches smaller than seven pixels (700 m²), or five pixels (500 m²) for water, have been merged into their surroundings, so the effective minimum size of an isolated feature is larger than the 100 m² minimum mappable feature of the commissioning brief. The validation figures were assessed on the unfiltered 2023/24 classification, before this filtering.</gco:CharacterString>
+          </gmd:useLimitation>
+          <gmd:useLimitation>
+            <gco:CharacterString>The accuracy figures derive from a single validation exercise performed on the 2023/24 edition. Subsequent editions are produced by the same automated method from more recent imagery and are not individually revalidated.</gco:CharacterString>
+          </gmd:useLimitation>
+          <gmd:accessConstraints>
+            <gmd:MD_RestrictionCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</gmd:MD_RestrictionCode>
+          </gmd:accessConstraints>
+          <gmd:useConstraints>
+            <gmd:MD_RestrictionCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode" codeListValue="license">license</gmd:MD_RestrictionCode>
+          </gmd:useConstraints>
+          <gmd:otherConstraints>
+            <gco:CharacterString>Released under the Creative Commons Attribution-ShareAlike 4.0 International licence (CC BY-SA 4.0). Attribution: "Manaaki Whenua – Landcare Research". The ShareAlike condition requires that adapted material be distributed under the same licence or a compatible one. Access via the LRIS Portal may require a (free) user account. Note that the licence on this dataset differs from the CC BY 4.0 licence on the peer-reviewed paper describing the method. Licence text: https://creativecommons.org/licenses/by-sa/4.0/</gco:CharacterString>
+          </gmd:otherConstraints>
+        </gmd:MD_LegalConstraints>
+      </gmd:resourceConstraints>
+      <gmd:aggregationInfo>
+        <gmd:MD_AggregateInformation>
+          <gmd:aggregateDataSetName>
+            <gmd:CI_Citation>
+              <gmd:title>
+                <gco:CharacterString>NZ Cost-Effective Land Cover (2023/24)</gco:CharacterString>
+              </gmd:title>
+              <gmd:date gco:nilReason="unknown"/>
+              <gmd:edition>
+                <gco:CharacterString>2023/24</gco:CharacterString>
+              </gmd:edition>
+              <gmd:identifier>
+                <gmd:RS_Identifier>
+                  <gmd:code>
+                    <gco:CharacterString>10.26060/J3NV-9W38</gco:CharacterString>
+                  </gmd:code>
+                  <gmd:codeSpace>
+                    <gco:CharacterString>doi</gco:CharacterString>
+                  </gmd:codeSpace>
+                </gmd:RS_Identifier>
+              </gmd:identifier>
+              <gmd:otherCitationDetails>
+                <gco:CharacterString>Layer page: https://lris.scinfo.org.nz/layer/123984-nz-cost-effective-land-cover-2023-24/. Metadata identifier: urn:uuid:f2711951-67b2-41ed-8646-19d3c815ae71</gco:CharacterString>
+              </gmd:otherCitationDetails>
+            </gmd:CI_Citation>
+          </gmd:aggregateDataSetName>
+          <gmd:associationType>
+            <gmd:DS_AssociationTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#DS_AssociationTypeCode" codeListValue="crossReference">crossReference</gmd:DS_AssociationTypeCode>
+          </gmd:associationType>
+        </gmd:MD_AggregateInformation>
+      </gmd:aggregationInfo>
+
+      <gmd:spatialRepresentationType>
+        <gmd:MD_SpatialRepresentationTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_SpatialRepresentationTypeCode" codeListValue="grid">grid</gmd:MD_SpatialRepresentationTypeCode>
+      </gmd:spatialRepresentationType>
+
+      <gmd:spatialResolution>
+        <gmd:MD_Resolution>
+          <gmd:distance>
+            <gco:Distance uom="m">10</gco:Distance>
+          </gmd:distance>
+        </gmd:MD_Resolution>
+      </gmd:spatialResolution>
+
+      <gmd:language>
+        <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng">English</gmd:LanguageCode>
+      </gmd:language>
+
+      <gmd:characterSet>
+        <gmd:MD_CharacterSetCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8">UTF-8</gmd:MD_CharacterSetCode>
+      </gmd:characterSet>
+      <gmd:topicCategory>
+        <gmd:MD_TopicCategoryCode>imageryBaseMapsEarthCover</gmd:MD_TopicCategoryCode>
+      </gmd:topicCategory>
+      <gmd:topicCategory>
+        <gmd:MD_TopicCategoryCode>environment</gmd:MD_TopicCategoryCode>
+      </gmd:topicCategory>
+      <gmd:topicCategory>
+        <gmd:MD_TopicCategoryCode>biota</gmd:MD_TopicCategoryCode>
+      </gmd:topicCategory>
+
+      <gmd:environmentDescription>
+        <gco:CharacterString>Categorical (thematic) raster, 10 m cell size, single band of integer class codes, supplied with a raster attribute table.</gco:CharacterString>
+      </gmd:environmentDescription>
+
+      <gmd:extent>
+        <gmd:EX_Extent>
+          <gmd:description>
+            <gco:CharacterString>The full terrestrial extent of mainland New Zealand and its offshore islands, including Stewart Island / Rakiura and Manawatāwhi / Three Kings Islands, and a coastal margin. The Chatham Islands and other outlying islands are excluded.</gco:CharacterString>
+          </gmd:description>
+          <gmd:geographicElement>
+            <gmd:EX_GeographicBoundingBox>
+              <gmd:westBoundLongitude>
+                <gco:Decimal>166.153648</gco:Decimal>
+              </gmd:westBoundLongitude>
+              <gmd:eastBoundLongitude>
+                <gco:Decimal>179.740969</gco:Decimal>
+              </gmd:eastBoundLongitude>
+              <gmd:southBoundLatitude>
+                <gco:Decimal>-47.655396</gco:Decimal>
+              </gmd:southBoundLatitude>
+              <gmd:northBoundLatitude>
+                <gco:Decimal>-33.908049</gco:Decimal>
+              </gmd:northBoundLatitude>
+            </gmd:EX_GeographicBoundingBox>
+          </gmd:geographicElement>
+          <gmd:geographicElement>
+            <gmd:EX_BoundingPolygon>
+              <gmd:polygon>
+                <gml:Polygon gml:id="nztm-extent-19139-2024-25" srsName="urn:ogc:def:crs:EPSG::2193">
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>1084000 4722000 2108000 4722000 2108000 6234000 1084000 6234000 1084000 4722000</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Polygon>
+              </gmd:polygon>
+            </gmd:EX_BoundingPolygon>
+          </gmd:geographicElement>
+          <gmd:temporalElement>
+            <gmd:EX_TemporalExtent>
+              <gmd:extent>
+                <gml:TimePeriod gml:id="nominal-summer-mosaic-2024-25-19139">
+                  <gml:beginPosition>2024-11-01</gml:beginPosition>
+                  <gml:endPosition>2025-02-28</gml:endPosition>
+                </gml:TimePeriod>
+              </gmd:extent>
+            </gmd:EX_TemporalExtent>
+          </gmd:temporalElement>
+        </gmd:EX_Extent>
+      </gmd:extent>
+
+      <gmd:supplementalInformation>
+        <gco:CharacterString>Commissioning-brief requirements: the brief required all distinct areas of land cover of at least 100 m² in area and 20 m in width to be mapped, and specified delivery in NZTM at 10 m resolution. Note that the published data are sieve-filtered (see the lineage): isolated patches smaller than seven pixels do not survive to publication, so the effective minimum size of an isolated feature (700 m²) is larger than the 100 m² the brief specifies. Contract report LC2526-0006 recommended that any filtered product be published alongside, rather than instead of, unfiltered data; the published layer is the filtered product.
+
+Class codes: values 0 to 16 are defined. Value 5 (Cloud) is a reserved code that is not used in this edition — small areas of residual cloud in the 2024/25 mosaic were assigned to value 0 (Unclassified) instead.
+
+Class labelling: Table 1 of the source paper labels class 3 "Indigenous Vegetation" while its Tables 2 and 3, the contract report, and the QGIS style file all use "Indigenous Forest"; the latter is used here. Class 13 is "Broadleaved Shrub" (singular) in the style file and contract report, and "Broadleaved Shrubs" in the paper.
+
+Class 12 (Deciduous Hardwoods) derivation: Table 1 of contract report LC2526-0006 records the method as spectral rules, but section 4.1.7 of the same report and Figure 2 of the source paper both describe it as a deep-learning classification restricted to lowland areas. The production code (binary_split/exotic/exotic.py) confirms the deep-learning derivation: the label is applied wherever the model predicts deciduous hardwoods and the terrain is lowland. Note that, unlike exotic forest, the label is not additionally confined to areas the spectral hierarchy had identified as woody.
+
+Mapped areas by island are tabulated in Table 2 of the source paper; the validation confusion matrix is Table 3 of the paper and Figure 6 of LC2526-0006; the spectral rules and their thresholds are in Appendix A of the paper and Table 4 of Dymond and Shepherd (2004). Approximate concordances to LCDB v5, ESA WorldCover, Google Dynamic World and GLC_FCS30D are given in Appendix A of contract report 2526-0005.
+
+Key documentation (carried as structured citations in the ISO 19115-3 edition of this record): A cost-effective method for mapping land cover at national scale — doi:10.1016/j.srs.2026.100376. Dymond, J.R., Shepherd, J.D., Law, R., Martin, B., Schindler, J., Belliss, S. (2026). Peer-reviewed description of the method, class taxonomy, spectral rules (Appendix A) and full validation contingency table. Open access under CC BY 4.0. Available at: https://doi.org/10.1016/j.srs.2026.100376
+An automated method for generalised land cover mapping over New Zealand — MWLR Contract Report registration LC2526-0006. Law, R., Shepherd, J., Dymond, J., Martin, B., Schindler, J., Belliss, S. (2025). Contract report prepared for the Ministry for the Environment. Contains the full class taxonomy with suggested colour palette, the deep-learning model performance matrices for the North and South Island models, the validation confusion matrix, and the recommendations and caveats attaching to the dataset.
+Evaluation of global land-cover data sets — MWLR Contract Report registration 2526-0005. Law, R., Dymond, J. (2025). Companion evaluation of ESA WorldCover, Google Dynamic World and GLC_FCS30D in the New Zealand context, establishing the case for a nationally produced land-cover dataset. Includes approximate class concordances between this taxonomy, LCDB v5 and the three global products (Appendix A). Available at: https://github.com/manaakiwhenua/global-land-cover-comparison</gco:CharacterString>
+      </gmd:supplementalInformation>
+
+    </gmd:MD_DataIdentification>
+  </gmd:identificationInfo>
+
+  <!-- Class labels, values, definitions and colours: one MD_RangeDimension per
+       class, with the full definition in the descriptor. The formal portrayal
+       reference is in portrayalCatalogueInfo below. -->
+
+  <gmd:contentInfo>
+    <gmd:MD_CoverageDescription>
+      <gmd:attributeDescription>
+        <gco:RecordType>Land-cover class code (8-bit unsigned integer; values 0 to 16, where 5 is reserved and unused in this edition)</gco:RecordType>
+      </gmd:attributeDescription>
+      <gmd:contentType>
+        <gmd:MD_CoverageContentTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CoverageContentTypeCode" codeListValue="thematicClassification">thematicClassification</gmd:MD_CoverageContentTypeCode>
+      </gmd:contentType>
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Single band of land-cover class codes. Seventeen values are defined (0 to 16), of which fifteen are mapped land-cover classes; value 0 is unclassified and value 5 is reserved and unused. Each class is listed below with its pixel value, label, definition, derivation method and display colour. Colours are 24-bit RGB in HTML hexadecimal notation and are taken from the authoritative QGIS paletted-raster style file (celcmqml.qml), which is referenced formally under portrayalCatalogueInfo.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 0 : Unclassified [#000000] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_0</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Unclassified (value 0). Exterior marine, or remnant from cloud masking and mosaicking; small areas of residual cloud in the 2024/25 mosaic are also assigned this value. Derivation: not applicable (no class assigned). Colour: #000000. Note that the QGIS style file defines no palette entry for this value and renders it as transparent no-data; the colour given here is the one specified in Table 1 of contract report LC2526-0006.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 1 : Water [#359ec9] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_1</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Water (value 1). Water bodies, including a coastal margin. Derivation: spectral rules, binary split — identified from the near-infrared and shortwave-infrared bands alongside the visible bands, after the snow split. Colour: #359ec9.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 2 : Bare Ground [#d3d3d3] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_2</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Bare Ground (value 2). Bare ground without vegetation cover. Derivation: spectral rules, binary split. Colour: #d3d3d3.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 3 : Indigenous Forest [#006400] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_3</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Indigenous Forest (value 3). Mature forest comprising indigenous tree species. Derivation: spectral rules, binary split — the remainder of the forest/trees node after exotic forest has been subtracted by deep learning and small clumps have been separated as unspecified woody vegetation. Colour: #006400. Labelled "Indigenous Vegetation" in Table 1 of the source paper and in the published map legends.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 4 : Herbaceous Vegetation [#f6f99e] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_4</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Herbaceous Vegetation (value 4). Non-woody vegetation — primarily high-producing (exotic) and low-producing (exotic and indigenous) grasslands, and indigenous tussock grasslands. Derivation: spectral rules, binary split of vegetation into herbaceous or woody vegetation. Colour: #f6f99e.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 5 : Cloud [#ffffff] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_5</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Cloud (value 5). Cloud. Reserved code, not used in this edition: residual cloud remaining in the 2024/25 mosaic was assigned to value 0 (Unclassified) instead. Derivation: not applicable. Colour: #ffffff.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 6 : Primarily Bare Ground [#d1b28c] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_6</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Primarily Bare Ground (value 6). A mix of bare ground (greater than 50 % of the cell) and vegetation cover; includes herb fields and rock fields. Derivation: spectral rules, binary split. Colour: #d1b28c.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 7 : Snow [#ff00ff] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_7</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Snow (value 7). Snow cover at the time of image acquisition. Derivation: spectral rules, binary split — the first split in the hierarchy, constrained by the national digital elevation model to terrain above 150 m in order to avoid confusion between snow and bright coastal water such as whitecaps and turbid estuary water. Colour: #ff00ff.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 8 : Glacial Lakes, Wet Rock, Water/Sediment [#5ab2ff] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_8</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Glacial Lakes, Wet Rock, Water/Sediment (value 8). Glacial lakes, and rock or sand covered by shallow water. Derivation: spectral rules, binary split; the glacial lakes extent is adopted from LCDB version 5. Colour: #5ab2ff.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 9 : Unspecified Woody Vegetation [#666666] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_9</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Unspecified Woody Vegetation (value 9). Small (less than 0.2 ha) clumps of unspecified trees. Derivation: a centre-to-edge ratio computation identifies small clusters of woody vegetation which contain insufficient pixel-level information to be classified further at 10 m resolution; attempts to resolve these stands into conifer and non-conifer types using a model trained on aerial imagery were unsuccessful, so they remain unspecified. Colour: #666666. This class has materially poorer validation results than the rest of the taxonomy.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 10 : Narrow-leaved Scrub [#709c63] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_10</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Narrow-leaved Scrub (value 10). Immature shrublands with narrow leaves — primarily mānuka, kānuka, gorse, broom and matagouri. Derivation: spectral rules, binary split of woody vegetation into narrow-leaved scrub or other woody vegetation, using the index (ρ4 − ρ5)/(ρ4 + ρ5) with a threshold of 0.25, reduced from the 0.33 of Dymond and Shepherd (2004) to give an acceptable spatial distribution per expert judgement (ρ4 is near-infrared, 0.77–0.90 µm; ρ5 is shortwave infrared, 1.55–1.75 µm). Colour: #709c63.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 11 : Exotic Forest [#ab291f] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_11</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Exotic Forest (value 11). Planted exotic forest — primarily Pinus radiata; may include wilding pines. Derivation: U-Net deep-learning classification of Sentinel-2 imagery trained on LCDB v5, applied conditionally within the forest branch of the decision hierarchy so that it disambiguates forest already identified by spectral rules rather than over-ruling earlier binary decisions. Colour: #ab291f.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 12 : Deciduous Hardwoods [#ffa600] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_12</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Deciduous Hardwoods (value 12). Mature exotic deciduous trees — primarily poplars and willows. Derivation: U-Net deep-learning classification, restricted to lowland terrain; unlike exotic forest, the label is not additionally confined to areas the spectral hierarchy had identified as woody. Colour: #ffa600. See supplementalInformation for the resolution of a documented inconsistency about this class's derivation method.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 13 : Broadleaved Shrub [#ff80a1] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_13</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Broadleaved Shrub (value 13). Immature shrublands with broad leaves — primarily indigenous broadleaved species. Derivation: spectral rules, binary split — near-infrared and shortwave-infrared threshold rules distinguishing narrow-leaf from broad-leaf vegetation within the woody layer; the split from forest/trees is on green reflectance (ρ2 greater than 0.0403). Colour: #ff80a1. This class has the poorest validation results in the taxonomy (precision approximately 70 %).</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 14 : Croplands [#824ab3] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_14</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Croplands (value 14). Cropping land with evidence of regular tillage. Derivation: temporal sequence of NDVI from Sentinel-2 (March 2020 to February 2025), using the median NDVI of vegetated pixels, the median NDVI of all observations, and the ratio of time in vegetation to time not in vegetation; conditional on the terrain being sufficiently flat to be plausible cropland, per the digital elevation model. This is the final binary split. Colour: #824ab3. The method detects a repeating bare/vegetated pattern without regard to the time of year at which it occurs, so cropping is the probable but not the only possible explanation of the signal.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 15 : Wetlands [#91d491] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_15</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Wetlands (value 15). Wetland ecosystems. Derivation: burned in from LCDB version 5 (LCDB class 15), taken as given because the class was judged too difficult to delineate automatically with sufficient accuracy from spectral information. Colour: #91d491. This class carries the nominal date and minimum mapping unit of LCDB v5 rather than of the 2024/25 mosaic.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+
+      <!-- 16 : Orchards and Vineyards [#f6c2cf] -->
+      <gmd:dimension>
+        <gmd:MD_RangeDimension>
+          <gmd:sequenceIdentifier>
+            <gco:MemberName>
+              <gco:aName>
+                <gco:CharacterString>land_cover_class_16</gco:CharacterString>
+              </gco:aName>
+              <gco:attributeType>
+                <gco:TypeName>
+                  <gco:aName>
+                    <gco:CharacterString>Integer</gco:CharacterString>
+                  </gco:aName>
+                </gco:TypeName>
+              </gco:attributeType>
+            </gco:MemberName>
+          </gmd:sequenceIdentifier>
+          <gmd:descriptor>
+            <gco:CharacterString>Orchards and Vineyards (value 16). Land managed to produce grapes and other perennial crops. Derivation: burned in from LCDB version 5 (LCDB class 16), taken as given for the same reason as wetlands. Colour: #f6c2cf. This class carries the nominal date and minimum mapping unit of LCDB v5.</gco:CharacterString>
+          </gmd:descriptor>
+        </gmd:MD_RangeDimension>
+      </gmd:dimension>
+    </gmd:MD_CoverageDescription>
+  </gmd:contentInfo>
+
+  <gmd:distributionInfo>
+    <gmd:MD_Distribution>
+      <gmd:distributionFormat>
+        <gmd:MD_Format>
+          <gmd:name>
+            <gco:CharacterString>GeoTIFF (as offered for download on the LRIS Portal, converted on demand from the KEA format in which the dataset is produced and archived; the portal can supply other formats according to platform and user requirements)</gco:CharacterString>
+          </gmd:name>
+          <gmd:version gco:nilReason="unknown"/>
+        </gmd:MD_Format>
+      </gmd:distributionFormat>
+      <gmd:distributor>
+        <gmd:MD_Distributor>
+          <gmd:distributorContact>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
+        <gco:CharacterString>Manaaki Whenua – Landcare Research Group, Bioeconomy Science Institute</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="distributor">distributor</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+          </gmd:distributorContact>
+        </gmd:MD_Distributor>
+      </gmd:distributor>
+      <gmd:transferOptions>
+        <gmd:MD_DigitalTransferOptions>
+          <gmd:onLine>
+          <gmd:CI_OnlineResource>
+            <gmd:linkage>
+              <gmd:URL>https://github.com/manaakiwhenua/sentinel2-landcover-nz</gmd:URL>
+            </gmd:linkage>
+            <gmd:protocol>
+              <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+            </gmd:protocol>
+            <gmd:name>
+              <gco:CharacterString>Production code and trained models</gco:CharacterString>
+            </gmd:name>
+            <gmd:description>
+              <gco:CharacterString>Openly licensed source code and trained deep-learning models used to produce this dataset, including the sequence of thresholding rules, the conditional application of the exotic forest classification, the LCDB burn-in, and the sieve filtering applied before publication. Note that the summer mosaic of processed Sentinel-2 imagery used as the object of classification is not publicly available.</gco:CharacterString>
+            </gmd:description>
+            <gmd:function>
+              <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="information">information</gmd:CI_OnLineFunctionCode>
+            </gmd:function>
+          </gmd:CI_OnlineResource>
+          </gmd:onLine>
+          <gmd:onLine>
+          <gmd:CI_OnlineResource>
+            <gmd:linkage>
+              <gmd:URL>https://lris.scinfo.org.nz/services/api/v1.x/documents/26004/versions/28292/download/</gmd:URL>
+            </gmd:linkage>
+            <gmd:protocol>
+              <gco:CharacterString>WWW:DOWNLOAD-1.0-http--download</gco:CharacterString>
+            </gmd:protocol>
+            <gmd:name>
+              <gco:CharacterString>celcmqml.qml</gco:CharacterString>
+            </gmd:name>
+            <gmd:description>
+              <gco:CharacterString>QGIS layer style (paletted raster): the authoritative source of class values, labels and display colours. See portrayalCatalogueInfo.</gco:CharacterString>
+            </gmd:description>
+            <gmd:function>
+              <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download">download</gmd:CI_OnLineFunctionCode>
+            </gmd:function>
+          </gmd:CI_OnlineResource>
+          </gmd:onLine>
+          <gmd:onLine>
+          <gmd:CI_OnlineResource>
+            <gmd:linkage>
+              <gmd:URL>https://lris.scinfo.org.nz/document/26004-celcmqml/</gmd:URL>
+            </gmd:linkage>
+            <gmd:protocol>
+              <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+            </gmd:protocol>
+            <gmd:name>
+              <gco:CharacterString>celcmqml.qml — document page</gco:CharacterString>
+            </gmd:name>
+            <gmd:description>
+              <gco:CharacterString>Human-facing landing page for the style file, not pinned to a document version.</gco:CharacterString>
+            </gmd:description>
+            <gmd:function>
+              <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="information">information</gmd:CI_OnLineFunctionCode>
+            </gmd:function>
+          </gmd:CI_OnlineResource>
+          </gmd:onLine>
+        </gmd:MD_DigitalTransferOptions>
+      </gmd:transferOptions>
+    </gmd:MD_Distribution>
+  </gmd:distributionInfo>
+
+  <gmd:dataQualityInfo>
+    <gmd:DQ_DataQuality>
+      <gmd:scope>
+        <gmd:DQ_Scope>
+          <gmd:level>
+            <gmd:MD_ScopeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+          </gmd:level>
+        </gmd:DQ_Scope>
+      </gmd:scope>
+
+      <gmd:report>
+        <gmd:DQ_ThematicClassificationCorrectness>
+          <gmd:nameOfMeasure>
+            <gco:CharacterString>Weighted overall classification accuracy</gco:CharacterString>
+          </gmd:nameOfMeasure>
+          <gmd:measureDescription>
+            <gco:CharacterString>For each mapped class, precision is the percentage of mapped pixels found to be correct and recall is the percentage of the true class correctly mapped; the F1-score is the harmonic mean of the two, giving them equal weight. The overall accuracy is the class F1-score averaged and weighted by mapped area. The source paper rounds this figure to 96 %. The validation was performed on the unfiltered 2023/24 classification, before the sieve filtering described in the lineage: the figures describe the pre-filter map of that edition. The series is validated once — subsequent editions apply the same automated method to more recent imagery and are not individually revalidated.</gco:CharacterString>
+          </gmd:measureDescription>
+          <gmd:evaluationMethodDescription>
+            <gco:CharacterString>Stratified random sampling by map class. Pixels were selected at random and iteratively, and were included in the sample if the class had fewer than 300 samples so far and the pixel had not already been sampled, continuing until every mapped class held 300 pixels. The random seed was the sample date, so the sample is reproducible. The total sample was 4,500 pixels (15 classes × 300) drawn from a population of approximately 2.7 billion valid pixels.
+
+Every point was assessed by a single expert validator with experience in remote sensing and the New Zealand environmental context, using MapAccuracy software, which presents sample points individually over the classified map alongside contextual windows displaying Sentinel-2 imagery (including the temporal sequence) and recent aerial photography. The validator could label each point determinately as valid or invalid, or indeterminately as likely or unlikely. In the reported accuracy figures, 'likely' is counted as valid and 'unlikely' as invalid, rather than excluding indeterminate results.
+
+Resourcing did not permit redundant expert validators or additional non-expert validators, so some inter-validator disagreement should be expected. For context, Brown et al. (2022) reported 77.8 % overall agreement between consensus non-expert and consensus expert land-cover validation for Google Dynamic World, a product also derived from Sentinel-2 but with fewer classes. Sampling scheme: Stratified random sampling, stratified by map class, with a constant random seed. Lot: 4,500 sample pixels (300 per mapped class, 15 classes) from approximately 2.7 billion valid pixels across the national extent. Software: MapAccuracy (https://anaconda.org/gillins/mapaccuracy).</gco:CharacterString>
+          </gmd:evaluationMethodDescription>
+          <gmd:result>
+            <gmd:DQ_QuantitativeResult>
+              <gmd:valueUnit xlink:href="http://www.opengis.net/def/uom/UCUM/0/%25"/>
+              <gmd:value>
+                <gco:Record>96.45</gco:Record>
+              </gmd:value>
+            </gmd:DQ_QuantitativeResult>
+          </gmd:result>
+        </gmd:DQ_ThematicClassificationCorrectness>
+      </gmd:report>
+
+      <gmd:report>
+        <gmd:DQ_ThematicClassificationCorrectness>
+          <gmd:nameOfMeasure>
+            <gco:CharacterString>Per-class F1-score</gco:CharacterString>
+          </gmd:nameOfMeasure>
+          <gmd:measureDescription>
+            <gco:CharacterString>F1-scores by class from the same 4,500-point stratified sample, as percentages: Bare Ground 98.0; Broadleaved Shrub 82.2; Cropland 94.9; Deciduous Hardwoods 96.2; Exotic Forest 96.9; Glacial Lakes, Wet Rock, Water/Sediment 98.0; Herbaceous Vegetation 84.8; Indigenous Forest 90.4; Narrow-leaved Scrub 93.1; Orchards and Vineyards 98.8; Primarily Bare Ground 94.9; Snow 97.9; Unspecified Woody Vegetation 88.2; Water 94.1; Wetlands 99.2. All classes except Broadleaved Shrub and Unspecified Woody Vegetation exceed 90 %. The full contingency table with precision and recall is Table 3 of the source paper and Figure 6 of contract report LC2526-0006. Per-class F1-scores range from 82.2 % (Broadleaved Shrub) to 99.2 % (Wetlands). The two weakest classes are weak in precision rather than recall: Broadleaved Shrub has 70.0 % precision against 99.5 % recall, and Unspecified Woody Vegetation 79.3 % precision against 99.2 % recall — both are over-mapped, drawing most of their false positives from herbaceous vegetation and indigenous forest. Herbaceous Vegetation shows the converse pattern (98.3 % precision, 74.5 % recall), being under-mapped where it is confused with shrubland and small woody clumps.</gco:CharacterString>
+          </gmd:measureDescription>
+          <gmd:result>
+            <gmd:DQ_ConformanceResult>
+              <gmd:specification>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>A cost-effective method for mapping land cover at national scale</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date>
+                    <gmd:CI_Date>
+                      <gmd:date>
+                        <gco:Date>2026-01-16</gco:Date>
+                      </gmd:date>
+                      <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                      </gmd:dateType>
+                    </gmd:CI_Date>
+                  </gmd:date>
+                </gmd:CI_Citation>
+              </gmd:specification>
+              <gmd:explanation>
+                <gco:CharacterString>Per-class F1-scores range from 82.2 % (Broadleaved Shrub) to 99.2 % (Wetlands). The two weakest classes are weak in precision rather than recall: Broadleaved Shrub has 70.0 % precision against 99.5 % recall, and Unspecified Woody Vegetation 79.3 % precision against 99.2 % recall — both are over-mapped, drawing most of their false positives from herbaceous vegetation and indigenous forest. Herbaceous Vegetation shows the converse pattern (98.3 % precision, 74.5 % recall), being under-mapped where it is confused with shrubland and small woody clumps.</gco:CharacterString>
+              </gmd:explanation>
+              <gmd:pass>
+                <gco:Boolean>true</gco:Boolean>
+              </gmd:pass>
+            </gmd:DQ_ConformanceResult>
+          </gmd:result>
+        </gmd:DQ_ThematicClassificationCorrectness>
+      </gmd:report>
+
+      <gmd:report>
+        <gmd:DQ_ThematicClassificationCorrectness>
+          <gmd:nameOfMeasure>
+            <gco:CharacterString>Deep-learning model accuracy for the exotic forest class (development assessment)</gco:CharacterString>
+          </gmd:nameOfMeasure>
+          <gmd:measureDescription>
+            <gco:CharacterString>Assessment of the U-Net models against LCDB v5 during development, reported separately for the two island models and distinct from the validation of the final published map. On the 2018/19 mosaic the exotic forest class accuracy was 90.3 % for the North Island model and 83.5 % for the South Island model. Both models separated exotic from indigenous forest with better than 97 % precision and recall, conditional on a pixel containing forest — better than 99 % for the North Island. The main class confusion for both exotic and indigenous forest was with grass, with further significant confusion against scrub, bare ground and indigenous hardwoods. Overall model accuracies across all modelled classes were 87.0 % (North Island, 13 classes) and 86.1 % (South Island, 12 classes). These figures assess the models, not the published dataset, and are recorded here for provenance only.</gco:CharacterString>
+          </gmd:measureDescription>
+          <gmd:result>
+            <gmd:DQ_ConformanceResult>
+              <gmd:specification>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>A cost-effective method for mapping land cover at national scale</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date>
+                    <gmd:CI_Date>
+                      <gmd:date>
+                        <gco:Date>2026-01-16</gco:Date>
+                      </gmd:date>
+                      <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                      </gmd:dateType>
+                    </gmd:CI_Date>
+                  </gmd:date>
+                </gmd:CI_Citation>
+              </gmd:specification>
+              <gmd:explanation>
+                <gco:CharacterString>Overall model accuracies across all modelled classes were 87.0 % (North Island, 13 classes) and 86.1 % (South Island, 12 classes). These figures assess the models, not the published dataset, and are recorded here for provenance only.</gco:CharacterString>
+              </gmd:explanation>
+              <gmd:pass>
+                <gco:Boolean>true</gco:Boolean>
+              </gmd:pass>
+            </gmd:DQ_ConformanceResult>
+          </gmd:result>
+        </gmd:DQ_ThematicClassificationCorrectness>
+      </gmd:report>
+
+      <gmd:lineage>
+        <gmd:LI_Lineage>
+          <gmd:statement>
+            <gco:CharacterString>This dataset was produced by an automated workflow that classifies a cloud-free national summer mosaic of Sentinel-2 imagery (1 November 2024 to 28 February 2025) into fifteen land-cover classes at 10 m resolution. Sentinel-2 scenes were standardised to surface reflectance — atmospherically corrected and normalised to a standard sun position and flat topography — so that reflectance is a property of the vegetation alone, independent of sun position, slope and view direction. Cloud and cloud shadow were masked using an improved multi-temporal (Tmask) algorithm with an object-based approach to remove false cloud detections, and the scenes composited into a national mosaic drawing on approximately 100 satellite overpasses, with residual cloud typically below 0.1 %. Small areas of residual cloud in the mosaic were assigned to the unclassified value in the output.
+
+Classification proceeds down a hierarchy of binary splits, with the method for each split chosen to maximise accuracy at that node. The hierarchy is used because land covers are naturally organised hierarchically, a different discrimination function can be applied at each node, binary discriminant functions are simple to express and repeat, and covers identified by other methods can be injected at a suitable point in the tree. Most splits are made by expert-defined spectral decision rules applied to the standardised reflectance, with thresholds taken from Dymond and Shepherd (2004) and selected interactively to achieve optimum spatial distribution according to expert judgement. Two classes are not spectrally separable and are handled otherwise: exotic forest (and, in lowland terrain, deciduous hardwoods) is classified by a U-Net convolutional neural network and applied conditionally within the forest branch so that it disambiguates rather than over-rules the earlier splits; and cropland is identified from the temporal dynamics of NDVI over a five-year Sentinel-2 archive (March 2020 to February 2025), conditional on the terrain being sufficiently flat. Ancillary data enter the workflow at specific nodes: a national digital elevation model (15 m postings, resampled to the 10 m analysis grid) constrains the snow and cropland decisions, and LCDB is used to relax the near-infrared, shortwave-infrared and red thresholds wherever it has pre-identified forest, mangrove or scrub. Wetlands and orchards and vineyards are then accepted (burned in) unchanged from LCDB version 5.
+
+The classification workflow executes in under 12 hours of computing time on New Zealand eScience Infrastructure. The classified raster is then post-processed with an iterative sieve filter that removes small isolated patches, at escalating size thresholds up to seven pixels, with water protected until a final five-pixel pass. The method is described in Dymond et al. (2026) and, in greater operational detail, in contract report LC2526-0006; the production code and trained models are at https://github.com/manaakiwhenua/sentinel2-landcover-nz.</gco:CharacterString>
+          </gmd:statement>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 1 of 12 — Image acquisition. All available Copernicus Sentinel-2 MSI scenes covering New Zealand for the 2024/25 summer season (1 November 2024 to 28 February 2025 inclusive) were assembled; approximately 100 overpasses contribute to a national summer season.</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>Summer imagery maximises the spectral separability of vegetation classes and the number of cloud-free observations.</gco:CharacterString>
+              </gmd:rationale>
+              <gmd:processor>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
+        <gco:CharacterString>Manaaki Whenua – Landcare Research</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="processor">processor</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+              </gmd:processor>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 2 of 12 — Radiometric standardisation. Each scene was corrected to standardised spectral reflectance: atmospherically corrected and normalised to a standard sun position and flat topography, so that reflectance becomes a property of the vegetation alone, independent of sun position, slope and view direction. Methods follow Dymond and Shepherd (1999), Dymond et al. (2001), Shepherd and Dymond (2003) and Dymond and Shepherd (2004). The national digital elevation model (15 m postings, resampled to the 10 m analysis grid) is used for the topographic normalisation.</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>Standardised reflectance is what allows fixed spectral thresholds to be applied consistently over a national extent and to remain stable between years.</gco:CharacterString>
+              </gmd:rationale>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 3 of 12 — Cloud and cloud-shadow masking. Masks were generated with an improved multi-temporal mask (Tmask) algorithm for cloud detection, refined by the parallax method of Frantz et al. (2018) and by an object-based cloud and shadow classification to remove false cloud detections, with the final masks checked by an object-based morphology test (Shepherd et al., 2020).</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>New Zealand's frequent cloud cover is the principal obstacle to national optical mapping; aggressive but verified masking is required before compositing.</gco:CharacterString>
+              </gmd:rationale>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 4 of 12 — Mosaicking. Cloud-free observations were composited into a single national summer mosaic of standardised spectral reflectance at 10 m resolution, following Shepherd et al. (2020). Residual cloud in the resulting mosaic is typically below 0.1 %; the small areas that remain in the 2024/25 mosaic were assigned class 0 (Unclassified) in the final output. This mosaic is the object of classification.</gco:CharacterString>
+              </gmd:description>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 5 of 12 — Hierarchical spectral rule classification. Binary decision rules were applied sequentially down a hierarchy: snow first (constrained by the digital elevation model to terrain above 150 m, to avoid confusion with bright coastal water such as whitecaps and turbid estuary water); then water, from the near-infrared and shortwave-infrared bands alongside the visible bands; then land into bare ground and vegetation; then vegetation into herbaceous and woody; then woody into narrow-leaved scrub and other woody vegetation, and other woody vegetation into broadleaved shrub and forest/trees. Each node applies a simple binary discriminant function on a spectral band or band ratio (ρ1 blue, ρ2 green, ρ3 red, ρ4 near-infrared 0.77–0.90 µm, ρ5 shortwave infrared 1.55–1.75 µm); the full rule set is in Appendix A of the source paper and Table 4 of Dymond and Shepherd (2004). Thresholds were retained from Dymond and Shepherd (2004) except for the narrow-leaved scrub split on (ρ4 − ρ5)/(ρ4 + ρ5), reduced from 0.33 to 0.25. LCDB is used as ancillary evidence at this stage, relaxing the near-infrared, shortwave-infrared and red thresholds wherever it has pre-identified forest, mangrove or scrub.</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>Land covers are naturally organised into a hierarchy; a different discrimination function can be used at each node; binary discriminant functions are simple to express and to repeat; and covers identified by other methods can be injected at a suitable point in the tree. Threshold values were selected interactively to achieve optimum spatial distribution according to expert judgement.</gco:CharacterString>
+              </gmd:rationale>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 6 of 12 — Training the U-Net deep-learning models. A U-Net encoder–decoder convolutional network was trained to generate a class raster over 13 classes for the North Island and 12 for the South Island (the initial class set proposed by the Ministry for the Environment, plus a separation of indigenous hardwoods from deciduous hardwoods to test whether small patches of deciduous and evergreen trees could be discriminated; 'mangrove' does not occur in the South Island). Training data were a class polygon layer derived from LCDB v5. The original U-Net width of 64 filters in the initial layer was selected: greater widths added compute cost for negligible gain. Training ran for 1,000 epochs on 512 × 512 pixel patches, each epoch comprising 300 minibatches of two images, using the Adam optimiser with an initial learning rate of 0.0001, with evaluation against a validation set after every epoch and selection of the model with the lowest validation loss. The selected models were trained on 50 % of the imagery, validated on 10 %, and tested on the remaining 40 %.
+
+Two different normalisation strategies were adopted to maximise robustness across mosaics from different periods, assessed by the quality of the 2023/24 prediction and specifically by minimising false positives of exotic forestry caused by differences in pixel distributions. North Island: train on the 2016/17, 2017/18 and 2018/19 mosaics, normalising all image patches identically on the average mean and standard deviation of all three. South Island: train on the 2018/19 mosaic alone, normalising each individual image patch to zero mean and unit standard deviation. The difference arises because South Island mosaics differ more from year to year due to climate, whereas in the North Island image lighting differences dominate.</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>Exotic forest cannot be separated from indigenous forest by spectral signature alone; texture and spatial context are decisive, and encoder–decoder networks exploit contextual patterns in surrounding pixels to disambiguate them.</gco:CharacterString>
+              </gmd:rationale>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 7 of 12 — Identification of small woody clumps. A centre-to-edge ratio computation was applied to identify small clusters of woody vegetation (less than 0.2 ha), which were labelled Unspecified Woody Vegetation.</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>Such clumps contain insufficient pixel-level information to be classified further at 10 m resolution. A separate attempt to discriminate conifer from non-conifer trees using a model trained on regional aerial imagery was judged unsuccessful — owing to a lack of ground truth, highly variable image quality, unknown survey dates, and confusion between tree species of different ages — so these stands remain unspecified.</gco:CharacterString>
+              </gmd:rationale>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 8 of 12 — Conditional application of the deep-learning classification. The trained models were applied to the 2024/25 mosaic; the resulting exotic forest was accepted only within the forest branch of the decision hierarchy, as a disambiguation of forest already identified by the earlier binary splits, and deciduous hardwoods were accepted from the same prediction wherever the terrain is lowland — a label not additionally confined to the woody branch.</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>Constraining the deep-learning result prevents it from over-ruling prior binary decisions, gives a more deterministic output, and stops the final exotic forestry from simply reproducing its 1:50,000 LCDB training data. In particular, the models learned from LCDB to include areas of bare land within forestry, which is a misidentification at 10 m resolution; conditional application corrects for this.</gco:CharacterString>
+              </gmd:rationale>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 9 of 12 — Spectral splitting of the remaining woody vegetation. Near-infrared / shortwave-infrared threshold rules separated narrow-leaved scrub, and a green-reflectance rule separated broadleaved shrub, from the remaining forest/trees.</gco:CharacterString>
+              </gmd:description>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 10 of 12 — NDVI temporal sequence identification of cropland, the final binary split. All available cloud-masked, topographically normalised Sentinel-2 images from March 2020 to February 2025 inclusive were used to compute an NDVI time series following Amies et al. (2021), yielding three metrics per pixel: the median NDVI of vegetated pixels, the median NDVI of all observations, and the ratio of time in vegetation to time not in vegetation. Visualised as an RGB stretch, areas of cropland are distinct — alternation between fallow and vegetated periods across the five-year sequence — giving rise to simple threshold rules. Cropland was additionally conditioned on the terrain being sufficiently flat to be plausible cropland, per the digital elevation model.</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>Cropland is not separable in a single-date summer image; it is defined by a multi-year pattern of tillage and regrowth. Basing the identification on five years rather than a single date avoids treating a process that is not strictly annual at field scale as a point-in-time observation. The limitation is that the method detects the bare/vegetated cycle without regard to the time of year at which it occurs, so cropping is the probable but not the only possible explanation of the signal.</gco:CharacterString>
+              </gmd:rationale>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 11 of 12 — LCDB burn-in. Wetlands (LCDB class 15) and orchards and vineyards (LCDB class 16) were accepted as given and burned in from LCDB version 5, as was the glacial lakes extent, producing the classified land-cover dataset: a single-band 10 m raster with a raster attribute table in the NZTM projection. To this point the workflow takes under 12 hours of compute time on New Zealand eScience Infrastructure.</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>Wetlands and viticulture were judged too difficult to delineate automatically from spectral information with sufficient accuracy, so authoritative existing delineations with a human in the loop were retained instead.</gco:CharacterString>
+              </gmd:rationale>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:processStep>
+            <gmd:LI_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Step 12 of 12 — Sieve filtering. The classified raster was post-processed with an iterative sieve filter (gdal_sieve, eight-connectivity) that removes small isolated patches by merging them into their largest neighbour, in successive passes with escalating size thresholds of two, three, five and seven pixels. Water and no-data areas were masked throughout these passes; a final unmasked five-pixel pass then removed the small isolated water patches the mask had protected. The raster attribute table was reattached to the filtered raster, which is the published dataset.</gco:CharacterString>
+              </gmd:description>
+              <gmd:rationale>
+                <gco:CharacterString>The mask prevents land-cover classes from bleeding into water and no-data areas during sieving, and the final unmasked pass applies the same cleaning to fragmented water itself. Note that contract report LC2526-0006 recommended publishing unfiltered data, with any filtered product alongside; the published layer is the filtered product.</gco:CharacterString>
+              </gmd:rationale>
+            </gmd:LI_ProcessStep>
+          </gmd:processStep>
+
+          <gmd:source>
+            <gmd:LI_Source>
+              <gmd:description>
+                <gco:CharacterString>Copernicus Sentinel-2 MSI imagery, 2024/25 summer season (1 November 2024 to 28 February 2025 inclusive). Approximately 100 Sentinel-2 overpasses of New Zealand per summer season contribute to the mosaic. The processed summer mosaic itself is not publicly available.</gco:CharacterString>
+              </gmd:description>
+              <gmd:sourceCitation>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>Copernicus Sentinel-2 MSI imagery</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date gco:nilReason="unknown"/>
+                  <gmd:citedResponsibleParty>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
+        <gco:CharacterString>European Space Agency / Copernicus Programme</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+                  </gmd:citedResponsibleParty>
+                </gmd:CI_Citation>
+              </gmd:sourceCitation>
+            </gmd:LI_Source>
+          </gmd:source>
+
+          <gmd:source>
+            <gmd:LI_Source>
+              <gmd:description>
+                <gco:CharacterString>Copernicus Sentinel-2 MSI archive, March 2020 to February 2025 inclusive: all available cloud-masked, topographically normalised images, used to derive the five-year NDVI time series for cropland detection.</gco:CharacterString>
+              </gmd:description>
+              <gmd:sourceCitation>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>Copernicus Sentinel-2 MSI archive 2020–2025</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date gco:nilReason="unknown"/>
+                </gmd:CI_Citation>
+              </gmd:sourceCitation>
+            </gmd:LI_Source>
+          </gmd:source>
+
+          <gmd:source>
+            <gmd:LI_Source>
+              <gmd:description>
+                <gco:CharacterString>Sentinel-2 summer mosaics used as training imagery for the U-Net models: a stack of the 2016/17, 2017/18 and 2018/19 mosaics for the North Island model, and the 2018/19 mosaic alone for the South Island model. Combinations including the 2023/24 mosaic were also trialled but gave less accurate results.</gco:CharacterString>
+              </gmd:description>
+              <gmd:sourceCitation>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>Automated mosaicking of Sentinel-2 satellite imagery</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date gco:nilReason="unknown"/>
+                  <gmd:identifier>
+                    <gmd:RS_Identifier>
+                      <gmd:code>
+                        <gco:CharacterString>10.3390/rs12223680</gco:CharacterString>
+                      </gmd:code>
+                      <gmd:codeSpace>
+                        <gco:CharacterString>doi</gco:CharacterString>
+                      </gmd:codeSpace>
+                    </gmd:RS_Identifier>
+                  </gmd:identifier>
+                  <gmd:otherCitationDetails>
+                    <gco:CharacterString>Shepherd, J.D., Schindler, J., Dymond, J.R. (2020). Remote Sensing 12, 3680.</gco:CharacterString>
+                  </gmd:otherCitationDetails>
+                </gmd:CI_Citation>
+              </gmd:sourceCitation>
+            </gmd:LI_Source>
+          </gmd:source>
+
+          <gmd:source>
+            <gmd:LI_Source>
+              <gmd:description>
+                <gco:CharacterString>New Zealand Land Cover Database (LCDB) version 5, nominal date 2018/19, mapped at 1:50,000 with a 1 ha minimum mapping unit. Used for three distinct purposes: (a) as U-Net training data — a class polygon layer of 101,396 exotic forest polygons, derived using a class mapping suggested by the Ministry for the Environment, with Broadleaved Indigenous Hardwoods and Deciduous Hardwoods separated out for testing and the LCDB "Forest – Harvested" class treated as bare land and excluded from exotic forest training; (b) as ancillary evidence within the spectral hierarchy, conditionally relaxing the near-infrared, shortwave-infrared and red thresholds wherever LCDB has pre-identified forest, mangrove or scrub; and (c) as the direct source of classes burned into the final map — wetlands (LCDB class 15), orchards and vineyards (LCDB class 16), and the glacial lakes extent. LCDB v6.0 was not available when the method was developed and the 2023/24 edition produced; later editions, including those produced after v6.0 became available, continue to use version 5.</gco:CharacterString>
+              </gmd:description>
+              <gmd:sourceCitation>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>LCDB v5.0 — Land Cover Database version 5.0, Mainland New Zealand</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date gco:nilReason="unknown"/>
+                  <gmd:citedResponsibleParty>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
+        <gco:CharacterString>Manaaki Whenua – Landcare Research</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+                  </gmd:citedResponsibleParty>
+                  <gmd:otherCitationDetails>
+                    <gco:CharacterString>https://lris.scinfo.org.nz/layer/104400-lcdb-v50-land-cover-database-version-50-mainland-new-zealand/</gco:CharacterString>
+                  </gmd:otherCitationDetails>
+                </gmd:CI_Citation>
+              </gmd:sourceCitation>
+            </gmd:LI_Source>
+          </gmd:source>
+
+          <gmd:source>
+            <gmd:LI_Source>
+              <gmd:description>
+                <gco:CharacterString>National digital elevation model. Manaaki Whenua's national DEM, generated at 15 m postings from LINZ 1:50,000 topographic data — 20 m contours, spot heights, lake shorelines and coastline — using the TOPOGRID function of ArcGIS (ESRI), optimised for slope accuracy for standardised-reflectance terrain correction and hydrologically consistent with the NIWA digital stream network. Used in this workflow resampled to the 10 m analysis grid: for topographic normalisation of reflectance, to eliminate terrain below 150 m elevation from the snow class, and to constrain cropland to sufficiently flat terrain. The DEM is not separately published as a dataset; its derivation is described on the Our Environment (Land Atlas of New Zealand) data-provenance page, cited here.</gco:CharacterString>
+              </gmd:description>
+              <gmd:sourceCitation>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>Manaaki Whenua national 15 m digital elevation model</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date gco:nilReason="unknown"/>
+                  <gmd:citedResponsibleParty>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
+        <gco:CharacterString>Manaaki Whenua – Landcare Research</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+                  </gmd:citedResponsibleParty>
+                  <gmd:otherCitationDetails>
+                    <gco:CharacterString>https://ourenvironment.scinfo.org.nz/data-provenance#dem</gco:CharacterString>
+                  </gmd:otherCitationDetails>
+                </gmd:CI_Citation>
+              </gmd:sourceCitation>
+            </gmd:LI_Source>
+          </gmd:source>
+        </gmd:LI_Lineage>
+      </gmd:lineage>
+    </gmd:DQ_DataQuality>
+  </gmd:dataQualityInfo>
+
+  <gmd:portrayalCatalogueInfo>
+    <gmd:MD_PortrayalCatalogueReference>
+      <gmd:portrayalCatalogueCitation>
+        <gmd:CI_Citation>
+          <gmd:title>
+            <gco:CharacterString>NZ Cost-Effective Land Cover (2024/25) — QGIS layer style (paletted raster)</gco:CharacterString>
+          </gmd:title>
+          <gmd:alternateTitle>
+            <gco:CharacterString>celcmqml.qml</gco:CharacterString>
+          </gmd:alternateTitle>
+          <gmd:date gco:nilReason="unknown"/>
+          <gmd:edition>
+            <gco:CharacterString>QGIS 3.40.3 style format (QML)</gco:CharacterString>
+          </gmd:edition>
+          <gmd:citedResponsibleParty>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
+        <gco:CharacterString>Manaaki Whenua – Landcare Research</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+          </gmd:citedResponsibleParty>
+          <gmd:otherCitationDetails>
+            <gco:CharacterString>Authoritative source of class values, labels and display colours for this dataset. Defines a paletted single-band renderer on band 1 at full opacity, with nearest-neighbour resampling and transparent no-data. Palette entries are given for values 1 to 16; value 0 (Unclassified) has no entry and renders as transparent no-data. Where this style file and other documentation of the dataset disagree on a colour, the style file is authoritative. Download (version-pinned): https://lris.scinfo.org.nz/services/api/v1.x/documents/26004/versions/28292/download/ Document page: https://lris.scinfo.org.nz/document/26004-celcmqml/</gco:CharacterString>
+          </gmd:otherCitationDetails>
+        </gmd:CI_Citation>
+      </gmd:portrayalCatalogueCitation>
+    </gmd:MD_PortrayalCatalogueReference>
+  </gmd:portrayalCatalogueInfo>
+
+  <gmd:metadataMaintenance>
+    <gmd:MD_MaintenanceInformation>
+      <gmd:maintenanceAndUpdateFrequency>
+        <gmd:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeListValue="asNeeded">asNeeded</gmd:MD_MaintenanceFrequencyCode>
+      </gmd:maintenanceAndUpdateFrequency>
+      <gmd:maintenanceNote>
+        <gco:CharacterString>Metadata drafted from Dymond et al. (2026), MWLR contract reports LC2526-0006 and 2526-0005, and the QGIS style file celcmqml.qml. Fields marked "CHECK" in the XML comments require confirmation against the published LRIS layer or the production code.</gco:CharacterString>
+      </gmd:maintenanceNote>
+    </gmd:MD_MaintenanceInformation>
+  </gmd:metadataMaintenance>
+
+</gmd:MD_Metadata>

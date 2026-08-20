@@ -4,10 +4,12 @@ Generates one ISO 19115-1:2014 metadata record per edition of the land-cover ser
 in the ISO 19115-3:2018 XML encoding.
 
 ```
-template/iso19115-3.xml.j2   ISO structure. Rarely changes.
+template/iso19115-3.xml.j2   ISO structure, canonical encoding. Rarely changes.
+template/iso19139.xml.j2     Companion legacy (gmd:) encoding for catalogues that
+                             cannot parse 19115-3 — notably the LRIS Portal.
 common.yaml                  Method- and series-level facts — most of the record.
 editions/<year>.yaml         Per-edition scalars and cross-references. Small.
-render.py                    YAML + template -> XML, with structural self-checks.
+render.py                    YAML + templates -> XML, with structural self-checks.
 build/                       Generated records. Do not edit by hand.
 gdalinfo.txt                 gdalinfo of the production raster; source of the grid
                              dimensions and exact bounding box in the records.
@@ -50,6 +52,43 @@ Then add a back-reference from the previous edition, so the pair is linked in bo
 directions: append to its `associated_editions` and re-render it.
 
 `render.py --all` rebuilds every edition. `--check` reports without writing.
+
+## Two encodings per edition
+
+Each render writes two files: `<slug>_iso19115-3.xml` (canonical) and
+`<slug>_iso19139.xml` (legacy `gmd:` encoding of ISO 19115:2003). The 19139 file
+exists because the Koordinates platform behind the LRIS Portal imports title,
+description and tags from ISO 19139, Dublin Core or FGDC only — uploading the
+19115-3 record yields "doesn't contain an importable title, description or tags".
+**Upload the `_iso19139.xml` file to LRIS.**
+
+The 19139 template renders from the same YAML, so the two encodings cannot drift,
+but ISO 19115:2003 has no slot for everything the 19115-1 record carries; the
+content is re-homed, not dropped (see the comment atop `template/iso19139.xml.j2`):
+citation online resources move to distribution transfer options and citation-details
+text, the documentation citations become a supplementalInformation paragraph, the
+class table is carried as one MD_RangeDimension per class, descriptive quality
+results fold into measureDescription with a conformance result citing the source
+paper, and source resolutions stay in prose. The 19115-3 record remains the
+authoritative, fully structured edition.
+
+## Editions not published on the LRIS Portal
+
+An edition that has no LRIS layer — either not yet (in preparation) or never (supplied
+directly as a file with its metadata record, like 2025/26) — simply leaves
+`layer_slug` and `layer_id` null. That is the whole switch: `render.py` then derives
+no layer URL, and the template omits every LRIS-layer block — the portal identifier in
+the citation, the layer link, the portal transfer option — and names Manaaki Whenua –
+Landcare Research directly as distributor. Setting `publication_date: null` likewise
+drops the publication date from the citation, leaving creation only, which is correct
+for an unpublished resource. The build filename falls back from the layer slug to
+`nz-cost-effective-land-cover-<edition>`.
+
+Three prose keys exist for the same reason and can be overridden per edition:
+`distribution_description` (how the dataset is supplied), `qml_online_description`
+(the QML remains a public LRIS *document* even when a dataset edition is not a LRIS
+*layer*), and the LRIS sentence in `licence_statement`. See `editions/2025-26.yaml`
+for a worked example.
 
 The shared prose re-binds to the new scalars via the placeholders, so season dates and
 the NDVI window need only be set once, in `scalars`. If the method itself changes for

@@ -1,0 +1,72 @@
+# NZ Cost-Effective Land Cover, 2025/26 edition — NOT PUBLISHED ON LRIS, see _TODO.
+# This edition is supplied directly as a file accompanied by this metadata record;
+# it is not on the LRIS Portal and will not be. layer_id and layer_slug therefore
+# stay null deliberately (not "to be filled in"): a null layer_slug makes render.py
+# and the template omit every LRIS-layer block — the portal identifier, the layer
+# link in the citation, the portal transfer option — and name the distributor as
+# MWLR directly. publication_date is null for the same reason: the citation carries
+# a creation date only.
+# Almost everything else lives in ../common.yaml (method facts; this file wins on
+# any key it defines) — this file holds only what is unique to the edition.
+# Prose in common.yaml re-binds to these scalars through Jinja placeholders.
+# Regenerate with: python3 render.py 2025-26.yaml
+
+edition: 2025/26
+title: NZ Cost-Effective Land Cover (2025/26)
+alternate_title: NZ Land Cover (cost-effective method), 2025/26 summer
+scalars:
+  metadata_uuid: bdc68baa-783c-400d-b1cd-aef5d84b8786
+  metadata_date: '2026-08-20T00:00:00+12:00'
+  creation_date: '2026-08-01'
+  publication_date: null # not published; deliberate, see header comment
+  layer_id: null # no LRIS layer; deliberate, see header comment
+  layer_slug: null # no LRIS layer; deliberate, see header comment
+  temporal_begin: '2025-11-01'
+  temporal_end: '2026-02-28'
+  temporal_id: nominal-summer-mosaic-2025-26
+  # five-year Sentinel-2 NDVI window used for cropland detection: exactly five
+  # years ending with the mapped summer (user-confirmed 2026-08-20)
+  ndvi_period: March 2021 to February 2026
+  ndvi_years: 2021–2026
+  qml_document_id: 26004
+  qml_document_version: 28292
+  qml_slug: 26004-celcmqml
+  # ERDAS IMAGINE is the delivery format LC2526-0006 records, so this direct-supply
+  # edition matches the report where the LRIS editions (GeoTIFF) diverge from it
+  distribution_format: ERDAS IMAGINE (HFA), converted from the KEA format in which the dataset is
+    produced and archived; other formats can be supplied on request to the point of contact
+  licence_statement: 'Released under the Creative Commons Attribution-ShareAlike 4.0 International licence
+    (CC BY-SA 4.0). Attribution: "Manaaki Whenua – Landcare Research". The ShareAlike condition requires
+    that adapted material be distributed under the same licence or a compatible one. Note that the licence
+    on this dataset differs from the CC BY 4.0 licence on the peer-reviewed paper describing the method.'
+distribution_description: This edition is supplied directly by Manaaki Whenua – Landcare Research as
+  a single-band categorical raster with a raster attribute table, in the NZTM projection at {{ scalars.resolution_m
+  }} m resolution, accompanied by this metadata record. Unlike earlier editions of the series, it is
+  not published on the LRIS Portal and there is no plan to publish it there. References elsewhere in
+  this record to the published dataset denote the sieve-filtered product as supplied.
+qml_online_description: The QGIS style file itself (QML). The style file is published as a document
+  on the LRIS Portal and applies to every edition of the series; this edition's dataset itself is not
+  published there.
+metadata_maintenance_note: Metadata drafted from Dymond et al. (2026), MWLR contract reports LC2526-0006
+  and 2526-0005, and the QGIS style file celcmqml.qml. Fields marked "CHECK" in the XML comments require
+  confirmation against the production code or the supplied file.
+associated_editions:
+- title: NZ Cost-Effective Land Cover (2023/24)
+  edition: 2023/24
+  association_type: crossReference
+  doi: 10.26060/J3NV-9W38
+  url: https://lris.scinfo.org.nz/layer/123984-nz-cost-effective-land-cover-2023-24/
+  metadata_uuid: f2711951-67b2-41ed-8646-19d3c815ae71
+# Resolved (user-confirmed 2026-08-20): the supplied file IS the sieve-filtered
+# product, and LCDB v5 (not v6.0) is burned in, as in every edition to date.
+_TODO:
+- If the U-Net models were retrained, override lineage step 6 and the training-imagery source the same
+  way, and revise the literal 2023/24 model-development references in them.
+- Decide the fate of reserved class value 5 (Cloud) in this edition.
+- QML document id/version currently pin the 2023/24 style; if a revised style is uploaded for this edition,
+  pin the new version.
+- Confirm CC BY-SA 4.0 is the intended licence for a directly supplied (unpublished) edition.
+- When the 2024/25 edition is published, add it to associated_editions here and re-render. Deliberately
+  NOT added to 2023-24.yaml's associated_editions — the published 2023/24 record should not link to
+  an edition with no public landing place.
+- 'Then: python3 render.py 2025-26.yaml, and delete this _TODO key.'

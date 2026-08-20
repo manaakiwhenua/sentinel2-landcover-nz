@@ -6,10 +6,15 @@ Context for working on ISO 19115 metadata for the **NZ Cost-Effective Land Cover
 ## What this is
 
 A generator for one ISO 19115-1:2014 metadata record per annual edition of a 10 m national
-land-cover raster for New Zealand, published on the LRIS Portal. Encoding is **ISO 19115-3:2018**
-(`mdb:`/`mri:`/`mrl:` namespaces), *not* the older ISO 19139 `gmd:` encoding — 19115-1 defines no
-XML of its own, and 19139 encodes the superseded 19115:2003 model. If a downstream catalogue only
-eats `gmd:`, that's a transform, not a rewrite of the template.
+land-cover raster for New Zealand, published on the LRIS Portal. Canonical encoding is **ISO
+19115-3:2018** (`mdb:`/`mri:`/`mrl:` namespaces) — 19115-1 defines no XML of its own, and 19139
+encodes the superseded 19115:2003 model. Since 2026-08-20 each edition ALSO renders a companion
+**ISO 19139 (`gmd:`)** file from the same YAML (`template/iso19139.xml.j2`), because the
+Koordinates platform behind LRIS imports title/description/tags from 19139, Dublin Core or FGDC
+only — a 19115-3 upload gets "doesn't contain an importable title, description or tags" and is
+merely attached. **Upload the `_iso19139.xml` file to LRIS**; the 19115-3 file stays canonical.
+Where 19115:2003 lacks a slot, content is re-homed, not dropped — the mapping is documented atop
+the 19139 template and in README.
 
 The two hard requirements the record must always meet:
 
@@ -19,10 +24,13 @@ The two hard requirements the record must always meet:
 ## Layout
 
 ```
-template/iso19115-3.xml.j2   ISO structure. Rarely changes.
+template/iso19115-3.xml.j2   ISO structure, canonical encoding. Rarely changes.
+template/iso19139.xml.j2     Companion gmd: encoding — what LRIS/Koordinates imports.
 common.yaml                  Method- and series-level facts — most of the record.
 editions/2023-24.yaml        Published edition: scalars + cross-references only.
-editions/2024-25.yaml        Next edition, in preparation — carries a _TODO list.
+editions/2024-25.yaml        Next LRIS edition, in preparation — carries a _TODO list.
+editions/2025-26.yaml        Direct-supply edition — NOT on LRIS, and never will be;
+                             sent as a file with its record. Carries a _TODO list.
 render.py                    YAML + template -> XML, with structural self-checks.
 build/                       Generated. Never hand-edit.
 README.md                    Workflow and design rationale.
@@ -146,6 +154,18 @@ Production code and trained models: `https://github.com/manaakiwhenua/sentinel2-
   portrayal citation — it fixes the style to the edition it describes — but must be updated if a
   revised style is uploaded. The unpinned document page rides along as a fallback.
 - **Licence is CC BY-SA 4.0** for the dataset. Note this differs from CC BY 4.0 on the paper.
+- **Non-LRIS editions ride on null `layer_slug`/`layer_id`** (2026-08-20). A null slug makes
+  render.py derive no layer URL and the template omit every LRIS-layer block (portal identifier,
+  layer link, portal transfer option) and name MWLR directly as distributor; the build filename
+  falls back to `nz-cost-effective-land-cover-<edition>`. `publication_date: null` drops the
+  publication date (creation only — correct for an unpublished resource). Overridable prose keys
+  for the same purpose: `distribution_description`, `qml_online_description`, `licence_statement`
+  (its LRIS-account sentence). 2025/26 is the worked example; the 2023/24 record is unaffected
+  (verified byte-identical apart from the url_function fix below).
+- **`d.get(...)|default(...)` is a trap** — fixed 2026-08-20. `dict.get` returns None, a real
+  value, so Jinja's `default` filter does not replace it and `codeListValue="None"` (invalid ISO)
+  reached the rendered 2023/24 record via `url_function`. Use `d.get('x') or 'fallback'`. No
+  consequence beyond the rebuild: the record had not been published anywhere.
 
 ## Gotchas
 
@@ -172,8 +192,16 @@ Production code and trained models: `https://github.com/manaakiwhenua/sentinel2-
 
 Unresolved `CHECK:` markers, listed on every render:
 
-1. The specific **national 10 m DEM** used — user is finding out.
-2. Whether the QML URLs resolve **unauthenticated** and return the file rather than JSON.
+1. Whether the QML URLs resolve **unauthenticated** and return the file rather than JSON.
+
+The **DEM** is resolved (2026-08-20, user-tracked): Manaaki Whenua's national 15 m DEM, generated
+from LINZ 1:50,000 topographic data (20 m contours, spot heights, lake shorelines, coastline) with
+ArcGIS TOPOGRID, hydrologically consistent with the NIWA stream network. Not separately published;
+described at https://ourenvironment.scinfo.org.nz/data-provenance#dem (cited in the lineage
+source). Used resampled to the 10 m analysis grid (user-confirmed 2026-08-20; also evidenced by
+the production snow step reading `dem_linz_*_10m.kea` in code/binary_split/snow/snow.sl, whose
+"linz" naming reflects the LINZ topo derivation, not a LINZ-produced DEM). The record's prose now says "national digital elevation model
+(15 m postings, resampled to the 10 m analysis grid)" — don't shorten it back to "10 m DEM".
 
 The **metadata UUID** is resolved: `f2711951-67b2-41ed-8646-19d3c815ae71`, minted with `uuidgen`
 (2026-08-18) and adopted as the identifier of record for the 2023/24 edition. It must never change
@@ -196,25 +224,50 @@ across editions). The geographic bbox was computed by densifying the NZTM grid-e
 the grid's bottom edge crosses the central meridian, ~0.2° south of gdalinfo's corner coordinates —
 do not "correct" the bbox back to corner values.
 
-Also worth doing: decide where the record will be published, since that determines whether a
-`gmd:` transform is needed and which validator applies.
+Resolved 2026-08-20 (user-confirmed): the **five-year NDVI window** for cropland detection is
+exactly five years ending with the mapped summer — March of year Y−5 to February of year Y, for an
+edition whose summer ends in year Y. It does NOT run to December of year Y (the mapped season is a
+southern-hemisphere summer, so the window ends early in the calendar year). Applied to all three
+editions, 2023/24 included (was January 2020 – December 2024 there): per the user (2026-08-20), the
+2023/24 metadata RECORD has never been published anywhere — the dataset layer is on LRIS, but the
+record itself just sits in build/ — so correcting it required no republication. Don't re-raise the
+divergence from any "January 2020 to December 2024" wording in the sources: per the user
+(2026-08-20), the documents and production code describe the 2023/24 production specifically, and
+later editions are simply records of re-running the scripts on updated inputs — the corrected
+window stands and needs no source-divergence note in the record.
+
+The 2023/24 layer has a **DOI**: `10.26060/J3NV-9W38`, resolving to the LRIS layer page
+(user-supplied 2026-08-20). It rides on `scalars.doi` (null in common.yaml for editions without
+one) — emitted as a citation identifier (codeSpace `doi`) plus a doi.org online resource — and on
+the `doi` key of `associated_editions` entries, so cross-references cite it too. The unpublished
+2025/26 edition has no DOI of its own; set `scalars.doi` on 2024/25 if one is minted at
+publication.
+
+Publication venue is now settled in practice (2026-08-20): the records go to the **LRIS Portal**,
+whose Koordinates import needs the `gmd:` encoding — hence the companion 19139 rendering. Real
+schema validation of both encodings remains an open task (19139 XSDs: `www.isotc211.org/2005/gmd`
+schemas via schemas.opengis.net).
 
 ## Next edition
 
-`editions/2024-25.yaml` is in preparation — work its `_TODO` list. For the edition after that:
+`editions/2024-25.yaml` (for LRIS) and `editions/2025-26.yaml` (direct supply, not for
+LRIS) are both in preparation — work their `_TODO` lists. For a further edition:
 
 ```bash
-cp editions/2024-25.yaml editions/2025-26.yaml
+cp editions/2024-25.yaml editions/2026-27.yaml   # or 2025-26.yaml for a non-LRIS edition
 # new uuid (uuidgen), dates, temporal + NDVI windows, layer id/slug,
 # back-reference to the previous edition
-python3 render.py 2025-26.yaml
+python3 render.py 2026-27.yaml
 # then add a back-reference in the previous edition's associated_editions and re-render it
 ```
 
 The shared prose re-binds to the new `scalars` through the placeholders (season dates, NDVI
 window), so those need setting only once. No revalidation happens per edition.
 
-Most likely substantive change: **LCDB v6.0 now exists.** If an edition burns in v6 rather than
+**LCDB v6.0 is NOT used in any edition through 2025/26** (user-confirmed 2026-08-20) — every
+edition burns in v5, and the LCDB lineage-source sentence in common.yaml is worded to stay true
+for editions produced after v6.0 became available. Don't re-ask per edition unless the user says
+the burn-in changed. If a future edition burns in v6 rather than
 v5 for wetlands, orchards/vineyards and glacial lakes, that touches three class definitions, the
 LCDB lineage source, the burn-in process step, the abstract, and the inherited-date use
 limitation — copy those keys from common.yaml into the edition file and edit them THERE (see
